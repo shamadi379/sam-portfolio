@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam in Cloud | Cloud Solutions Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+        .skill-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-sky-900 via-sky-800 to-indigo-900">
+    <!-- Background animation removed per user request -->
+    
+    <!-- Navigation -->
+    <nav class="bg-teal-600/90 backdrop-blur-md fixed w-full z-10 shadow-sm">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-white">Sam in Cloud</span>
+</div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-white hover:text-teal-200 transition">Home</a>
+                    <a href="#about" class="text-white hover:text-teal-200 transition">About</a>
+                    <a href="blog/index.html" class="text-white hover:text-teal-200 transition">Blog</a>
+                    <a href="#contact" class="bg-teal-800 text-white px-4 py-2 rounded-md hover:bg-teal-900 transition">Contact</a>
+</div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-700">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top About Panel (hidden by default) -->
+    <div id="about-panel" class="hidden fixed inset-x-4 top-20 z-20 max-w-6xl mx-auto bg-white/95 backdrop-blur-sm border border-white/20 rounded-xl p-6 shadow-lg">
+        <div class="flex justify-between items-start">
+            <h2 class="text-2xl font-bold text-gray-800">About — Portfolio</h2>
+            <button id="close-about-panel" class="text-gray-600 hover:text-gray-800">Close</button>
+        </div>
+        <div class="mt-4 space-y-6">
+            <!-- Professional Summary (moved here) -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Professional Summary</h3>
+                <p class="text-gray-700">Cloud Solutions Specialist with over 4 years of progressive experience in system administration and technical support, backed by a bachelor's degree in information technology. Highly skilled in managing enterprise systems, deploying cloud solutions, and supporting IT infrastructure across multiple sites. Experienced with Microsoft 365, Azure Active Directory, Intune, Power Platform, and Windows Server environments. Known for troubleshooting complex issues, improving system efficiency through automation, and working independently under pressure. Strong knowledge of system analysis, network configuration, patch management, and IT compliance.</p>
+            </div>
+
+            <!-- Technical Skills (moved here) -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Technical Skills</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure AD / Entra ID</span>
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Resource Manager (ARM)</span>
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Role-Based Access Control (RBAC)</span>
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Virtual Networks (VNet)</span>
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Virtual Machines</span>
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Monitor & Log Analytics</span>
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Policy & Governance</span>
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Backup / Site Recovery</span>
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Networking (NSG, Load Balancer)</span>
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Identity & Access Management</span>
+                    <!-- Added missing skills -->
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Files & Blob Storage</span>
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Key Vault</span>
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Firewall & NSG</span>
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Automation / Runbooks</span>
+                    <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">PowerShell / Az Modules</span>
+                </div>
+            </div>
+
+            <!-- Experience & Education (moved here) -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Professional Experience</h3>
+                <div class="space-y-4 text-gray-700">
+                    <div>
+                        <strong>System Administrator</strong> — Atlantic Digital (Sept 2025 – Present)
+                        <p class="mt-1">Serve as primary escalation point; manage Veeam backups, Windows Server estate, Azure security posture and monitoring, and ISO-aligned controls.</p>
+                    </div>
+                    <div>
+                        <strong>System Engineer</strong> — Barnardos Australia (July 2024 – Sept 2025)
+                        <p class="mt-1">Managed IT infrastructure, Intune compliance, automation with Power Automate, and networking monitoring.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Education & Certifications</h3>
+                <div class="text-gray-700">
+                    <p><strong>Bachelor of Information Technology</strong> — Kings Own Institute, Sydney</p>
+                    <p class="mt-1"><strong>Microsoft Certified:</strong> Azure Fundamentals; Azure Administrator</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white/95 z-20 pt-20 px-4">
+            <div class="flex flex-col space-y-6 text-center">
+            <a href="#home" class="text-xl text-gray-700 hover:text-blue-600 transition">Home</a>
+            <a href="#about" class="text-xl text-gray-700 hover:text-blue-600 transition">About</a>
+            <a href="blog/index.html" class="text-xl text-gray-700 hover:text-blue-600 transition">Blog</a>
+            <a href="#contact" class="text-xl bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition mx-auto w-1/2">Contact</a>
+            <button id="close-menu" class="absolute top-4 right-4 text-gray-700">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                        <div class="relative inline-block">
+                        <img src="images/88446.jpg" alt="Sam Adhikari" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-white shadow-xl">
+                    </div>
+                </div>
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Sam Adhikari</h1>
+                    <h2 class="text-2xl md:text-3xl text-teal-200 mb-6">Cloud Solutions Specialist</h2>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-8">
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md transition flex items-center gap-2">
+                            <i data-feather="mail"></i> Contact Me
+                        </a>
+                            <a href="https://www.linkedin.com/in/sam-a-7238b3306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-md transition flex items-center gap-2">
+<i data-feather="linkedin"></i> LinkedIn
+                        </a>
+                    </div>
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <div class="flex items-center text-white">
+                            <i data-feather="map-pin" class="mr-2 text-white"></i>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Merrylands%2C+NSW%2C+Australia" target="_blank" rel="noopener" class="text-white hover:underline">Merrylands, NSW</a>
+                        </div>
+                        <div class="flex items-center text-white">
+                            <i data-feather="phone" class="mr-2 text-white"></i>
+                            <a href="tel:0433957548" class="text-white">0433957548</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section (now includes Summary, Skills, Experience, Education as collapsible panels) -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-green-600 mb-4">About</h2>
+                <div class="w-20 h-1 bg-teal-500 mx-auto"></div>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Blog listing inserted from /blog/index.html -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Learn with Me — Blog</h3>
+                    <p class="text-teal-200 mb-4">Short tutorials, notes and walkthroughs about cloud, backups, and Windows Server.</p>
+
+                    <section class="space-y-4">
+                        <article class="bg-white/0 p-4 rounded-lg">
+                            <h4 class="text-lg font-semibold text-teal-600"><a href="blog/learn-with-me.html" class="hover:underline">Getting started — Learn with Me</a></h4>
+                            <p class="text-gray-700 mt-2">A short post about my approach to learning cloud ops and practical labs.</p>
+                            <p class="mt-3"><a href="blog/learn-with-me.html" class="text-blue-600 hover:underline">Read post →</a></p>
+                        </article>
+
+                        <!-- Add more posts here -->
+                    </section>
+                </div>
+                <!-- Portfolio moved to top about-panel -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i data-feather="mail" class="text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Email</h4>
+                                <p class="text-gray-600"><a href="mailto:shamsherintech@gmail.com" class="text-blue-600 hover:underline">shamsherintech@gmail.com</a></p>
+</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i data-feather="phone" class="text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Phone</h4>
+                                <p class="text-white"><a href="tel:0433957548" class="text-white">0433957548</a></p>
+</div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i data-feather="linkedin" class="text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/sam-a-7238b3306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener" class="text-blue-600 hover:underline">linkedin.com/in/sam-a-7238b3306</a>
+</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Send Me a Message</h3>
+                    <form class="space-y-6" action="https://formsubmit.co/shamsherintech@gmail.com" method="POST">
+                        <!-- Form submits to FormSubmit which will forward the message to shamsherintech@gmail.com -->
+                        <input type="hidden" name="_subject" value="New contact from website">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="thank-you.html">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md transition w-full">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <h3 class="text-xl font-bold">Sam Adhikari</h3>
+                    <p class="text-gray-400 mt-2">Cloud Solutions Specialist</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">Skills</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">Experience</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">Education</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+                <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2024 Sam Adhikari. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="https://www.linkedin.com/in/sam-a-7238b3306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition">
+                        <i data-feather="linkedin"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i data-feather="github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i data-feather="twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Vanta background removed (user requested no blue background)
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            feather.replace();
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling and About-panel logic
+        const aboutPanel = document.getElementById('about-panel');
+        const closeAboutBtn = document.getElementById('close-about-panel');
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = this.getAttribute('href');
+
+                // If About link clicked, show the top about panel and scroll to it
+                if (target === '#about') {
+                    if (aboutPanel.classList.contains('hidden')) {
+                        aboutPanel.classList.remove('hidden');
+                    }
+                    aboutPanel.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    const el = document.querySelector(target);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }
+
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        if (closeAboutBtn) {
+            closeAboutBtn.addEventListener('click', () => {
+                aboutPanel.classList.add('hidden');
+            });
+        }
+
+        // Initialize feather icons
+        feather.replace();
+    </script>
+</body>
+</html>
