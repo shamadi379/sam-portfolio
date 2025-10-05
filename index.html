@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Adhikari | Cloud Solutions Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+        .skill-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-sky-900 via-sky-800 to-indigo-900">
+    <!-- Background animation removed per user request -->
+    
+    <!-- Navigation -->
+    <nav class="bg-teal-600/90 backdrop-blur-md fixed w-full z-10 shadow-sm">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-white">Sam Adhikari</span>
+</div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-white hover:text-teal-200 transition">Home</a>
+                    <a href="#about" class="text-white hover:text-teal-200 transition">About</a>
+                    <a href="#skills" class="text-white hover:text-teal-200 transition">Skills</a>
+                    <a href="#experience" class="text-white hover:text-teal-200 transition">Experience</a>
+                    <a href="#education" class="text-white hover:text-teal-200 transition">Education</a>
+                    <a href="#contact" class="bg-teal-800 text-white px-4 py-2 rounded-md hover:bg-teal-900 transition">Contact</a>
+</div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-700">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white/95 z-20 pt-20 px-4">
+        <div class="flex flex-col space-y-6 text-center">
+            <a href="#home" class="text-xl text-gray-700 hover:text-blue-600 transition">Home</a>
+            <a href="#about" class="text-xl text-gray-700 hover:text-blue-600 transition">About</a>
+            <a href="#skills" class="text-xl text-gray-700 hover:text-blue-600 transition">Skills</a>
+            <a href="#experience" class="text-xl text-gray-700 hover:text-blue-600 transition">Experience</a>
+            <a href="#education" class="text-xl text-gray-700 hover:text-blue-600 transition">Education</a>
+            <a href="#contact" class="text-xl bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition mx-auto w-1/2">Contact</a>
+            <button id="close-menu" class="absolute top-4 right-4 text-gray-700">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                        <div class="relative inline-block">
+                        <img src="images/88446.jpg" alt="Sam Adhikari" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-white shadow-xl">
+                    </div>
+                </div>
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Sam Adhikari</h1>
+                    <h2 class="text-2xl md:text-3xl text-teal-200 mb-6">Cloud Solutions Specialist</h2>
+                    <p class="text-teal-100 mb-8 max-w-lg mx-auto md:mx-0">Experienced in system administration, cloud solutions, and IT infrastructure with expertise in Microsoft 365, Azure, and enterprise systems.</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-8">
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md transition flex items-center gap-2">
+                            <i data-feather="mail"></i> Contact Me
+                        </a>
+                            <a href="https://www.linkedin.com/in/sam-a-7238b3306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-md transition flex items-center gap-2">
+<i data-feather="linkedin"></i> LinkedIn
+                        </a>
+                    </div>
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <div class="flex items-center text-white">
+                            <i data-feather="map-pin" class="mr-2 text-white"></i>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Merrylands%2C+NSW%2C+Australia" target="_blank" rel="noopener" class="text-white hover:underline">Merrylands, NSW</a>
+                        </div>
+                        <div class="flex items-center text-white">
+                            <i data-feather="phone" class="mr-2 text-white"></i>
+                            <a href="tel:0433957548" class="text-white">0433957548</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-green-600 mb-4">Professional Summary</h2>
+        <div class="w-20 h-1 bg-teal-500 mx-auto"></div>
+</div>
+            <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-md">
+                <p class="text-lg text-black leading-relaxed">
+                    Cloud Solutions Specialist with over 4 years of progressive experience in system administration and technical support, backed by a bachelor's degree in information technology. Highly skilled in managing enterprise systems, deploying cloud solutions, and supporting IT infrastructure across multiple sites. Experienced with Microsoft 365, Azure Active Directory, Intune, Power Platform, and Windows Server environments. Known for troubleshooting complex issues, improving system efficiency through automation, and working independently under pressure. Strong knowledge of system analysis, network configuration, patch management, and IT compliance.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Technical Skills</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Platforms & Systems -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i data-feather="server" class="text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-green-600">Platforms & Systems</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure AD / Entra ID</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Resource Manager (ARM)</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Role-Based Access Control (RBAC)</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Virtual Networks (VNet)</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Virtual Machines</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Monitor & Log Analytics</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Policy & Governance</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Backup / Site Recovery</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Azure Networking (NSG, Load Balancer)</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Identity & Access Management</span>
+                    </div>
+                </div>
+                <!-- Networking & Security -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i data-feather="shield" class="text-green-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-green-600">Networking & Security</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Conditional Access & MFA</span>
+                        <span class="skill-badge bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Azure Network Security (NSG)</span>
+                        <span class="skill-badge bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Site-to-Site VPN / ExpressRoute</span>
+                        <span class="skill-badge bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Microsoft Defender for Cloud</span>
+                        <span class="skill-badge bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Endpoint & Identity Protection</span>
+                        <span class="skill-badge bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Threat Detection & SIEM (Sentinel)</span>
+                        <span class="skill-badge bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Network Monitoring & Diagnostics</span>
+                        <span class="skill-badge bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Security Baselines & Compliance</span>
+                    </div>
+                </div>
+                <!-- Tools -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-purple-100 p-3 rounded-full mr-4">
+                            <i data-feather="tool" class="text-purple-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-green-600">Tools</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Azure Portal & CLI</span>
+                        <span class="skill-badge bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Azure PowerShell & Az Modules</span>
+                        <span class="skill-badge bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">ARM Templates / Bicep</span>
+                        <span class="skill-badge bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Terraform for Azure</span>
+                        <span class="skill-badge bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Azure AD Connect / Hybrid Identity</span>
+                        <span class="skill-badge bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Microsoft Graph / Automation</span>
+                        <span class="skill-badge bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Azure DevOps / CI-CD</span>
+                        <span class="skill-badge bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Monitoring & Alerting Tools</span>
+                    </div>
+                </div>
+                <!-- Automation & Scripting -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                            <i data-feather="code" class="text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-green-600">Automation & Scripting</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">PowerShell for Azure (Az Modules)</span>
+                        <span class="skill-badge bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Azure CLI</span>
+                        <span class="skill-badge bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Infrastructure as Code (Bicep/Terraform)</span>
+                        <span class="skill-badge bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Automation Runbooks & Logic Apps</span>
+                        <span class="skill-badge bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Scripting & Configuration Management</span>
+                        <span class="skill-badge bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">CI/CD Pipelines for Infrastructure</span>
+                    </div>
+                </div>
+                <!-- Other Skills -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 p-3 rounded-full mr-4">
+                            <i data-feather="database" class="text-red-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-green-600">Other Skills</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Disaster Recovery Planning (DR)</span>
+                        <span class="skill-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Azure Backup & Site Recovery</span>
+                        <span class="skill-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Governance & Cost Management</span>
+                        <span class="skill-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Group Policy & Hybrid AD</span>
+                        <span class="skill-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">User Provisioning & Lifecycle</span>
+                        <span class="skill-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Patch Management Strategies</span>
+                        <span class="skill-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">ITSM Integration (ServiceNow/Jira)</span>
+                        <span class="skill-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Documentation & Runbooks</span>
+                        <span class="skill-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Compliance & Audit Readiness</span>
+                        <span class="skill-badge bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Change & Release Management</span>
+                    </div>
+                </div>
+</div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Professional Experience</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="relative">
+                <!-- Timeline -->
+                <div class="space-y-12 pl-8 md:pl-16">
+                    <!-- Current Job -->
+                    <div class="relative timeline-item">
+                        <div class="absolute -left-4 top-0 h-4 w-4 rounded-full bg-blue-600 border-4 border-white shadow-md"></div>
+<div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-800">System Engineer</h3>
+            <span class="text-blue-600 font-medium">July 2024 – Present</span>
+</div>
+                            <h4 class="text-lg text-gray-700 mb-4">Barnardos Australia – Sydney, NSW</h4>
+                            <ul class="space-y-3 text-gray-600">
+                                <li class="flex items-start">
+                                <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+<span>Acted as the primary escalation point for IT support and helpdesk queries across NSW and ACT branches.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Managed end-to-end IT infrastructure including assets, networks, servers, and endpoint devices.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Deployed and maintained Microsoft Intune policies for app deployment and device compliance.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Created automated workflows using Power Automate to streamline internal IT operations.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Monitored and administered Cisco Meraki for all site networking infrastructure.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Oversaw endpoint protection and security tools such as Microsoft Defender, firewalls, and vulnerability controls.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Handled vendor relationships and coordinated with technical teams on infrastructure projects.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Ensured adherence to IT compliance standards and maintained system security configurations.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Previous Job -->
+                    <div class="relative timeline-item">
+                        <div class="absolute -left-4 top-0 h-4 w-4 rounded-full bg-blue-600 border-4 border-white shadow-md"></div>
+                        <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-gray-800">IT Support (Level 2)</h3>
+                                <span class="text-blue-600 font-medium">June 2022 – July 2024</span>
+                            </div>
+                            <h4 class="text-lg text-gray-700 mb-4">C2C Analysis Pty Ltd – Sydney, NSW</h4>
+                            <ul class="space-y-3 text-gray-600">
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Delivered Level 1 and Level 2 support via phone, email, and in-person for internal and external users.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Administered user accounts, roles, and mailboxes through M365 Admin, Azure AD, and Exchange Online.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Supported systems and applications including SharePoint, Teams, and remote desktop tools.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Diagnosed and resolved issues related to hardware, printers, scanners, and networking.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Maintained asset inventory and performed regular audits for compliance and tracking.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Assisted in onboarding/offboarding processes, managing user access, and system configurations.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Created and updated internal knowledge base articles for recurring issues and best practices.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-feather="check-circle" class="text-blue-500 mr-2 mt-1"></i>
+                                    <span>Provided remote support using Atera, TeamViewer, Syncro, and Quick Assist.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Education & Certifications</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Education -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Education</h3>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-blue-500 pl-4 py-2">
+                            <h4 class="font-semibold text-gray-800">Bachelor of Information Technology</h4>
+                            <p class="text-gray-600">Kings Own Institute, Sydney</p>
+                            <p class="text-sm text-gray-500">July 2020 – June 2022</p>
+                        </div>
+                        <div class="border-l-4 border-blue-500 pl-4 py-2">
+                            <h4 class="font-semibold text-gray-800">Diploma & Advanced Diploma of IT</h4>
+                            <p class="text-gray-600">AIBT, Sydney</p>
+                            <p class="text-sm text-gray-500">March 2018 – April 2020</p>
+                        </div>
+                        <div class="border-l-4 border-blue-500 pl-4 py-2">
+                            <h4 class="font-semibold text-gray-800">Professional Year – ICT</h4>
+                            <p class="text-gray-600">ATMC, Sydney</p>
+                            <p class="text-sm text-gray-500">Nov 2022 – Dec 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Certifications -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Certifications</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                <i data-feather="award" class="text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Microsoft Certified: Azure Fundamentals</h4>
+                                <p class="text-gray-600 text-sm">Microsoft</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-2 rounded-full mr-4">
+                                <i data-feather="award" class="text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Microsoft Certified: Azure Administrator</h4>
+                                <p class="text-gray-600 text-sm">Microsoft</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="font-semibold text-gray-800 mb-3">Additional Training</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-badge bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Microsoft 365</span>
+                            <span class="skill-badge bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Azure AD</span>
+                            <span class="skill-badge bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Intune</span>
+                            <span class="skill-badge bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Power Platform</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i data-feather="mail" class="text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Email</h4>
+                                <p class="text-gray-600"><a href="mailto:shamsherintech@gmail.com" class="text-blue-600 hover:underline">shamsherintech@gmail.com</a></p>
+</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i data-feather="phone" class="text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Phone</h4>
+                                <p class="text-white"><a href="tel:0433957548" class="text-white">0433957548</a></p>
+</div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i data-feather="map-pin" class="text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Location</h4>
+                                <p class="text-white"><a href="https://www.google.com/maps/search/?api=1&query=Merrylands%2C+NSW%2C+Australia" target="_blank" rel="noopener" class="text-white hover:underline">Merrylands, NSW, Australia</a></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i data-feather="linkedin" class="text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/sam-a-7238b3306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener" class="text-blue-600 hover:underline">linkedin.com/in/sam-a-7238b3306</a>
+</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Send Me a Message</h3>
+                    <form class="space-y-6" action="https://formsubmit.co/shamsherintech@gmail.com" method="POST">
+                        <!-- Form submits to FormSubmit which will forward the message to shamsherintech@gmail.com -->
+                        <input type="hidden" name="_subject" value="New contact from website">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="thank-you.html">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md transition w-full">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <h3 class="text-xl font-bold">Sam Adhikari</h3>
+                    <p class="text-gray-400 mt-2">Cloud Solutions Specialist</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                    <a href="#skills" class="text-gray-400 hover:text-white transition">Skills</a>
+                    <a href="#experience" class="text-gray-400 hover:text-white transition">Experience</a>
+                    <a href="#education" class="text-gray-400 hover:text-white transition">Education</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+                <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2024 Sam Adhikari. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="https://www.linkedin.com/in/sam-a-7238b3306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition">
+                        <i data-feather="linkedin"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i data-feather="github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i data-feather="twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Vanta background removed (user requested no blue background)
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            feather.replace();
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Initialize feather icons
+        feather.replace();
+    </script>
+</body>
+</html>
