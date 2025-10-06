@@ -1,0 +1,24 @@
+﻿[
+    {
+        "title":  "Getting started â€” Learn with Me",
+        "url":  "blog/learn-with-me.html",
+        "excerpt":  "Published: Sept 2025",
+        "category":  "blog",
+        "date":  "2025-10-06"
+    },
+    {
+        "title":  "Learn with Me â€” Blog",
+        "url":  "blog/index.html",
+        "excerpt":  "Short tutorials, notes and walkthroughs about cloud, backups, and Windows Server.",
+        "category":  "blog",
+        "date":  "2025-10-06"
+    }
+    ,
+    {
+        "title": "Grant calendar permissions via PowerShell",
+        "url": "blog/learn-with-me/exchange/grant-calendar-permissions-powershell.html",
+        "excerpt": "How to grant calendar folder permissions using PowerShell for Exchange / M365 (single and bulk CSV examples).",
+        "category": "exchange",
+        "date": "2025-10-06"
+    }
+]
