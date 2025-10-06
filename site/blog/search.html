@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Search — Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-slate-900 via-slate-800 to-emerald-900 text-white min-h-screen">
+  <header class="max-w-6xl mx-auto p-6 flex justify-between items-center">
+    <a href="../index.html" class="text-xl font-semibold">Sam Adhikari</a>
+    <a href="index.html" class="text-sm text-white/80 hover:underline">Back to Blog</a>
+  </header>
+
+  <main class="max-w-3xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">Search posts</h1>
+
+    <div class="mb-6">
+      <input id="q" type="search" placeholder="Search posts (title, excerpt)" class="w-full p-3 rounded bg-white/5 text-white placeholder-white/60">
+    </div>
+
+    <div id="results" class="space-y-4">
+      <p class="text-white/70">Enter a search term to find posts.</p>
+    </div>
+  </main>
+
+  <script>
+    async function loadPosts(){
+      const res = await fetch('/blog/posts.json');
+      const posts = await res.json();
+      return posts;
+    }
+
+    function renderResults(items){
+      const container = document.getElementById('results');
+      if(items.length === 0){
+        container.innerHTML = '<p class="text-white/70">No results found.</p>';
+        return;
+      }
+      container.innerHTML = items.map(p => `\n        <article class=\"bg-white/5 p-4 rounded-lg\">\n          <h3 class=\"text-lg font-semibold text-emerald-200\"><a href=\"${p.url}\" class=\"hover:underline\">${p.title}</a></h3>\n          <p class=\"text-white/80 mt-2\">${p.excerpt}</p>\n        </article>`).join('');
+    }
+
+    (async function(){
+      const posts = await loadPosts();
+      const input = document.getElementById('q');
+      function doSearch(q){
+        const term = q.trim().toLowerCase();
+        if(!term){ document.getElementById('results').innerHTML = '<p class="text-white/70">Enter a search term to find posts.</p>'; return; }
+        const items = posts.filter(p=> (p.title + ' ' + p.excerpt).toLowerCase().includes(term));
+        renderResults(items);
+      }
+      input.addEventListener('input', ()=> doSearch(input.value));
+
+      // if ?q= is present, run search on load
+      const params = new URLSearchParams(window.location.search);
+      const q0 = params.get('q');
+      if(q0){ input.value = q0; doSearch(q0); }
+    })();
+  </script>
+</body>
+</html>

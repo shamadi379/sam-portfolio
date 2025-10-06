@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam in Cloud | Cloud Solutions Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Feather icons (single include) -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Site background: subtle nature photo + dark gradient overlay to match emerald theme */
+        .site-bg {
+            background-image: linear-gradient(rgba(2,6,23,0.65), rgba(1,6,8,0.65)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        /* Translucent frosted surfaces for content sections (keeps contrast while avoiding stark white)
+           Increased opacity and text color to improve readability over the background image */
+        .section-surface {
+            background-color: rgba(2,6,23,0.75);
+            border: 1px solid rgba(255,255,255,0.04);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: rgba(255,255,255,0.92);
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .section-surface h2, .section-surface h3, .section-surface h4 {
+            color: rgba(255,255,255,0.95) !important;
+        }
+        .section-surface p, .section-surface li, .section-surface label {
+            color: rgba(235,245,240,0.92) !important;
+        }
+        .section-surface a { color: #9be7c4; }
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+        .skill-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: #3b82f6;
+        }
+        /* Subtle animations */
+        /* floating animation removed (was floatY / .float-anim) */
+    /* Reveal animations disabled to prevent flicker */
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .reveal.visible { opacity: 1; transform: none; }
+        /* About panel fade */
+        #about-panel { transition: opacity 300ms ease, transform 300ms ease; }
+        #about-panel.hidden { opacity: 0; transform: translateY(-6px) scale(0.995); pointer-events: none; }
+        #about-panel:not(.hidden) { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    </style>
+</head>
+<body class="site-bg">
+    <!-- Background animation removed per user request -->
+    
+    <!-- Navigation -->
+    <nav class="bg-emerald-800/85 backdrop-blur-md fixed w-full z-10 shadow-sm">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-white">Sam in Cloud</span>
+</div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="text-white hover:text-emerald-300 transition">Home</a>
+                    <a href="#about" class="text-white hover:text-emerald-300 transition">About</a>
+                    <a href="blog/index.html" class="text-white hover:text-emerald-300 transition">Blog</a>
+                    <a href="#contact" class="bg-emerald-700 text-white px-4 py-2 rounded-md hover:bg-emerald-800 transition">Contact</a>
+                    <!-- Search form (desktop) -->
+                    <form action="blog/search.html" method="get" class="ml-4 flex items-center bg-white/5 rounded-md px-2 py-1">
+                        <input name="q" type="search" placeholder="Search posts" class="bg-transparent placeholder-white/70 text-white px-2 py-1 outline-none w-48">
+                        <button type="submit" class="text-white px-2">
+                            <i data-feather="search"></i>
+                        </button>
+                    </form>
+</div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-700">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top About Panel (hidden by default) -->
+    <div id="about-panel" class="hidden fixed inset-6 z-30 mx-auto bg-white/95 backdrop-blur-sm border border-white/20 rounded-lg p-4 shadow-lg overflow-auto text-sm" style="max-width:760px; max-height:80vh;"
+        role="dialog" aria-modal="true" aria-labelledby="about-title" aria-hidden="true" tabindex="-1">
+            <div class="relative">
+            <div class="flex justify-between items-start">
+                <h2 id="about-title" class="text-xl font-semibold text-gray-800">About — Portfolio</h2>
+            </div>
+            <button id="close-about-panel" aria-label="Close About" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800 bg-white/60 hover:bg-white/80 px-2 py-1 rounded-md text-sm">Close</button>
+        </div>
+        <div class="mt-4 space-y-6">
+            <!-- Sweet, condensed About content: three persuasive paragraphs -->
+            <div>
+                <p class="text-gray-700">I fell in love with computers at age seven — pulling apart old PCs, learning how they worked, and solving puzzles for the sheer joy of discovery. That curiosity led me into study and junior IT support roles, where I honed communication, triage, and a customer-first approach that still guides how I work.</p>
+
+                <p class="text-gray-700 mt-4">Today I’m a System Administrator working across on-prem and Azure environments, focused on reliability and practical automation. I regularly use Azure (Entra ID, ARM, VNets, VMs), Microsoft 365, Intune, Windows Server, Veeam backups, PowerShell and Azure Automation. I prefer simple, repeatable solutions — clean automations, clear runbooks, and measurable monitoring that keep systems resilient.</p>
+
+                <p class="text-gray-700 mt-4">Outside of work I’m a nature lover who values simplicity — long walks, quiet mornings, and photography help me reset and return to work with clarity. That same taste for simplicity shapes my technical decisions: pragmatic, maintainable, and focused on delivering outcomes people can rely on.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white/95 z-20 pt-20 px-4">
+            <div class="flex flex-col space-y-6 text-center">
+            <a href="#home" class="text-xl text-gray-700 hover:text-blue-600 transition">Home</a>
+            <a href="#about" class="text-xl text-gray-700 hover:text-blue-600 transition">About</a>
+            <a href="blog/index.html" class="text-xl text-gray-700 hover:text-blue-600 transition">Blog</a>
+            <a href="#contact" class="text-xl bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition mx-auto w-1/2">Contact</a>
+            <button id="close-menu" class="absolute top-4 right-4 text-gray-700">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                        <div class="relative inline-block">
+                        <img src="images/88446.jpg" alt="Sam Adhikari" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-white shadow-xl reveal">
+                    </div>
+                </div>
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Sam Adhikari</h1>
+                    <h2 class="text-2xl md:text-3xl text-emerald-300 mb-6">Cloud Solutions Specialist</h2>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-8">
+                        <a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-md transition flex items-center gap-2">
+                            <i data-feather="mail"></i> Contact Me
+                        </a>
+                            <a href="https://www.linkedin.com/in/sam-a-7238b3306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener" class="bg-white/90 hover:bg-white/95 text-emerald-900 px-6 py-3 rounded-md transition flex items-center gap-2">
+<i data-feather="linkedin"></i> LinkedIn
+                        </a>
+                    </div>
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <!-- Location and phone removed by request -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section (now includes Summary, Skills, Experience, Education as collapsible panels) -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 section-surface">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-green-600 mb-4">Let's dive in !!</h2>
+            </div>
+
+                <div class="space-y-8">
+                    <div class="text-center mb-6">
+                        <div class="inline-flex gap-3">
+                            <a href="blog/learn-with-me/exchange/" class="px-3 py-2 bg-emerald-700 text-white rounded">Exchange</a>
+                            <a href="blog/learn-with-me/m365/" class="px-3 py-2 bg-emerald-700 text-white rounded">M365</a>
+                            <a href="blog/learn-with-me/intune/" class="px-3 py-2 bg-emerald-700 text-white rounded">Intune</a>
+                            <a href="blog/learn-with-me/azure/" class="px-3 py-2 bg-emerald-700 text-white rounded">Azure</a>
+                        </div>
+                    </div>
+                <!-- Blog listing inserted from /blog/index.html -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Learn with Me — Blog</h3>
+                    <p class="text-emerald-200 mb-4">Short tutorials, notes and walkthroughs about cloud, backups, and Windows Server.</p>
+
+                    <section class="space-y-4">
+                        <article class="bg-white/0 p-4 rounded-lg reveal">
+                            <h4 class="text-lg font-semibold text-emerald-400"><a href="blog/learn-with-me.html" class="hover:underline">Getting started — Learn with Me</a></h4>
+                            <p class="text-gray-700 mt-2">A short post about my approach to learning cloud ops and practical labs.</p>
+                            <p class="mt-3"><a href="blog/learn-with-me.html" class="text-blue-600 hover:underline">Read post →</a></p>
+                        </article>
+
+                        <article class="bg-white/0 p-4 rounded-lg">
+                            <h4 class="text-lg font-semibold text-emerald-400"><a href="blog/learn-with-me/exchange/grant-calendar-permissions-powershell.html" class="hover:underline">Grant calendar permissions via PowerShell</a></h4>
+                            <p class="text-gray-700 mt-2">Examples for Exchange Online: connect, add/remove calendar permissions, verify and bulk update using CSV + PowerShell.</p>
+                            <p class="mt-3"><a href="blog/learn-with-me/exchange/grant-calendar-permissions-powershell.html" class="text-blue-600 hover:underline">Read post →</a></p>
+                        </article>
+
+                        <!-- Add more posts here -->
+                    </section>
+                </div>
+                <!-- Portfolio moved to top about-panel -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 section-surface">
+        <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 bg-emerald-600 mx-auto"></div>
+            </div>
+            
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 reveal">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i data-feather="mail" class="text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">Email</h4>
+                                <p class="text-gray-600"><a href="mailto:shamsherintech@gmail.com" class="text-blue-600 hover:underline">shamsherintech@gmail.com</a></p>
+</div>
+                        </div>
+                        <!-- Phone contact removed by request -->
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i data-feather="linkedin" class="text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/sam-a-7238b3306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener" class="text-blue-600 hover:underline">linkedin.com/in/sam-a-7238b3306</a>
+</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Send Me a Message</h3>
+                    <form class="space-y-6" action="https://formsubmit.co/shamsherintech@gmail.com" method="POST">
+                        <!-- Form submits to FormSubmit which will forward the message to shamsherintech@gmail.com -->
+                        <input type="hidden" name="_subject" value="New contact from website">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="thank-you.html">
+                        <!-- Honeypot field (hidden) to reduce spam; leave empty -->
+                        <div style="display:none!important;" aria-hidden="true">
+                            <label>Leave this field empty
+                                <input type="text" name="website" tabindex="-1" autocomplete="off">
+                            </label>
+                        </div>
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md transition w-full">
+                            Send Message
+                        </button>
+                        <p class="text-sm text-gray-500 mt-2">Privacy: I will only use your email to reply to this message. I do not share contact details with third parties.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <h3 class="text-xl font-bold">Sam Adhikari</h3>
+                    <p class="text-gray-400 mt-2">Cloud Solutions Specialist</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-emerald-300 transition">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-emerald-300 transition">About</a>
+                    <a href="#about" class="text-gray-400 hover:text-emerald-300 transition">Skills</a>
+                    <a href="#about" class="text-gray-400 hover:text-emerald-300 transition">Experience</a>
+                    <a href="#about" class="text-gray-400 hover:text-emerald-300 transition">Education</a>
+                    <a href="#contact" class="text-gray-400 hover:text-emerald-300 transition">Contact</a>
+                </div>
+            </div>
+                <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 Sam Adhikari. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="https://www.linkedin.com/in/sam-a-7238b3306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition">
+                        <i data-feather="linkedin"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i data-feather="github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i data-feather="twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Vanta background removed (user requested no blue background)
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            // avoid re-rendering icons here to reduce repaints that can cause flicker
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling and About-panel logic
+        const aboutPanel = document.getElementById('about-panel');
+        const closeAboutBtn = document.getElementById('close-about-panel');
+
+        function lockBodyScroll(lock) {
+            if (lock) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function openAboutPanel() {
+            if (aboutPanel.classList.contains('hidden')) aboutPanel.classList.remove('hidden');
+            // ensure panel is in view and focused
+            aboutPanel.scrollTop = 0;
+            aboutPanel.focus?.();
+            lockBodyScroll(true);
+        }
+
+        function closeAboutPanel() {
+            aboutPanel.classList.add('hidden');
+            lockBodyScroll(false);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = this.getAttribute('href');
+
+                // If About link clicked, show the top about panel and focus it
+                if (target === '#about') {
+                    openAboutPanel();
+                    // set focus for accessibility
+                    aboutPanel.setAttribute('tabindex','-1');
+                    aboutPanel.focus();
+                } else {
+                    const el = document.querySelector(target);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }
+
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        if (closeAboutBtn) {
+            closeAboutBtn.addEventListener('click', () => {
+                closeAboutPanel();
+            });
+        }
+
+        // Close panel when pressing Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !aboutPanel.classList.contains('hidden')) {
+                closeAboutPanel();
+            }
+        });
+
+        // Reveal-on-scroll disabled to prevent flicker on some browsers/devices
+        // (we intentionally keep .reveal static via CSS now)
+
+        // Initialize feather icons
+        feather.replace();
+    </script>
+</body>
+</html>

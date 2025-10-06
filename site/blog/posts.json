@@ -1,0 +1,16 @@
+[
+  {
+    "title":"Grant calendar permissions via PowerShell",
+    "url":"learn-with-me/exchange/grant-calendar-permissions-powershell.html",
+    "excerpt":"Step-by-step examples for Exchange Online: connect, grant, verify and remove calendar permissions using PowerShell.",
+    "category":"Exchange",
+    "date":"2025-10-06"
+  },
+  {
+    "title":"M365 — an introduction",
+    "url":"learn-with-me.html",
+    "excerpt":"Intro to M365 topics: identity, collaboration, Intune, automation and security.",
+    "category":"M365",
+    "date":"2025-10-06"
+  }
+]

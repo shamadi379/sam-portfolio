@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Grant Calendar Permissions via PowerShell — Learn with Me</title>
+  <link rel="stylesheet" href="/../index.html">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <main class="max-w-3xl mx-auto p-6">
+    <article>
+      <h1 class="text-3xl font-bold mb-2">Grant Calendar Permissions via PowerShell (Exchange Online / Microsoft 365)</h1>
+      <p class="text-sm text-gray-600 mb-6">Published: October 6, 2025 — Sam Adhikari</p>
+
+      <p>This short guide shows how to grant calendar permissions using PowerShell for Microsoft 365 (Exchange Online) and how to do it safely at scale. I’ll cover: connecting to Exchange Online, granting permissions to a single mailbox, granting to many mailboxes, verifying the results, and removing permissions.</p>
+
+      <h2 class="mt-6 text-xl font-semibold">When to use this</h2>
+      <ul class="list-disc ml-6">
+        <li>Allow an assistant or service account to view or manage a user’s calendar.</li>
+        <li>Set consistent default permissions across many mailboxes in bulk.</li>
+        <li>Automate onboarding/offboarding calendar access.</li>
+      </ul>
+
+      <h2 class="mt-6 text-xl font-semibold">Important safety notes</h2>
+      <ul class="list-disc ml-6">
+        <li>Always test scripts in a non-production tenant or one test user.</li>
+        <li>Least privilege: grant only the permission level required (Reviewer &gt; Editor &gt; Owner).</li>
+        <li>Logging: keep a record of changes and who requested them.</li>
+      </ul>
+
+      <h2 class="mt-6 text-xl font-semibold">1) Connect to Exchange Online (recommended module)</h2>
+      <pre class="bg-gray-100 p-4 rounded"><code>Install-Module -Name ExchangeOnlineManagement -Force
+Import-Module ExchangeOnlineManagement
+Connect-ExchangeOnline -UserPrincipalName admin@yourtenant.onmicrosoft.com -ShowProgress $true
+</code></pre>
+
+      <h2 class="mt-6 text-xl font-semibold">2) Grant calendar permission for a single mailbox</h2>
+      <p>Example: grant the user <code>assistant@contoso.com</code> Reviewer access to <code>alice@contoso.com</code> calendar.</p>
+      <pre class="bg-gray-100 p-4 rounded"><code>Add-MailboxFolderPermission -Identity "alice@contoso.com:\Calendar" -User "assistant@contoso.com" -AccessRights Reviewer
+</code></pre>
+
+      <h2 class="mt-6 text-xl font-semibold">3) Grant permission to multiple mailboxes (CSV)</h2>
+      <p>Create a CSV file with a column <code>Mailbox</code> listing mailbox addresses, and run:</p>
+      <pre class="bg-gray-100 p-4 rounded"><code>$csv = Import-Csv .\mailboxes.csv
+foreach ($row in $csv) {
+  $mb = $row.Mailbox
+  Write-Host "Granting Reviewer to assistant@contoso.com for $mb"
+  Add-MailboxFolderPermission -Identity "$mb:\Calendar" -User "assistant@contoso.com" -AccessRights Reviewer
+}
+</code></pre>
+
+      <h2 class="mt-6 text-xl font-semibold">4) Verify permissions</h2>
+      <pre class="bg-gray-100 p-4 rounded"><code>Get-MailboxFolderPermission -Identity "alice@contoso.com:\Calendar" | Format-Table
+</code></pre>
+
+      <h2 class="mt-6 text-xl font-semibold">5) Remove permissions</h2>
+      <pre class="bg-gray-100 p-4 rounded"><code>Remove-MailboxFolderPermission -Identity "alice@contoso.com:\Calendar" -User "assistant@contoso.com"
+</code></pre>
+
+      <h2 class="mt-6 text-xl font-semibold">6) Notes for automation</h2>
+      <ul class="list-disc ml-6">
+        <li>Use service principals or managed identities where possible; avoid storing admin creds in scripts.</li>
+        <li>Wrap bulk operations with try/catch and log failures to a CSV for retry.</li>
+      </ul>
+
+      <h2 class="mt-6 text-xl font-semibold">Download</h2>
+      <p>You can copy the code snippets directly. Save them as <code>.ps1</code> files and test carefully.</p>
+
+      <hr class="my-6">
+      <p class="text-sm text-gray-600">If you want, I can add a downloadable .ps1 file and update the blog index to include this post.</p>
+    </article>
+  </main>
+</body>
+</html>
