@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            width: 1200px; 
+            height: 630px; 
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-family: 'Arial', sans-serif; 
+            color: white; 
+            overflow: hidden;
+        }
+        .container { 
+            text-align: center; 
+            position: relative;
+            z-index: 2;
+        }
+        .logo { 
+            margin-bottom: 30px; 
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+        .title { 
+            font-size: 78px; 
+            font-weight: bold; 
+            margin: 25px 0; 
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            letter-spacing: -2px;
+        }
+        .subtitle { 
+            font-size: 38px; 
+            opacity: 0.95; 
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        .services { 
+            font-size: 24px; 
+            opacity: 0.85; 
+            font-weight: 400;
+            margin-top: 10px;
+        }
+        .url { 
+            font-size: 22px; 
+            opacity: 0.8; 
+            margin-top: 25px;
+            font-weight: 300;
+        }
+        /* Decorative background elements */
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .bg-1 { top: 50px; left: 80px; width: 120px; height: 120px; }
+        .bg-2 { bottom: 80px; right: 100px; width: 160px; height: 160px; }
+        .bg-3 { top: 120px; right: 200px; width: 100px; height: 100px; }
+        .bg-4 { bottom: 200px; left: 150px; width: 80px; height: 80px; }
+    </style>
+</head>
+<body>
+    <!-- Background decorative elements -->
+    <div class="bg-element bg-1"></div>
+    <div class="bg-element bg-2"></div>
+    <div class="bg-element bg-3"></div>
+    <div class="bg-element bg-4"></div>
+
+    <div class="container">
+        <div class="logo">
+            <svg width="140" height="140" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#f0fdf4;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M32 24c1.5 0 3-1 3-3 0-3-2.5-5.5-5.5-5.5-.5-3-3-5.5-6.5-5.5-2.5 0-4.5 1.5-5.5 3.5-1-.5-2-.5-3 0C13 15 12 17 12 19c-2 0-4 2-4 4s2 4 4 4h20z" 
+                      fill="url(#cloudGradient)" 
+                      stroke="#ffffff" 
+                      stroke-width="1"/>
+                <path d="M18 18c0-1 1-2 2-2h2c1 0 2 1 2 2s-1 2-2 2h-2c-1 0-2 1-2 2s1 2 2 2h2c1 0 2-1 2-2" 
+                      fill="none" 
+                      stroke="#10b981" 
+                      stroke-width="3" 
+                      stroke-linecap="round"/>
+            </svg>
+        </div>
+        <div class="title">Sam in Cloud</div>
+        <div class="subtitle">Cloud Solutions Specialist</div>
+        <div class="services">Microsoft 365 • Azure • Intune • Exchange</div>
+        <div class="url">samincloud.com</div>
+    </div>
+</body>
+</html>
