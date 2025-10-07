@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Azure RBAC and Resource Management with PowerShell | Sam in Cloud</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.css" rel="stylesheet" />
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    /* Enhanced background */
+    .blog-bg {
+      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+      min-height: 100vh;
+    }
+    
+    /* Code block styling */
+    .code-container {
+      position: relative;
+      background: #1e293b;
+      border-radius: 0.75rem;
+      border: 1px solid #334155;
+      margin: 1.5rem 0;
+      overflow: hidden;
+    }
+    
+    .code-header {
+      background: #0f172a;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      justify-content: between;
+      align-items: center;
+    }
+    
+    .code-language {
+      color: #3b82f6;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    
+    /* Custom copy button */
+    .copy-btn {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: #374151;
+      border: 1px solid #4b5563;
+      color: #d1d5db;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    
+    .copy-btn:hover {
+      background: #4b5563;
+      border-color: #3b82f6;
+    }
+    
+    .copy-btn.copied {
+      background: #3b82f6;
+      border-color: #3b82f6;
+    }
+    
+    /* Prism overrides for better styling */
+    pre[class*="language-"] {
+      background: transparent !important;
+      margin: 0 !important;
+      padding: 1rem !important;
+      overflow-x: auto;
+    }
+    
+    code[class*="language-"] {
+      background: transparent !important;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    
+    /* Article styling */
+    .prose h2 {
+      color: #ffffff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #3b82f6;
+      padding-bottom: 0.5rem;
+    }
+    
+    .prose h3 {
+      color: #dbeafe;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .prose p {
+      color: #d1d5db;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    
+    .prose ul {
+      color: #d1d5db;
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .prose li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .prose code:not([class*="language-"]) {
+      background: #374151;
+      color: #3b82f6;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body class="blog-bg">
+  <!-- Navigation -->
+  <nav class="bg-blue-800/90 backdrop-blur-lg shadow-lg border-b border-blue-700/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <a href="../../../../index.html" class="text-xl font-bold text-white tracking-tight">Sam in Cloud</a>
+        <div class="flex items-center space-x-6">
+          <a href="../../../index.html" class="text-blue-100 hover:text-white transition-colors duration-200 font-medium">Blog</a>
+          <a href="../../../../index.html#contact" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto p-6 mt-8">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-blue-200 mb-6 bg-white/10 backdrop-blur-sm rounded-lg p-3">
+      <div class="flex items-center space-x-2">
+        <a href="../../../index.html" class="hover:text-white transition-colors">Blog</a>
+        <i data-feather="chevron-right" class="w-4 h-4"></i>
+        <a href="../index.html" class="hover:text-white transition-colors">Azure</a>
+        <i data-feather="chevron-right" class="w-4 h-4"></i>
+        <span class="text-white font-medium">RBAC and Resource Management</span>
+      </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="mb-8 bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
+      <div class="flex items-start gap-4 mb-4">
+        <div class="p-3 bg-blue-600 rounded-lg">
+          <i data-feather="shield" class="w-6 h-6 text-white"></i>
+        </div>
+        <div class="flex-1">
+          <h1 class="text-3xl md:text-4xl font-bold text-white mb-3">Azure RBAC and Resource Management with PowerShell</h1>
+          <p class="text-xl text-blue-100 leading-relaxed">Master Azure Role-Based Access Control (RBAC) and resource management using PowerShell. Learn to implement security best practices and automate access governance.</p>
+        </div>
+      </div>
+      
+      <div class="flex flex-wrap gap-4 text-sm">
+        <div class="flex items-center gap-2 text-blue-200">
+          <i data-feather="clock" class="w-4 h-4"></i>
+          <span>10 min read</span>
+        </div>
+        <div class="flex items-center gap-2 text-blue-200">
+          <i data-feather="tag" class="w-4 h-4"></i>
+          <span>Azure Security</span>
+        </div>
+        <div class="flex items-center gap-2 text-blue-200">
+          <i data-feather="calendar" class="w-4 h-4"></i>
+          <span>October 2025</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <article class="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 prose prose-lg max-w-none">
+      <h2>Overview</h2>
+      <p>Azure Role-Based Access Control (RBAC) is fundamental to securing your Azure environment. This guide covers implementing RBAC, managing resource groups, and automating access governance using PowerShell and Azure CLI.</p>
+
+      <h3>Prerequisites</h3>
+      <ul>
+        <li>Azure subscription with Global Administrator or privileged access</li>
+        <li>Azure PowerShell module (Az) installed</li>
+        <li>Azure CLI (optional but recommended)</li>
+        <li>Understanding of Azure AD and subscription concepts</li>
+        <li>PowerShell 5.1 or PowerShell 7+ with appropriate execution policy</li>
+      </ul>
+
+      <h3>Installing Azure PowerShell</h3>
+      <p>Install the latest Azure PowerShell module:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Install Azure PowerShell module
+Install-Module -Name Az -Repository PSGallery -Force -AllowClobber -Scope CurrentUser
+
+# Import the module
+Import-Module Az
+
+# Verify installation
+Get-Module Az -ListAvailable | Select-Object Name, Version</code></pre>
+      </div>
+
+      <h3>Connecting to Azure</h3>
+      <p>Establish connection to your Azure subscription:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Connect to Azure (interactive login)
+Connect-AzAccount
+
+# List available subscriptions
+Get-AzSubscription | Format-Table Name, Id, State
+
+# Set specific subscription context
+$SubscriptionId = "your-subscription-id"
+Set-AzContext -SubscriptionId $SubscriptionId
+
+# Verify current context
+Get-AzContext | Select-Object Name, Subscription, Account</code></pre>
+      </div>
+
+      <h3>Understanding Azure RBAC Fundamentals</h3>
+      <p>Explore built-in roles and understand RBAC structure:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Get all built-in Azure roles
+$BuiltInRoles = Get-AzRoleDefinition | Where-Object { $_.IsCustom -eq $false }
+Write-Host "Total built-in roles: $($BuiltInRoles.Count)" -ForegroundColor Green
+
+# Display common roles with their permissions
+$CommonRoles = @("Owner", "Contributor", "Reader", "User Access Administrator")
+foreach ($RoleName in $CommonRoles) {
+    $Role = Get-AzRoleDefinition -Name $RoleName
+    Write-Host "`n=== $($Role.Name) ===" -ForegroundColor Cyan
+    Write-Host "Description: $($Role.Description)" -ForegroundColor White
+    Write-Host "Assignable Scopes: $($Role.AssignableScopes -join ', ')" -ForegroundColor Yellow
+    
+    Write-Host "Actions:" -ForegroundColor Green
+    $Role.Actions | ForEach-Object { Write-Host "  + $_" -ForegroundColor Green }
+    
+    if ($Role.NotActions) {
+        Write-Host "Not Actions:" -ForegroundColor Red
+        $Role.NotActions | ForEach-Object { Write-Host "  - $_" -ForegroundColor Red }
+    }
+}
+
+# Get current user's role assignments
+$CurrentUser = (Get-AzContext).Account.Id
+$UserRoleAssignments = Get-AzRoleAssignment -SignInName $CurrentUser
+Write-Host "`nCurrent user role assignments:" -ForegroundColor Cyan
+$UserRoleAssignments | Format-Table RoleDefinitionName, Scope, PrincipalDisplayName -AutoSize</code></pre>
+      </div>
+
+      <h3>Creating Custom RBAC Roles</h3>
+      <p>Define custom roles for specific organizational needs:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Define custom role for VM Operator
+$VMOperatorRole = @{
+    Name = "Virtual Machine Operator"
+    Description = "Can start, stop, restart, and monitor virtual machines"
+    Actions = @(
+        "Microsoft.Compute/virtualMachines/start/action",
+        "Microsoft.Compute/virtualMachines/restart/action",
+        "Microsoft.Compute/virtualMachines/deallocate/action",
+        "Microsoft.Compute/virtualMachines/read",
+        "Microsoft.Compute/virtualMachines/instanceView/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/diagnosticSettings/*",
+        "Microsoft.Support/*"
+    )
+    NotActions = @()
+    DataActions = @()
+    NotDataActions = @()
+    AssignableScopes = @("/subscriptions/$((Get-AzContext).Subscription.Id)")
+    IsCustom = $true
+}
+
+# Create the custom role
+try {
+    $CustomRole = New-AzRoleDefinition -InputObject $VMOperatorRole
+    Write-Host "✓ Successfully created custom role: $($CustomRole.Name)" -ForegroundColor Green
+    Write-Host "Role ID: $($CustomRole.Id)" -ForegroundColor Cyan
+} catch {
+    Write-Error "❌ Failed to create custom role: $($_.Exception.Message)"
+}
+
+# Alternative: Create role from JSON file
+$RoleDefinitionJson = @"
+{
+    "Name": "Storage Account Key Operator",
+    "Description": "Can manage storage account access keys but not the storage account itself",
+    "Actions": [
+        "Microsoft.Storage/storageAccounts/listkeys/action",
+        "Microsoft.Storage/storageAccounts/regeneratekey/action",
+        "Microsoft.Storage/storageAccounts/read"
+    ],
+    "NotActions": [],
+    "DataActions": [],
+    "NotDataActions": [],
+    "AssignableScopes": [
+        "/subscriptions/your-subscription-id"
+    ]
+}
+"@
+
+# Save to file and create role
+$RoleDefinitionJson | Out-File -FilePath ".\StorageKeyOperator.json"
+$StorageRole = New-AzRoleDefinition -InputFile ".\StorageKeyOperator.json"
+Write-Host "✓ Created Storage Account Key Operator role" -ForegroundColor Green</code></pre>
+      </div>
+
+      <h3>Managing Resource Groups and RBAC Assignments</h3>
+      <p>Create resource groups and assign roles efficiently:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Function to create resource group with standardized tagging
+function New-StandardResourceGroup {
+    param(
+        [Parameter(Mandatory)]
+        [string]$ResourceGroupName,
+        
+        [Parameter(Mandatory)]
+        [string]$Location,
+        
+        [Parameter(Mandatory)]
+        [string]$Environment,
+        
+        [Parameter(Mandatory)]
+        [string]$Department,
+        
+        [string]$CostCenter,
+        
+        [string]$Owner
+    )
+    
+    $Tags = @{
+        Environment = $Environment
+        Department = $Department
+        CreatedDate = (Get-Date -Format "yyyy-MM-dd")
+        CreatedBy = (Get-AzContext).Account.Id
+    }
+    
+    if ($CostCenter) { $Tags.CostCenter = $CostCenter }
+    if ($Owner) { $Tags.Owner = $Owner }
+    
+    try {
+        $ResourceGroup = New-AzResourceGroup -Name $ResourceGroupName -Location $Location -Tag $Tags
+        Write-Host "✓ Created resource group: $($ResourceGroup.ResourceGroupName)" -ForegroundColor Green
+        return $ResourceGroup
+    } catch {
+        Write-Error "❌ Failed to create resource group: $($_.Exception.Message)"
+        return $null
+    }
+}
+
+# Create multiple resource groups for different environments
+$ResourceGroups = @(
+    @{ Name = "rg-webapp-dev-001"; Environment = "Development"; Department = "IT" },
+    @{ Name = "rg-webapp-test-001"; Environment = "Testing"; Department = "IT" },
+    @{ Name = "rg-webapp-prod-001"; Environment = "Production"; Department = "IT" }
+)
+
+foreach ($RG in $ResourceGroups) {
+    New-StandardResourceGroup -ResourceGroupName $RG.Name -Location "East US 2" -Environment $RG.Environment -Department $RG.Department -CostCenter "IT-2025" -Owner "admin@contoso.com"
+}
+
+# Assign different roles based on environment
+$RoleAssignments = @{
+    "rg-webapp-dev-001" = @(
+        @{ Role = "Contributor"; Principal = "dev-team@contoso.com"; Type = "Group" },
+        @{ Role = "Reader"; Principal = "qa-team@contoso.com"; Type = "Group" }
+    )
+    "rg-webapp-test-001" = @(
+        @{ Role = "Contributor"; Principal = "qa-team@contoso.com"; Type = "Group" },
+        @{ Role = "Reader"; Principal = "dev-team@contoso.com"; Type = "Group" }
+    )
+    "rg-webapp-prod-001" = @(
+        @{ Role = "Reader"; Principal = "dev-team@contoso.com"; Type = "Group" },
+        @{ Role = "Reader"; Principal = "qa-team@contoso.com"; Type = "Group" },
+        @{ Role = "Contributor"; Principal = "ops-team@contoso.com"; Type = "Group" }
+    )
+}
+
+# Apply role assignments
+foreach ($ResourceGroupName in $RoleAssignments.Keys) {
+    Write-Host "`nConfiguring RBAC for: $ResourceGroupName" -ForegroundColor Yellow
+    
+    foreach ($Assignment in $RoleAssignments[$ResourceGroupName]) {
+        try {
+            if ($Assignment.Type -eq "Group") {
+                # Get Azure AD group
+                $Group = Get-AzADGroup -DisplayName $Assignment.Principal -ErrorAction SilentlyContinue
+                if ($Group) {
+                    New-AzRoleAssignment -ObjectId $Group.Id -RoleDefinitionName $Assignment.Role -ResourceGroupName $ResourceGroupName
+                    Write-Host "  ✓ Assigned $($Assignment.Role) to group: $($Assignment.Principal)" -ForegroundColor Green
+                } else {
+                    Write-Warning "  ⚠ Group not found: $($Assignment.Principal)"
+                }
+            } else {
+                # Assume user
+                New-AzRoleAssignment -SignInName $Assignment.Principal -RoleDefinitionName $Assignment.Role -ResourceGroupName $ResourceGroupName
+                Write-Host "  ✓ Assigned $($Assignment.Role) to user: $($Assignment.Principal)" -ForegroundColor Green
+            }
+        } catch {
+            Write-Warning "  ❌ Failed to assign $($Assignment.Role) to $($Assignment.Principal): $($_.Exception.Message)"
+        }
+    }
+}</code></pre>
+      </div>
+
+      <h3>Bulk RBAC Management with CSV</h3>
+      <p>Manage large-scale role assignments using CSV files:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">CSV</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-csv">PrincipalName,PrincipalType,RoleName,Scope,Action
+dev-team@contoso.com,Group,Contributor,/subscriptions/sub-id/resourceGroups/rg-dev,Add
+john.doe@contoso.com,User,Reader,/subscriptions/sub-id/resourceGroups/rg-prod,Add
+ops-team@contoso.com,Group,Owner,/subscriptions/sub-id/resourceGroups/rg-infra,Add
+temp-user@contoso.com,User,Contributor,/subscriptions/sub-id/resourceGroups/rg-dev,Remove</code></pre>
+      </div>
+
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Function to process RBAC assignments from CSV
+function ProcessRBACAssignments {
+    param(
+        [Parameter(Mandatory)]
+        [string]$CSVPath
+    )
+    
+    $Assignments = Import-Csv -Path $CSVPath
+    $Results = @()
+    
+    foreach ($Assignment in $Assignments) {
+        $Result = [PSCustomObject]@{
+            PrincipalName = $Assignment.PrincipalName
+            RoleName = $Assignment.RoleName
+            Scope = $Assignment.Scope
+            Action = $Assignment.Action
+            Status = "Pending"
+            Error = $null
+        }
+        
+        try {
+            if ($Assignment.PrincipalType -eq "Group") {
+                $Principal = Get-AzADGroup -DisplayName $Assignment.PrincipalName
+                $PrincipalId = $Principal.Id
+            } else {
+                $Principal = Get-AzADUser -UserPrincipalName $Assignment.PrincipalName
+                $PrincipalId = $Principal.Id
+            }
+            
+            if (-not $PrincipalId) {
+                throw "Principal not found: $($Assignment.PrincipalName)"
+            }
+            
+            switch ($Assignment.Action) {
+                "Add" {
+                    # Check if assignment already exists
+                    $ExistingAssignment = Get-AzRoleAssignment -ObjectId $PrincipalId -RoleDefinitionName $Assignment.RoleName -Scope $Assignment.Scope -ErrorAction SilentlyContinue
+                    
+                    if ($ExistingAssignment) {
+                        $Result.Status = "Already Exists"
+                        Write-Warning "Assignment already exists for $($Assignment.PrincipalName)"
+                    } else {
+                        New-AzRoleAssignment -ObjectId $PrincipalId -RoleDefinitionName $Assignment.RoleName -Scope $Assignment.Scope
+                        $Result.Status = "Added"
+                        Write-Host "✓ Added: $($Assignment.PrincipalName) -> $($Assignment.RoleName)" -ForegroundColor Green
+                    }
+                }
+                
+                "Remove" {
+                    $ExistingAssignment = Get-AzRoleAssignment -ObjectId $PrincipalId -RoleDefinitionName $Assignment.RoleName -Scope $Assignment.Scope -ErrorAction SilentlyContinue
+                    
+                    if ($ExistingAssignment) {
+                        Remove-AzRoleAssignment -ObjectId $PrincipalId -RoleDefinitionName $Assignment.RoleName -Scope $Assignment.Scope
+                        $Result.Status = "Removed"
+                        Write-Host "✓ Removed: $($Assignment.PrincipalName) -> $($Assignment.RoleName)" -ForegroundColor Yellow
+                    } else {
+                        $Result.Status = "Not Found"
+                        Write-Warning "Assignment not found for removal: $($Assignment.PrincipalName)"
+                    }
+                }
+            }
+            
+        } catch {
+            $Result.Status = "Failed"
+            $Result.Error = $_.Exception.Message
+            Write-Error "❌ Failed processing $($Assignment.PrincipalName): $($_.Exception.Message)"
+        }
+        
+        $Results += $Result
+        Start-Sleep -Seconds 1  # Rate limiting
+    }
+    
+    return $Results
+}
+
+# Process the CSV file
+$RBACResults = ProcessRBACAssignments -CSVPath ".\rbac-assignments.csv"
+
+# Generate summary report
+$Summary = $RBACResults | Group-Object Status | ForEach-Object {
+    [PSCustomObject]@{
+        Status = $_.Name
+        Count = $_.Count
+        Percentage = "{0:P2}" -f ($_.Count / $RBACResults.Count)
+    }
+}
+
+Write-Host "`n=== RBAC Assignment Summary ===" -ForegroundColor Cyan
+$Summary | Format-Table -AutoSize
+
+# Export detailed results
+$RBACResults | Export-Csv -Path ".\rbac-results-$(Get-Date -Format 'yyyyMMdd-HHmmss').csv" -NoTypeInformation
+Write-Host "✓ Detailed results exported to CSV" -ForegroundColor Green</code></pre>
+      </div>
+
+      <h3>RBAC Auditing and Compliance</h3>
+      <p>Monitor and audit role assignments for security compliance:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Comprehensive RBAC audit script
+function Start-RBACSecurityAudit {
+    param(
+        [string]$ExportPath = ".\RBAC-Audit-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
+    )
+    
+    Write-Host "Starting RBAC Security Audit..." -ForegroundColor Cyan
+    New-Item -Path $ExportPath -ItemType Directory -Force | Out-Null
+    
+    # 1. Get all role assignments
+    Write-Host "Collecting role assignments..." -ForegroundColor Yellow
+    $AllRoleAssignments = Get-AzRoleAssignment
+    
+    # 2. Identify privileged roles
+    $PrivilegedRoles = @("Owner", "Contributor", "User Access Administrator", "Security Administrator")
+    $PrivilegedAssignments = $AllRoleAssignments | Where-Object { $_.RoleDefinitionName -in $PrivilegedRoles }
+    
+    Write-Host "Found $($PrivilegedAssignments.Count) privileged role assignments" -ForegroundColor Red
+    
+    # 3. Check for overly broad assignments (subscription-level)
+    $SubscriptionLevelAssignments = $AllRoleAssignments | Where-Object { 
+        $_.Scope -like "/subscriptions/*" -and $_.Scope -notlike "/subscriptions/*/resourceGroups/*" 
+    }
+    
+    # 4. Identify assignments to individual users (should prefer groups)
+    $UserAssignments = $AllRoleAssignments | Where-Object { $_.ObjectType -eq "User" }
+    $GroupAssignments = $AllRoleAssignments | Where-Object { $_.ObjectType -eq "Group" }
+    
+    # 5. Find assignments with no expiration (if using PIM)
+    # This would require additional PIM-specific cmdlets in a real environment
+    
+    # 6. Generate audit reports
+    $AuditSummary = [PSCustomObject]@{
+        TotalAssignments = $AllRoleAssignments.Count
+        PrivilegedAssignments = $PrivilegedAssignments.Count
+        SubscriptionLevelAssignments = $SubscriptionLevelAssignments.Count
+        UserDirectAssignments = $UserAssignments.Count
+        GroupAssignments = $GroupAssignments.Count
+        AuditDate = Get-Date
+    }
+    
+    # Export detailed reports
+    $AllRoleAssignments | Export-Csv -Path "$ExportPath\All-Role-Assignments.csv" -NoTypeInformation
+    $PrivilegedAssignments | Export-Csv -Path "$ExportPath\Privileged-Assignments.csv" -NoTypeInformation
+    $SubscriptionLevelAssignments | Export-Csv -Path "$ExportPath\Subscription-Level-Assignments.csv" -NoTypeInformation
+    $AuditSummary | Export-Csv -Path "$ExportPath\Audit-Summary.csv" -NoTypeInformation
+    
+    # 7. Security recommendations
+    $Recommendations = @()
+    
+    if ($SubscriptionLevelAssignments.Count -gt 10) {
+        $Recommendations += "Consider reducing subscription-level role assignments. Found: $($SubscriptionLevelAssignments.Count)"
+    }
+    
+    if (($UserAssignments.Count / $AllRoleAssignments.Count) -gt 0.3) {
+        $Recommendations += "High percentage of direct user assignments. Consider using groups instead."
+    }
+    
+    if ($PrivilegedAssignments.Count -gt ($AllRoleAssignments.Count * 0.1)) {
+        $Recommendations += "High number of privileged role assignments. Review necessity."
+    }
+    
+    $Recommendations | Out-File -FilePath "$ExportPath\Security-Recommendations.txt"
+    
+    Write-Host "`n=== RBAC Audit Summary ===" -ForegroundColor Cyan
+    $AuditSummary | Format-List
+    
+    if ($Recommendations) {
+        Write-Host "`n=== Security Recommendations ===" -ForegroundColor Red
+        $Recommendations | ForEach-Object { Write-Host "⚠ $_" -ForegroundColor Yellow }
+    }
+    
+    Write-Host "`n✓ Audit completed. Reports saved to: $ExportPath" -ForegroundColor Green
+    return $AuditSummary
+}
+
+# Run the audit
+$AuditResults = Start-RBACSecurityAudit
+
+# Schedule regular audits (example for automation)
+# This could be put into an Azure Automation runbook
+function Register-RBACMonitoring {
+    # Create a scheduled task or Azure Automation runbook
+    # to run RBAC audits regularly
+    Write-Host "Setting up automated RBAC monitoring..." -ForegroundColor Cyan
+    
+    # Example: Alert on new privileged assignments
+    $PrivilegedRoles = @("Owner", "Contributor", "User Access Administrator")
+    
+    # This would typically integrate with Azure Monitor, Log Analytics, or Security Center
+    Write-Host "Monitoring configured for roles: $($PrivilegedRoles -join ', ')" -ForegroundColor Green
+}</code></pre>
+      </div>
+
+      <h3>Resource Tagging and Governance</h3>
+      <p>Implement consistent resource tagging for better governance:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Function to enforce standard tagging across resources
+function Set-StandardResourceTags {
+    param(
+        [Parameter(Mandatory)]
+        [string]$ResourceGroupName,
+        
+        [Parameter(Mandatory)]
+        [hashtable]$StandardTags,
+        
+        [switch]$ApplyToExistingResources
+    )
+    
+    try {
+        # Apply tags to resource group
+        $ResourceGroup = Get-AzResourceGroup -Name $ResourceGroupName
+        $CurrentTags = $ResourceGroup.Tags
+        
+        # Merge with existing tags
+        if ($CurrentTags) {
+            foreach ($Key in $StandardTags.Keys) {
+                $CurrentTags[$Key] = $StandardTags[$Key]
+            }
+            $FinalTags = $CurrentTags
+        } else {
+            $FinalTags = $StandardTags
+        }
+        
+        Set-AzResourceGroup -Name $ResourceGroupName -Tag $FinalTags
+        Write-Host "✓ Applied tags to resource group: $ResourceGroupName" -ForegroundColor Green
+        
+        if ($ApplyToExistingResources) {
+            # Apply tags to all resources in the resource group
+            $Resources = Get-AzResource -ResourceGroupName $ResourceGroupName
+            
+            foreach ($Resource in $Resources) {
+                try {
+                    $ResourceTags = $Resource.Tags
+                    if ($ResourceTags) {
+                        foreach ($Key in $StandardTags.Keys) {
+                            $ResourceTags[$Key] = $StandardTags[$Key]
+                        }
+                    } else {
+                        $ResourceTags = $StandardTags
+                    }
+                    
+                    Set-AzResource -ResourceId $Resource.ResourceId -Tag $ResourceTags -Force
+                    Write-Host "  ✓ Tagged resource: $($Resource.Name)" -ForegroundColor Green
+                    
+                } catch {
+                    Write-Warning "  ❌ Failed to tag resource $($Resource.Name): $($_.Exception.Message)"
+                }
+            }
+        }
+        
+    } catch {
+        Write-Error "❌ Failed to apply tags to $ResourceGroupName: $($_.Exception.Message)"
+    }
+}
+
+# Define organization standard tags
+$StandardTags = @{
+    Environment = "Production"
+    Department = "IT"
+    CostCenter = "IT-2025"
+    Owner = "admin@contoso.com"
+    CreatedDate = (Get-Date -Format "yyyy-MM-dd")
+    Backup = "Required"
+    Compliance = "SOC2"
+}
+
+# Apply to multiple resource groups
+$ResourceGroups = @("rg-webapp-prod-001", "rg-database-prod-001", "rg-network-prod-001")
+
+foreach ($RGName in $ResourceGroups) {
+    Set-StandardResourceTags -ResourceGroupName $RGName -StandardTags $StandardTags -ApplyToExistingResources
+}</code></pre>
+      </div>
+
+      <h3>Best Practices & Security Recommendations</h3>
+      <ul>
+        <li><strong>Principle of Least Privilege:</strong> Grant the minimum permissions necessary for users to perform their job functions</li>
+        <li><strong>Use Groups Over Individual Assignments:</strong> Assign roles to Azure AD groups rather than individual users for easier management</li>
+        <li><strong>Regular Access Reviews:</strong> Conduct periodic audits of role assignments and remove unnecessary access</li>
+        <li><strong>Resource Group Strategy:</strong> Organize resources logically by environment, application, or department</li>
+        <li><strong>Custom Roles:</strong> Create custom roles when built-in roles are too broad for your security requirements</li>
+        <li><strong>Monitoring and Alerting:</strong> Set up alerts for privileged role assignments and changes</li>
+        <li><strong>Documentation:</strong> Maintain clear documentation of your RBAC strategy and role assignments</li>
+        <li><strong>Automation:</strong> Use Infrastructure as Code (ARM templates, Terraform) for consistent role deployments</li>
+      </ul>
+
+      <div class="bg-amber-900/30 border border-amber-600/50 rounded-lg p-4 mt-6">
+        <div class="flex items-start gap-3">
+          <i data-feather="alert-triangle" class="w-5 h-5 text-amber-400 mt-0.5"></i>
+          <div>
+            <h4 class="text-amber-200 font-semibold mb-1">Security Alert</h4>
+            <p class="text-amber-100 text-sm">Always review role assignments before applying them in production. Overly permissive roles can lead to security vulnerabilities and compliance issues. Consider implementing Azure Privileged Identity Management (PIM) for just-in-time access to privileged roles.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Navigation -->
+    <div class="mt-12 flex justify-between items-center bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+      <a href="../index.html" class="flex items-center gap-2 text-blue-200 hover:text-white transition-colors">
+        <i data-feather="arrow-left" class="w-4 h-4"></i>
+        <span>Back to Azure Posts</span>
+      </a>
+      <a href="../../../index.html" class="flex items-center gap-2 text-blue-200 hover:text-white transition-colors">
+        <span>View All Posts</span>
+        <i data-feather="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center p-8 text-blue-100/70 border-t border-white/10 mt-12">
+    <p>© 2025 Sam Adhikari • Cloud Solutions Specialist</p>
+  </footer>
+
+  <script>
+    // Initialize Feather icons
+    feather.replace();
+
+    // Copy code functionality
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-container').querySelector('code');
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i data-feather="check" class="w-4 h-4"></i><span>Copied!</span>';
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.classList.remove('copied');
+          feather.replace();
+        }, 2000);
+      });
+    }
+
+    // Enhanced code highlighting
+    Prism.highlightAll();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Microsoft 365 Tenant Security and Governance with PowerShell | Sam in Cloud</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.css" rel="stylesheet" />
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    /* Enhanced background */
+    .blog-bg {
+      background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+      min-height: 100vh;
+    }
+    
+    /* Code block styling */
+    .code-container {
+      position: relative;
+      background: #1e293b;
+      border-radius: 0.75rem;
+      border: 1px solid #334155;
+      margin: 1.5rem 0;
+      overflow: hidden;
+    }
+    
+    .code-header {
+      background: #0f172a;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      justify-content: between;
+      align-items: center;
+    }
+    
+    .code-language {
+      color: #10b981;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    
+    /* Custom copy button */
+    .copy-btn {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: #374151;
+      border: 1px solid #4b5563;
+      color: #d1d5db;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    
+    .copy-btn:hover {
+      background: #4b5563;
+      border-color: #10b981;
+    }
+    
+    .copy-btn.copied {
+      background: #10b981;
+      border-color: #10b981;
+    }
+    
+    /* Prism overrides for better styling */
+    pre[class*="language-"] {
+      background: transparent !important;
+      margin: 0 !important;
+      padding: 1rem !important;
+      overflow-x: auto;
+    }
+    
+    code[class*="language-"] {
+      background: transparent !important;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    
+    /* Article styling */
+    .prose h2 {
+      color: #ffffff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #10b981;
+      padding-bottom: 0.5rem;
+    }
+    
+    .prose h3 {
+      color: #d1fae5;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .prose p {
+      color: #d1d5db;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    
+    .prose ul {
+      color: #d1d5db;
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .prose li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .prose code:not([class*="language-"]) {
+      background: #374151;
+      color: #10b981;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body class="blog-bg">
+  <!-- Navigation -->
+  <nav class="bg-emerald-800/90 backdrop-blur-lg shadow-lg border-b border-emerald-700/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <a href="../../../../index.html" class="text-xl font-bold text-white tracking-tight">Sam in Cloud</a>
+        <div class="flex items-center space-x-6">
+          <a href="../../../index.html" class="text-emerald-100 hover:text-white transition-colors duration-200 font-medium">Blog</a>
+          <a href="../../../../index.html#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto p-6 mt-8">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-emerald-200 mb-6 bg-white/10 backdrop-blur-sm rounded-lg p-3">
+      <div class="flex items-center space-x-2">
+        <a href="../../../index.html" class="hover:text-white transition-colors">Blog</a>
+        <i data-feather="chevron-right" class="w-4 h-4"></i>
+        <a href="../index.html" class="hover:text-white transition-colors">Microsoft 365</a>
+        <i data-feather="chevron-right" class="w-4 h-4"></i>
+        <span class="text-white font-medium">Tenant Security & Governance</span>
+      </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="mb-8 bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
+      <div class="flex items-start gap-4 mb-4">
+        <div class="p-3 bg-emerald-600 rounded-lg">
+          <i data-feather="layers" class="w-6 h-6 text-white"></i>
+        </div>
+        <div class="flex-1">
+          <h1 class="text-3xl md:text-4xl font-bold text-white mb-3">Microsoft 365 Tenant Security and Governance with PowerShell</h1>
+          <p class="text-xl text-emerald-100 leading-relaxed">Implement comprehensive security policies, governance frameworks, and automated compliance monitoring for your Microsoft 365 tenant using PowerShell.</p>
+        </div>
+      </div>
+      
+      <div class="flex flex-wrap gap-4 text-sm">
+        <div class="flex items-center gap-2 text-emerald-200">
+          <i data-feather="clock" class="w-4 h-4"></i>
+          <span>12 min read</span>
+        </div>
+        <div class="flex items-center gap-2 text-emerald-200">
+          <i data-feather="tag" class="w-4 h-4"></i>
+          <span>Microsoft 365</span>
+        </div>
+        <div class="flex items-center gap-2 text-emerald-200">
+          <i data-feather="calendar" class="w-4 h-4"></i>
+          <span>October 2025</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <article class="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 prose prose-lg max-w-none">
+      <h2>Overview</h2>
+      <p>Microsoft 365 tenant security and governance require a strategic approach to protect organizational data, ensure compliance, and maintain operational efficiency. This guide covers implementing comprehensive security policies, monitoring frameworks, and automated governance using PowerShell.</p>
+
+      <h3>Prerequisites</h3>
+      <ul>
+        <li>Microsoft 365 Global Administrator or Security Administrator permissions</li>
+        <li>Microsoft Graph PowerShell SDK installed</li>
+        <li>Exchange Online PowerShell module</li>
+        <li>SharePoint Online PowerShell module</li>
+        <li>Microsoft Teams PowerShell module</li>
+        <li>Security & Compliance PowerShell module</li>
+      </ul>
+
+      <h3>Installing Required PowerShell Modules</h3>
+      <p>Install all necessary modules for M365 governance:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Install Microsoft Graph PowerShell SDK
+Install-Module Microsoft.Graph -Scope CurrentUser -Force
+
+# Install Exchange Online Management
+Install-Module ExchangeOnlineManagement -Scope CurrentUser -Force
+
+# Install SharePoint Online Management Shell
+Install-Module Microsoft.Online.SharePoint.PowerShell -Scope CurrentUser -Force
+
+# Install Teams PowerShell module
+Install-Module MicrosoftTeams -Scope CurrentUser -Force
+
+# Install Security & Compliance module
+Install-Module ExchangeOnlineManagement -Scope CurrentUser -Force
+
+# Verify installations
+$Modules = @("Microsoft.Graph", "ExchangeOnlineManagement", "Microsoft.Online.SharePoint.PowerShell", "MicrosoftTeams")
+foreach ($Module in $Modules) {
+    $Version = (Get-Module $Module -ListAvailable | Sort-Object Version -Descending | Select-Object -First 1).Version
+    Write-Host "$Module version: $Version" -ForegroundColor Green
+}</code></pre>
+      </div>
+
+      <h3>Connecting to Microsoft 365 Services</h3>
+      <p>Establish connections to all necessary M365 services:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Function to connect to all M365 services
+function Connect-M365Services {
+    param(
+        [Parameter(Mandatory)]
+        [string]$TenantDomain,
+        
+        [string]$SharePointAdminUrl
+    )
+    
+    try {
+        Write-Host "Connecting to Microsoft Graph..." -ForegroundColor Yellow
+        # Connect to Microsoft Graph with required scopes
+        $GraphScopes = @(
+            "User.Read.All",
+            "Group.Read.All", 
+            "Directory.Read.All",
+            "Policy.Read.All",
+            "SecurityEvents.Read.All",
+            "AuditLog.Read.All",
+            "Organization.Read.All"
+        )
+        Connect-MgGraph -Scopes $GraphScopes
+        Write-Host "✓ Connected to Microsoft Graph" -ForegroundColor Green
+        
+        Write-Host "Connecting to Exchange Online..." -ForegroundColor Yellow
+        Connect-ExchangeOnline -ShowBanner:$false
+        Write-Host "✓ Connected to Exchange Online" -ForegroundColor Green
+        
+        Write-Host "Connecting to SharePoint Online..." -ForegroundColor Yellow
+        if (-not $SharePointAdminUrl) {
+            $SharePointAdminUrl = "https://$($TenantDomain.Split('.')[0])-admin.sharepoint.com"
+        }
+        Connect-SPOService -Url $SharePointAdminUrl
+        Write-Host "✓ Connected to SharePoint Online" -ForegroundColor Green
+        
+        Write-Host "Connecting to Microsoft Teams..." -ForegroundColor Yellow
+        Connect-MicrosoftTeams
+        Write-Host "✓ Connected to Microsoft Teams" -ForegroundColor Green
+        
+        Write-Host "Connecting to Security & Compliance..." -ForegroundColor Yellow
+        Connect-IPPSSession
+        Write-Host "✓ Connected to Security & Compliance" -ForegroundColor Green
+        
+        Write-Host "`n✅ All services connected successfully!" -ForegroundColor Green
+        
+    } catch {
+        Write-Error "❌ Failed to connect to services: $($_.Exception.Message)"
+    }
+}
+
+# Connect to all services
+Connect-M365Services -TenantDomain "contoso.com"
+
+# Verify connections
+$Connections = @{
+    "Microsoft Graph" = try { Get-MgContext; $true } catch { $false }
+    "Exchange Online" = try { Get-OrganizationConfig; $true } catch { $false }
+    "SharePoint Online" = try { Get-SPOTenant; $true } catch { $false }
+    "Microsoft Teams" = try { Get-CsTeamsUpgradeStatus; $true } catch { $false }
+    "Security & Compliance" = try { Get-ComplianceSearch -ResultSize 1; $true } catch { $false }
+}
+
+Write-Host "`n=== Connection Status ===" -ForegroundColor Cyan
+$Connections.GetEnumerator() | ForEach-Object {
+    $Status = if ($_.Value) { "✅ Connected" } else { "❌ Failed" }
+    Write-Host "$($_.Key): $Status"
+}</code></pre>
+      </div>
+
+      <h3>Implementing Conditional Access Policies</h3>
+      <p>Create and manage Conditional Access policies for enhanced security:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Function to create Conditional Access policy for MFA enforcement
+function New-MFAConditionalAccessPolicy {
+    param(
+        [Parameter(Mandatory)]
+        [string]$PolicyName,
+        
+        [Parameter(Mandatory)]
+        [string[]]$IncludedGroupIds,
+        
+        [string[]]$ExcludedGroupIds = @(),
+        
+        [string[]]$IncludedApplications = @("All"),
+        
+        [string[]]$ExcludedApplications = @(),
+        
+        [string]$RiskLevel = "high"
+    )
+    
+    # Define policy structure
+    $ConditionalAccessPolicy = @{
+        displayName = $PolicyName
+        state = "enabled"
+        
+        conditions = @{
+            users = @{
+                includeGroups = $IncludedGroupIds
+                excludeGroups = $ExcludedGroupIds
+            }
+            applications = @{
+                includeApplications = $IncludedApplications
+                excludeApplications = $ExcludedApplications
+            }
+            signInRiskLevels = @($RiskLevel)
+            platforms = @{
+                includePlatforms = @("all")
+            }
+            locations = @{
+                includeLocations = @("All")
+                excludeLocations = @("AllTrusted")
+            }
+        }
+        
+        grantControls = @{
+            operator = "OR"
+            builtInControls = @("mfa")
+        }
+        
+        sessionControls = @{
+            signInFrequency = @{
+                value = 1
+                type = "hours"
+                isEnabled = $true
+            }
+        }
+    }
+    
+    try {
+        $Policy = New-MgIdentityConditionalAccessPolicy -BodyParameter $ConditionalAccessPolicy
+        Write-Host "✓ Created Conditional Access Policy: $PolicyName" -ForegroundColor Green
+        Write-Host "Policy ID: $($Policy.Id)" -ForegroundColor Cyan
+        return $Policy
+    } catch {
+        Write-Error "❌ Failed to create Conditional Access Policy: $($_.Exception.Message)"
+        return $null
+    }
+}
+
+# Create policies for different scenarios
+$SecurityGroups = @{
+    "AllUsers" = (Get-MgGroup -Filter "displayName eq 'All Company'").Id
+    "Admins" = (Get-MgGroup -Filter "displayName eq 'IT Administrators'").Id
+    "Executives" = (Get-MgGroup -Filter "displayName eq 'Executive Team'").Id
+}
+
+# Policy 1: Require MFA for all users accessing cloud apps
+New-MFAConditionalAccessPolicy -PolicyName "Require MFA for All Cloud Apps" -IncludedGroupIds @($SecurityGroups.AllUsers)
+
+# Policy 2: Block legacy authentication
+$BlockLegacyAuthPolicy = @{
+    displayName = "Block Legacy Authentication"
+    state = "enabled"
+    
+    conditions = @{
+        users = @{
+            includeUsers = @("All")
+        }
+        applications = @{
+            includeApplications = @("All")
+        }
+        clientAppTypes = @("exchangeActiveSync", "other")
+    }
+    
+    grantControls = @{
+        operator = "OR"
+        builtInControls = @("block")
+    }
+}
+
+try {
+    $LegacyAuthPolicy = New-MgIdentityConditionalAccessPolicy -BodyParameter $BlockLegacyAuthPolicy
+    Write-Host "✓ Created policy to block legacy authentication" -ForegroundColor Green
+} catch {
+    Write-Error "❌ Failed to create legacy auth blocking policy: $($_.Exception.Message)"
+}</code></pre>
+      </div>
+
+      <h3>Data Loss Prevention (DLP) Policies</h3>
+      <p>Implement comprehensive DLP policies to protect sensitive information:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Function to create comprehensive DLP policy
+function New-ComprehensiveDLPPolicy {
+    param(
+        [Parameter(Mandatory)]
+        [string]$PolicyName,
+        
+        [Parameter(Mandatory)]
+        [string[]]$SensitiveInfoTypes,
+        
+        [string[]]$Locations = @("Exchange", "SharePoint", "OneDriveForBusiness", "Teams"),
+        
+        [string]$Mode = "Enable"
+    )
+    
+    try {
+        # Create DLP policy
+        $DLPPolicy = New-DlpCompliancePolicy -Name $PolicyName -ExchangeLocation $Locations -Mode $Mode
+        Write-Host "✓ Created DLP Policy: $PolicyName" -ForegroundColor Green
+        
+        # Create DLP rule for the policy
+        $RuleName = "$PolicyName - Rule"
+        $DLPRule = New-DlpComplianceRule -Name $RuleName -Policy $PolicyName -ContentContainsSensitiveInformation @{
+            Name = $SensitiveInfoTypes[0]
+            minCount = 1
+            maxCount = -1
+        } -BlockAccess $true -NotifyUser @("SiteAdmin", "LastModifier") -IncidentReportContent @("RulesMatched", "Detections", "Severity", "DetectionDetails", "OriginalContent")
+        
+        Write-Host "✓ Created DLP Rule: $RuleName" -ForegroundColor Green
+        
+        return @{
+            Policy = $DLPPolicy
+            Rule = $DLPRule
+        }
+        
+    } catch {
+        Write-Error "❌ Failed to create DLP policy: $($_.Exception.Message)"
+        return $null
+    }
+}
+
+# Create DLP policies for different data types
+$DLPPolicies = @(
+    @{
+        Name = "Protect Credit Card Information"
+        SensitiveTypes = @("Credit Card Number")
+        Locations = @("Exchange", "SharePoint", "OneDriveForBusiness", "Teams")
+    },
+    @{
+        Name = "Protect Personal Identifiable Information"
+        SensitiveTypes = @("U.S. Social Security Number (SSN)")
+        Locations = @("Exchange", "SharePoint", "OneDriveForBusiness")
+    },
+    @{
+        Name = "Protect Financial Data"
+        SensitiveTypes = @("ABA Routing Number", "SWIFT Code")
+        Locations = @("Exchange", "SharePoint", "OneDriveForBusiness", "Teams")
+    }
+)
+
+foreach ($Policy in $DLPPolicies) {
+    New-ComprehensiveDLPPolicy -PolicyName $Policy.Name -SensitiveInfoTypes $Policy.SensitiveTypes -Locations $Policy.Locations
+    Start-Sleep -Seconds 2  # Rate limiting
+}
+
+# Create custom sensitive information type
+$CustomSensitiveType = @{
+    Name = "Company Employee ID"
+    Description = "Detects company-specific employee ID format"
+    Publishers = @("IT Security Team")
+    RulePacks = @{
+        RulePackID = "Company.EmployeeID.1.0"
+        RulePackData = @"
+<?xml version="1.0" encoding="utf-8"?>
+<RulePackage xmlns="http://schemas.microsoft.com/office/2011/office-datalossp-prevention">
+  <RulePack id="Company.EmployeeID.1.0">
+    <Version major="1" minor="0" build="0" revision="0"/>
+    <Publisher id="Company IT"/>
+    <Details defaultLangCode="en-us">
+      <LocalizedDetails langcode="en-us">
+        <PublisherName>Company IT Security</PublisherName>
+        <Name>Company Employee ID</Name>
+        <Description>Detects Employee ID in format EMP-XXXXX</Description>
+      </LocalizedDetails>
+    </Details>
+    <Keyword id="Keyword_EmployeeID" caseSensitive="false">
+      <Group matchStyle="word">
+        <Term>employee id</Term>
+        <Term>emp id</Term>
+        <Term>employee number</Term>
+      </Group>
+    </Keyword>
+    <Regex id="Regex_EmployeeID">EMP-\d{5}</Regex>
+    <Entity id="Company.EmployeeID" patternsProximity="300" recommendedConfidence="75">
+      <Pattern confidenceLevel="75">
+        <IdMatch idRef="Regex_EmployeeID"/>
+        <Match idRef="Keyword_EmployeeID"/>
+      </Pattern>
+    </Entity>
+  </RulePack>
+</RulePackage>
+"@
+    }
+}
+
+Write-Host "✓ Custom sensitive information types can be created through the Security & Compliance Center" -ForegroundColor Yellow</code></pre>
+      </div>
+
+      <h3>Microsoft 365 Security Baseline Configuration</h3>
+      <p>Apply security baseline configurations across all M365 services:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Function to apply security baseline configurations
+function Set-M365SecurityBaseline {
+    param(
+        [string]$OrganizationName = "Contoso Corporation"
+    )
+    
+    Write-Host "Applying Microsoft 365 Security Baseline..." -ForegroundColor Cyan
+    
+    try {
+        # Exchange Online Security Settings
+        Write-Host "Configuring Exchange Online security settings..." -ForegroundColor Yellow
+        
+        # Enable Modern Authentication
+        Set-OrganizationConfig -OAuth2ClientProfileEnabled $true
+        
+        # Configure Anti-Malware Policy
+        $AntiMalwarePolicy = @{
+            Name = "Corporate Anti-Malware Policy"
+            MalwareFilterPolicy = "EnableFileFilter"
+            Action = "DeleteMessage"
+            EnableFileFilter = $true
+            FileTypes = @("exe", "com", "scr", "bat", "cmd", "pif")
+            EnableInternalSenderAdminNotifications = $true
+            InternalSenderAdminAddress = "security@contoso.com"
+        }
+        
+        New-MalwareFilterPolicy @AntiMalwarePolicy -ErrorAction SilentlyContinue
+        
+        # Configure Anti-Phishing Policy
+        $AntiPhishingPolicy = @{
+            Name = "Corporate Anti-Phishing Policy"
+            Enabled = $true
+            EnableMailboxIntelligence = $true
+            EnableSimilarUsersSafetyTips = $true
+            EnableSimilarDomainsSafetyTips = $true
+            EnableUnusualCharactersSafetyTips = $true
+            PhishThresholdLevel = 2
+        }
+        
+        New-AntiPhishPolicy @AntiPhishingPolicy -ErrorAction SilentlyContinue
+        
+        Write-Host "✓ Exchange Online security configured" -ForegroundColor Green
+        
+        # SharePoint Online Security Settings
+        Write-Host "Configuring SharePoint Online security settings..." -ForegroundColor Yellow
+        
+        # Configure tenant settings
+        Set-SPOTenant -SharingCapability ExternalUserAndGuestSharing -DefaultSharingLinkType Internal -RequireAcceptingAccountMatchInvitedAccount $true -PreventExternalUsersFromResharing $true -FileAnonymousLinkType View -FolderAnonymousLinkType View
+        
+        # Configure external sharing
+        Set-SPOTenant -ExternalServicesEnabled $false -PublicCdnEnabled $false -UseFindPeopleInPeoplePicker $false
+        
+        Write-Host "✓ SharePoint Online security configured" -ForegroundColor Green
+        
+        # Teams Security Settings
+        Write-Host "Configuring Microsoft Teams security settings..." -ForegroundColor Yellow
+        
+        # Configure Teams meeting policies
+        $TeamsMeetingPolicy = @{
+            Identity = "Global"
+            AutoAdmittedUsers = "EveryoneInCompany"
+            AllowAnonymousUsersToStartMeeting = $false
+            AllowExternalParticipantGiveRequestControl = $false
+            AllowPSTNUsersToBypassLobby = $false
+            AllowCloudRecording = $true
+            RecordingStorageMode = "OneDriveForBusiness"
+        }
+        
+        Set-CsTeamsMeetingPolicy @TeamsMeetingPolicy
+        
+        # Configure Teams messaging policy
+        Set-CsTeamsMessagingPolicy -Identity Global -AllowUrlPreviews $false -AllowUserTranslation $false -AllowUserChat $true -AllowUserDeleteMessage $true -AllowUserEditMessage $true
+        
+        Write-Host "✓ Microsoft Teams security configured" -ForegroundColor Green
+        
+        # Azure AD Security Settings
+        Write-Host "Configuring Azure AD security settings..." -ForegroundColor Yellow
+        
+        # Get organization settings
+        $Organization = Get-MgOrganization
+        $OrganizationId = $Organization.Id
+        
+        # Configure security defaults (if not using Conditional Access)
+        # Note: This is typically done through the Azure portal or Graph API
+        Write-Host "⚠ Security defaults should be configured through Azure portal" -ForegroundColor Yellow
+        
+        Write-Host "✅ Security baseline configuration completed!" -ForegroundColor Green
+        
+    } catch {
+        Write-Error "❌ Failed to apply security baseline: $($_.Exception.Message)"
+    }
+}
+
+# Apply security baseline
+Set-M365SecurityBaseline -OrganizationName "Contoso Corporation"
+
+# Additional security recommendations
+function Get-SecurityRecommendations {
+    Write-Host "`n=== Security Recommendations ===" -ForegroundColor Cyan
+    
+    $Recommendations = @(
+        "Enable Microsoft 365 Defender for comprehensive threat protection",
+        "Implement privileged access management (PAM) for admin accounts",
+        "Configure Azure AD Identity Protection for risk-based access",
+        "Set up Microsoft Cloud App Security for SaaS app governance",
+        "Enable audit logging and configure log retention policies",
+        "Implement Microsoft Information Protection for data classification",
+        "Configure Azure AD Password Protection for enhanced password policies",
+        "Set up emergency access accounts (break-glass accounts)",
+        "Enable Microsoft 365 secure score monitoring and improvement",
+        "Implement Zero Trust principles across all services"
+    )
+    
+    for ($i = 0; $i -lt $Recommendations.Count; $i++) {
+        Write-Host "$($i + 1). $($Recommendations[$i])" -ForegroundColor White
+    }
+}
+
+Get-SecurityRecommendations</code></pre>
+      </div>
+
+      <h3>Automated Security Monitoring and Reporting</h3>
+      <p>Create automated monitoring scripts for continuous security oversight:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Comprehensive security monitoring script
+function Start-M365SecurityMonitoring {
+    param(
+        [string]$ReportPath = ".\M365-Security-Report-$(Get-Date -Format 'yyyyMMdd-HHmmss')",
+        [int]$DaysBack = 7
+    )
+    
+    Write-Host "Starting Microsoft 365 Security Monitoring..." -ForegroundColor Cyan
+    New-Item -Path $ReportPath -ItemType Directory -Force | Out-Null
+    
+    $StartDate = (Get-Date).AddDays(-$DaysBack)
+    $SecurityFindings = @()
+    
+    try {
+        # 1. Check for privileged role assignments
+        Write-Host "Checking privileged role assignments..." -ForegroundColor Yellow
+        $PrivilegedRoles = @("Global Administrator", "Security Administrator", "Exchange Administrator")
+        
+        foreach ($Role in $PrivilegedRoles) {
+            $RoleMembers = Get-MgDirectoryRoleMember -DirectoryRoleId (Get-MgDirectoryRole -Filter "displayName eq '$Role'").Id
+            
+            foreach ($Member in $RoleMembers) {
+                $SecurityFindings += [PSCustomObject]@{
+                    Category = "Privileged Access"
+                    Finding = "User assigned to privileged role"
+                    Details = "User: $($Member.DisplayName), Role: $Role"
+                    Severity = "High"
+                    Date = Get-Date
+                }
+            }
+        }
+        
+        # 2. Check sign-in logs for suspicious activity
+        Write-Host "Analyzing sign-in logs..." -ForegroundColor Yellow
+        $SuspiciousSignIns = Get-MgAuditLogSignIn -Filter "createdDateTime ge $($StartDate.ToString('yyyy-MM-dd'))" | 
+            Where-Object { 
+                $_.RiskLevelDuringSignIn -eq "high" -or 
+                $_.RiskState -eq "atRisk" -or
+                $_.Status.ErrorCode -ne 0
+            }
+        
+        foreach ($SignIn in $SuspiciousSignIns) {
+            $SecurityFindings += [PSCustomObject]@{
+                Category = "Suspicious Sign-in"
+                Finding = "High-risk or failed sign-in detected"
+                Details = "User: $($SignIn.UserDisplayName), IP: $($SignIn.IpAddress), Risk: $($SignIn.RiskLevelDuringSignIn)"
+                Severity = "Medium"
+                Date = $SignIn.CreatedDateTime
+            }
+        }
+        
+        # 3. Check for disabled users with active sessions
+        Write-Host "Checking for security policy violations..." -ForegroundColor Yellow
+        $DisabledUsers = Get-MgUser -Filter "accountEnabled eq false" -All
+        
+        foreach ($User in $DisabledUsers) {
+            # Check for recent sign-ins (would require additional filtering in real scenario)
+            $SecurityFindings += [PSCustomObject]@{
+                Category = "Account Management"
+                Finding = "Disabled user account detected"
+                Details = "User: $($User.DisplayName), UPN: $($User.UserPrincipalName)"
+                Severity = "Low"
+                Date = Get-Date
+            }
+        }
+        
+        # 4. Check DLP policy matches
+        Write-Host "Checking DLP policy violations..." -ForegroundColor Yellow
+        $DLPIncidents = Get-DlpDetailReport -StartDate $StartDate -EndDate (Get-Date) | 
+            Where-Object { $_.EventType -eq "DLPRuleMatch" }
+        
+        foreach ($Incident in $DLPIncidents) {
+            $SecurityFindings += [PSCustomObject]@{
+                Category = "Data Loss Prevention"
+                Finding = "DLP policy violation detected"
+                Details = "Policy: $($Incident.PolicyName), User: $($Incident.User), File: $($Incident.ObjectId)"
+                Severity = "High"
+                Date = $Incident.Date
+            }
+        }
+        
+        # 5. Check for external sharing activities
+        Write-Host "Checking external sharing activities..." -ForegroundColor Yellow
+        $SharingActivities = Search-UnifiedAuditLog -StartDate $StartDate -EndDate (Get-Date) -Operations "SharingInvitationCreated,SharingInvitationAccepted" -ResultSize 1000
+        
+        foreach ($Activity in $SharingActivities) {
+            $AuditData = $Activity.AuditData | ConvertFrom-Json
+            $SecurityFindings += [PSCustomObject]@{
+                Category = "External Sharing"
+                Finding = "External sharing activity detected"
+                Details = "User: $($AuditData.UserId), Operation: $($AuditData.Operation), Object: $($AuditData.ObjectId)"
+                Severity = "Medium"
+                Date = $Activity.CreationDate
+            }
+        }
+        
+        # 6. Generate security score summary
+        Write-Host "Generating security summary..." -ForegroundColor Yellow
+        $SecuritySummary = @{
+            TotalFindings = $SecurityFindings.Count
+            HighSeverityFindings = ($SecurityFindings | Where-Object { $_.Severity -eq "High" }).Count
+            MediumSeverityFindings = ($SecurityFindings | Where-Object { $_.Severity -eq "Medium" }).Count
+            LowSeverityFindings = ($SecurityFindings | Where-Object { $_.Severity -eq "Low" }).Count
+            CategoriesAffected = ($SecurityFindings.Category | Sort-Object -Unique).Count
+            ReportGeneratedDate = Get-Date
+        }
+        
+        # Export findings
+        $SecurityFindings | Export-Csv -Path "$ReportPath\Security-Findings.csv" -NoTypeInformation
+        $SecuritySummary | ConvertTo-Json | Out-File -FilePath "$ReportPath\Security-Summary.json"
+        
+        # Generate recommendations
+        $Recommendations = @()
+        
+        if ($SecuritySummary.HighSeverityFindings -gt 0) {
+            $Recommendations += "Immediate attention required: $($SecuritySummary.HighSeverityFindings) high-severity findings detected"
+        }
+        
+        if (($SecurityFindings | Where-Object { $_.Category -eq "Privileged Access" }).Count -gt 5) {
+            $Recommendations += "Review privileged role assignments - high number of privileged users detected"
+        }
+        
+        if (($SecurityFindings | Where-Object { $_.Category -eq "External Sharing" }).Count -gt 10) {
+            $Recommendations += "Review external sharing policies - high volume of external sharing activities"
+        }
+        
+        $Recommendations | Out-File -FilePath "$ReportPath\Recommendations.txt"
+        
+        # Display summary
+        Write-Host "`n=== Security Monitoring Summary ===" -ForegroundColor Cyan
+        $SecuritySummary | Format-List
+        
+        if ($Recommendations) {
+            Write-Host "`n=== Recommendations ===" -ForegroundColor Red
+            $Recommendations | ForEach-Object { Write-Host "⚠ $_" -ForegroundColor Yellow }
+        }
+        
+        Write-Host "`n✓ Security monitoring completed. Reports saved to: $ReportPath" -ForegroundColor Green
+        return $SecuritySummary
+        
+    } catch {
+        Write-Error "❌ Security monitoring failed: $($_.Exception.Message)"
+    }
+}
+
+# Run security monitoring
+$MonitoringResults = Start-M365SecurityMonitoring -DaysBack 7
+
+# Schedule automated monitoring (example for Azure Automation)
+function New-AutomatedSecurityMonitoring {
+    Write-Host "Setting up automated security monitoring..." -ForegroundColor Cyan
+    
+    # This would typically be configured in Azure Automation or similar service
+    $MonitoringSchedule = @{
+        Frequency = "Daily"
+        Time = "06:00"
+        Recipients = @("security-team@contoso.com", "it-admin@contoso.com")
+        Thresholds = @{
+            HighSeverityAlert = 1
+            MediumSeverityAlert = 5
+            LowSeverityAlert = 10
+        }
+    }
+    
+    Write-Host "Automated monitoring configured:" -ForegroundColor Green
+    $MonitoringSchedule | Format-List
+}</code></pre>
+      </div>
+
+      <h3>Governance Automation and Compliance</h3>
+      <p>Implement automated governance workflows and compliance monitoring:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Automated governance and compliance script
+function Start-M365GovernanceAutomation {
+    param(
+        [Parameter(Mandatory)]
+        [string]$ComplianceFramework = "SOC2",
+        
+        [string[]]$NotificationRecipients = @("compliance@contoso.com")
+    )
+    
+    Write-Host "Starting M365 Governance Automation for $ComplianceFramework..." -ForegroundColor Cyan
+    
+    $GovernanceResults = @{
+        UserAccountAudit = @()
+        GroupManagement = @()
+        LicenseOptimization = @()
+        RetentionPolicies = @()
+        ComplianceStatus = @()
+    }
+    
+    try {
+        # 1. Automated user account lifecycle management
+        Write-Host "Processing user account lifecycle..." -ForegroundColor Yellow
+        
+        # Find inactive users (no sign-in for 90 days)
+        $InactiveUsers = Get-MgUser -All | Where-Object { 
+            $_.SignInActivity.LastSignInDateTime -lt (Get-Date).AddDays(-90) -and 
+            $_.AccountEnabled -eq $true 
+        }
+        
+        foreach ($User in $InactiveUsers) {
+            $GovernanceResults.UserAccountAudit += [PSCustomObject]@{
+                Action = "Flag for Review"
+                User = $User.DisplayName
+                UPN = $User.UserPrincipalName
+                LastSignIn = $User.SignInActivity.LastSignInDateTime
+                Recommendation = "Consider disabling inactive account"
+                Status = "Pending Review"
+            }
+        }
+        
+        # 2. Group membership optimization
+        Write-Host "Optimizing group memberships..." -ForegroundColor Yellow
+        
+        $AllGroups = Get-MgGroup -All
+        foreach ($Group in $AllGroups) {
+            $Members = Get-MgGroupMember -GroupId $Group.Id
+            
+            if ($Members.Count -eq 0) {
+                $GovernanceResults.GroupManagement += [PSCustomObject]@{
+                    Action = "Empty Group Detected"
+                    GroupName = $Group.DisplayName
+                    GroupId = $Group.Id
+                    MemberCount = 0
+                    Recommendation = "Consider removing unused group"
+                    Status = "Pending Review"
+                }
+            }
+        }
+        
+        # 3. License optimization analysis
+        Write-Host "Analyzing license utilization..." -ForegroundColor Yellow
+        
+        $LicenseSkus = Get-MgSubscribedSku
+        foreach ($Sku in $LicenseSkus) {
+            $UtilizationRate = ($Sku.ConsumedUnits / $Sku.PrepaidUnits.Enabled) * 100
+            
+            $GovernanceResults.LicenseOptimization += [PSCustomObject]@{
+                SkuName = $Sku.SkuPartNumber
+                TotalLicenses = $Sku.PrepaidUnits.Enabled
+                ConsumedLicenses = $Sku.ConsumedUnits
+                AvailableLicenses = $Sku.PrepaidUnits.Enabled - $Sku.ConsumedUnits
+                UtilizationRate = "{0:N2}%" -f $UtilizationRate
+                Recommendation = if ($UtilizationRate -lt 80) { "Consider reducing license count" } 
+                                elseif ($UtilizationRate -gt 95) { "Consider purchasing additional licenses" }
+                                else { "Optimal utilization" }
+            }
+        }
+        
+        # 4. Retention policy compliance
+        Write-Host "Checking retention policy compliance..." -ForegroundColor Yellow
+        
+        $RetentionPolicies = Get-RetentionCompliancePolicy
+        foreach ($Policy in $RetentionPolicies) {
+            $PolicyStatus = Get-RetentionComplianceRule -Policy $Policy.Name
+            
+            $GovernanceResults.RetentionPolicies += [PSCustomObject]@{
+                PolicyName = $Policy.Name
+                Enabled = $Policy.Enabled
+                Mode = $Policy.Mode
+                RuleCount = $PolicyStatus.Count
+                Locations = ($Policy.ExchangeLocation + $Policy.SharePointLocation + $Policy.OneDriveLocation) -join ", "
+                Status = if ($Policy.Enabled) { "Active" } else { "Inactive" }
+                Recommendation = if (-not $Policy.Enabled) { "Review and enable if needed" } else { "Compliant" }
+            }
+        }
+        
+        # 5. Generate compliance dashboard
+        Write-Host "Generating compliance dashboard..." -ForegroundColor Yellow
+        
+        $ComplianceMetrics = @{
+            TotalUsers = (Get-MgUser -All).Count
+            ActiveUsers = (Get-MgUser -Filter "accountEnabled eq true").Count
+            InactiveUsers = $GovernanceResults.UserAccountAudit.Count
+            TotalGroups = $AllGroups.Count
+            EmptyGroups = ($GovernanceResults.GroupManagement | Where-Object { $_.Action -eq "Empty Group Detected" }).Count
+            LicenseUtilization = ($GovernanceResults.LicenseOptimization | Measure-Object -Property @{Expression={[double]$_.UtilizationRate.Replace('%','')}} -Average).Average
+            ActiveRetentionPolicies = ($GovernanceResults.RetentionPolicies | Where-Object { $_.Status -eq "Active" }).Count
+            ComplianceScore = 85  # This would be calculated based on various factors
+        }
+        
+        $GovernanceResults.ComplianceStatus = $ComplianceMetrics
+        
+        # 6. Export governance reports
+        $ReportPath = ".\M365-Governance-Report-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
+        New-Item -Path $ReportPath -ItemType Directory -Force | Out-Null
+        
+        $GovernanceResults.UserAccountAudit | Export-Csv -Path "$ReportPath\User-Account-Audit.csv" -NoTypeInformation
+        $GovernanceResults.GroupManagement | Export-Csv -Path "$ReportPath\Group-Management.csv" -NoTypeInformation
+        $GovernanceResults.LicenseOptimization | Export-Csv -Path "$ReportPath\License-Optimization.csv" -NoTypeInformation
+        $GovernanceResults.RetentionPolicies | Export-Csv -Path "$ReportPath\Retention-Policies.csv" -NoTypeInformation
+        $ComplianceMetrics | ConvertTo-Json | Out-File -FilePath "$ReportPath\Compliance-Metrics.json"
+        
+        # 7. Send notification email (if configured)
+        # This would integrate with Exchange Online or another email service
+        $EmailBody = @"
+M365 Governance Report - $(Get-Date -Format 'yyyy-MM-dd')
+
+Compliance Framework: $ComplianceFramework
+
+Key Metrics:
+- Total Users: $($ComplianceMetrics.TotalUsers)
+- Inactive Users Flagged: $($ComplianceMetrics.InactiveUsers)
+- Empty Groups Found: $($ComplianceMetrics.EmptyGroups)
+- Average License Utilization: $($ComplianceMetrics.LicenseUtilization.ToString('F2'))%
+- Active Retention Policies: $($ComplianceMetrics.ActiveRetentionPolicies)
+- Compliance Score: $($ComplianceMetrics.ComplianceScore)%
+
+Detailed reports are available at: $ReportPath
+
+Please review and take appropriate action on flagged items.
+"@
+        
+        Write-Host "`n=== Governance Summary ===" -ForegroundColor Cyan
+        $ComplianceMetrics | Format-List
+        
+        Write-Host "`n✓ Governance automation completed. Reports saved to: $ReportPath" -ForegroundColor Green
+        
+        return $GovernanceResults
+        
+    } catch {
+        Write-Error "❌ Governance automation failed: $($_.Exception.Message)"
+    }
+}
+
+# Run governance automation
+$GovernanceResults = Start-M365GovernanceAutomation -ComplianceFramework "SOC2" -NotificationRecipients @("compliance@contoso.com", "it-admin@contoso.com")</code></pre>
+      </div>
+
+      <h3>Best Practices for M365 Security & Governance</h3>
+      <ul>
+        <li><strong>Zero Trust Architecture:</strong> Implement "never trust, always verify" principles across all M365 services</li>
+        <li><strong>Conditional Access:</strong> Use risk-based access controls and continuous evaluation</li>
+        <li><strong>Privileged Access Management:</strong> Implement just-in-time access for administrative roles</li>
+        <li><strong>Data Classification:</strong> Use Microsoft Information Protection to classify and protect sensitive data</li>
+        <li><strong>Continuous Monitoring:</strong> Set up automated monitoring and alerting for security events</li>
+        <li><strong>Regular Audits:</strong> Conduct periodic access reviews and compliance assessments</li>
+        <li><strong>Incident Response:</strong> Maintain updated incident response procedures and playbooks</li>
+        <li><strong>User Training:</strong> Provide regular security awareness training for all users</li>
+        <li><strong>Backup & Recovery:</strong> Implement comprehensive backup strategies for critical data</li>
+        <li><strong>Documentation:</strong> Maintain current documentation of all security policies and procedures</li>
+      </ul>
+
+      <div class="bg-emerald-900/30 border border-emerald-600/50 rounded-lg p-4 mt-6">
+        <div class="flex items-start gap-3">
+          <i data-feather="shield-check" class="w-5 h-5 text-emerald-400 mt-0.5"></i>
+          <div>
+            <h4 class="text-emerald-200 font-semibold mb-1">Security Reminder</h4>
+            <p class="text-emerald-100 text-sm">Security and governance are ongoing processes. Regularly review and update your policies, monitor for new threats, and ensure your team stays informed about the latest security best practices and Microsoft 365 updates.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Navigation -->
+    <div class="mt-12 flex justify-between items-center bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+      <a href="../index.html" class="flex items-center gap-2 text-emerald-200 hover:text-white transition-colors">
+        <i data-feather="arrow-left" class="w-4 h-4"></i>
+        <span>Back to M365 Posts</span>
+      </a>
+      <a href="../../../index.html" class="flex items-center gap-2 text-emerald-200 hover:text-white transition-colors">
+        <span>View All Posts</span>
+        <i data-feather="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center p-8 text-emerald-100/70 border-t border-white/10 mt-12">
+    <p>© 2025 Sam Adhikari • Cloud Solutions Specialist</p>
+  </footer>
+
+  <script>
+    // Initialize Feather icons
+    feather.replace();
+
+    // Copy code functionality
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-container').querySelector('code');
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i data-feather="check" class="w-4 h-4"></i><span>Copied!</span>';
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.classList.remove('copied');
+          feather.replace();
+        }, 2000);
+      });
+    }
+
+    // Enhanced code highlighting
+    Prism.highlightAll();
+  </script>
+</body>
+</html>

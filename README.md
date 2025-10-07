@@ -39,3 +39,26 @@ If you'd like, I can:
 - Prepare a deploy config for GitHub Pages, Vercel, or Netlify
 
 Tell me which of the above you'd like next.
+
+GitHub Pages deployment (recommended if Netlify is suspended)
+
+This repository includes a GitHub Actions workflow at `.github/workflows/deploy-site.yml` which publishes the `site/` folder to the `gh-pages` branch automatically when you push to `sam-site-update-from-main` or `main`.
+
+Quick steps:
+
+1. Push your branch to GitHub (example):
+
+	git checkout -B sam-site-update-from-main
+	git add .
+	git commit -m "Site: update UI"
+	git push -u origin sam-site-update-from-main
+
+2. Open the repository on GitHub → Settings → Pages and select the `gh-pages` branch as the source (the workflow will create/update it).
+
+3. After the Actions workflow completes, your site will be live at:
+
+	https://<your-github-username>.github.io/sam-portfolio/
+
+Notes:
+- The workflow uses the default GITHUB_TOKEN so no extra secrets are required.
+- If you use a custom domain, add it to the Pages settings and create a `CNAME` file in `site/` with the domain.

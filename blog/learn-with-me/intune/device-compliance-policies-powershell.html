@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Managing Intune Device Compliance Policies with PowerShell | Sam in Cloud</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.css" rel="stylesheet" />
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    /* Enhanced background */
+    .blog-bg {
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
+      min-height: 100vh;
+    }
+    
+    /* Code block styling */
+    .code-container {
+      position: relative;
+      background: #1e293b;
+      border-radius: 0.75rem;
+      border: 1px solid #334155;
+      margin: 1.5rem 0;
+      overflow: hidden;
+    }
+    
+    .code-header {
+      background: #0f172a;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      justify-content: between;
+      align-items: center;
+    }
+    
+    .code-language {
+      color: #a855f7;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    
+    /* Custom copy button */
+    .copy-btn {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: #374151;
+      border: 1px solid #4b5563;
+      color: #d1d5db;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    
+    .copy-btn:hover {
+      background: #4b5563;
+      border-color: #a855f7;
+    }
+    
+    .copy-btn.copied {
+      background: #a855f7;
+      border-color: #a855f7;
+    }
+    
+    /* Prism overrides for better styling */
+    pre[class*="language-"] {
+      background: transparent !important;
+      margin: 0 !important;
+      padding: 1rem !important;
+      overflow-x: auto;
+    }
+    
+    code[class*="language-"] {
+      background: transparent !important;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    
+    /* Article styling */
+    .prose h2 {
+      color: #ffffff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #a855f7;
+      padding-bottom: 0.5rem;
+    }
+    
+    .prose h3 {
+      color: #e0e7ff;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .prose p {
+      color: #d1d5db;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    
+    .prose ul {
+      color: #d1d5db;
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .prose li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .prose code:not([class*="language-"]) {
+      background: #374151;
+      color: #a855f7;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body class="blog-bg">
+  <!-- Navigation -->
+  <nav class="bg-purple-800/90 backdrop-blur-lg shadow-lg border-b border-purple-700/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <a href="../../../../index.html" class="text-xl font-bold text-white tracking-tight">Sam in Cloud</a>
+        <div class="flex items-center space-x-6">
+          <a href="../../../index.html" class="text-purple-100 hover:text-white transition-colors duration-200 font-medium">Blog</a>
+          <a href="../../../../index.html#contact" class="bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto p-6 mt-8">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-purple-200 mb-6 bg-white/10 backdrop-blur-sm rounded-lg p-3">
+      <div class="flex items-center space-x-2">
+        <a href="../../../index.html" class="hover:text-white transition-colors">Blog</a>
+        <i data-feather="chevron-right" class="w-4 h-4"></i>
+        <a href="../index.html" class="hover:text-white transition-colors">Intune</a>
+        <i data-feather="chevron-right" class="w-4 h-4"></i>
+        <span class="text-white font-medium">Device Compliance Policies</span>
+      </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="mb-8 bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
+      <div class="flex items-start gap-4 mb-4">
+        <div class="p-3 bg-purple-600 rounded-lg">
+          <i data-feather="smartphone" class="w-6 h-6 text-white"></i>
+        </div>
+        <div class="flex-1">
+          <h1 class="text-3xl md:text-4xl font-bold text-white mb-3">Managing Intune Device Compliance Policies with PowerShell</h1>
+          <p class="text-xl text-purple-100 leading-relaxed">Learn how to create, manage, and monitor device compliance policies in Microsoft Intune using PowerShell and Microsoft Graph API.</p>
+        </div>
+      </div>
+      
+      <div class="flex flex-wrap gap-4 text-sm">
+        <div class="flex items-center gap-2 text-purple-200">
+          <i data-feather="clock" class="w-4 h-4"></i>
+          <span>8 min read</span>
+        </div>
+        <div class="flex items-center gap-2 text-purple-200">
+          <i data-feather="tag" class="w-4 h-4"></i>
+          <span>Microsoft Intune</span>
+        </div>
+        <div class="flex items-center gap-2 text-purple-200">
+          <i data-feather="calendar" class="w-4 h-4"></i>
+          <span>October 2025</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <article class="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20 prose prose-lg max-w-none">
+      <h2>Overview</h2>
+      <p>Device compliance policies in Microsoft Intune help ensure that devices meet your organization's security requirements before accessing corporate resources. This guide covers creating, managing, and monitoring compliance policies using PowerShell and Microsoft Graph API.</p>
+
+      <h3>Prerequisites</h3>
+      <ul>
+        <li>Microsoft Intune license and appropriate admin permissions</li>
+        <li>Microsoft Graph PowerShell SDK installed</li>
+        <li>Azure AD application registration with required Graph API permissions</li>
+        <li>PowerShell 5.1 or PowerShell 7+ with appropriate execution policy</li>
+      </ul>
+
+      <h3>Installing Required Modules</h3>
+      <p>First, install the Microsoft Graph PowerShell SDK:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Install Microsoft Graph PowerShell SDK
+Install-Module Microsoft.Graph -Scope CurrentUser -Force
+
+# Install specific modules for Intune management
+Install-Module Microsoft.Graph.DeviceManagement -Scope CurrentUser -Force
+Install-Module Microsoft.Graph.Identity.DirectoryManagement -Scope CurrentUser -Force</code></pre>
+      </div>
+
+      <h3>Connecting to Microsoft Graph</h3>
+      <p>Connect to Microsoft Graph with the required permissions for Intune management:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Connect to Microsoft Graph with required scopes
+$Scopes = @(
+    "DeviceManagementConfiguration.ReadWrite.All",
+    "DeviceManagementManagedDevices.ReadWrite.All",
+    "Directory.Read.All"
+)
+
+Connect-MgGraph -Scopes $Scopes
+
+# Verify connection
+Get-MgContext | Select-Object -Property Account, Scopes</code></pre>
+      </div>
+
+      <h3>Creating a Windows Compliance Policy</h3>
+      <p>Create a comprehensive Windows device compliance policy with security requirements:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Define Windows compliance policy settings
+$WindowsCompliancePolicy = @{
+    "@odata.type" = "#microsoft.graph.windows10CompliancePolicy"
+    displayName = "Corporate Windows Compliance Policy"
+    description = "Standard compliance requirements for corporate Windows devices"
+    
+    # OS Version Requirements
+    osMinimumVersion = "10.0.19041"  # Windows 10 version 2004
+    osMaximumVersion = "10.0.99999"  # Allow future versions
+    
+    # Security Settings
+    passwordRequired = $true
+    passwordMinimumLength = 8
+    passwordMinutesOfInactivityBeforeLock = 15
+    passwordRequiredType = "alphanumeric"
+    passwordPreviousPasswordBlockCount = 5
+    passwordExpirationDays = 90
+    
+    # Device Health Requirements
+    requireHealthyDeviceReport = $true
+    secureBootEnabled = $true
+    codeIntegrityEnabled = $true
+    
+    # Encryption
+    bitLockerEnabled = $true
+    storageRequireEncryption = $true
+    
+    # Antivirus Requirements
+    antivirusRequired = $true
+    antiSpywareRequired = $true
+    defenderEnabled = $true
+    defenderVersion = "1.1.18000.0"  # Minimum Defender version
+    
+    # System Requirements
+    tpmRequired = $true
+    deviceThreatProtectionEnabled = $true
+    deviceThreatProtectionRequiredSecurityLevel = "medium"
+}
+
+# Create the compliance policy
+try {
+    $CreatedPolicy = New-MgDeviceManagementDeviceCompliancePolicy -BodyParameter $WindowsCompliancePolicy
+    Write-Host "✓ Successfully created compliance policy: $($CreatedPolicy.DisplayName)" -ForegroundColor Green
+    Write-Host "Policy ID: $($CreatedPolicy.Id)" -ForegroundColor Cyan
+} catch {
+    Write-Error "❌ Failed to create compliance policy: $($_.Exception.Message)"
+}</code></pre>
+      </div>
+
+      <h3>Creating an iOS Compliance Policy</h3>
+      <p>Create a compliance policy specifically for iOS devices:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Define iOS compliance policy settings
+$iOSCompliancePolicy = @{
+    "@odata.type" = "#microsoft.graph.iosCompliancePolicy"
+    displayName = "Corporate iOS Compliance Policy"
+    description = "Standard compliance requirements for corporate iOS devices"
+    
+    # OS Version Requirements
+    osMinimumVersion = "15.0"
+    osMaximumVersion = "99.0"
+    
+    # Security Settings
+    passcodeRequired = $true
+    passcodeMinimumLength = 6
+    passcodeMinutesOfInactivityBeforeLock = 15
+    passcodeRequiredType = "alphanumeric"
+    passcodePreviousPasscodeBlockCount = 5
+    passcodeExpirationDays = 90
+    
+    # Device Security
+    deviceThreatProtectionEnabled = $true
+    deviceThreatProtectionRequiredSecurityLevel = "medium"
+    jailbrokenDevicesBlocked = $true
+    
+    # Managed Apps
+    managedEmailProfileRequired = $true
+    
+    # Device Properties
+    securityBlockJailbrokenDevices = $true
+}
+
+# Create the iOS compliance policy
+try {
+    $iOSPolicy = New-MgDeviceManagementDeviceCompliancePolicy -BodyParameter $iOSCompliancePolicy
+    Write-Host "✓ Successfully created iOS compliance policy: $($iOSPolicy.DisplayName)" -ForegroundColor Green
+    Write-Host "Policy ID: $($iOSPolicy.Id)" -ForegroundColor Cyan
+} catch {
+    Write-Error "❌ Failed to create iOS compliance policy: $($_.Exception.Message)"
+}</code></pre>
+      </div>
+
+      <h3>Bulk Policy Management from CSV</h3>
+      <p>Manage multiple compliance policies using a CSV file for bulk operations:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">CSV</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-csv">Platform,PolicyName,Description,MinOSVersion,MaxOSVersion,PasswordRequired,PasswordLength,InactivityTimeout
+Windows,HR Department Windows Policy,Compliance for HR Windows devices,10.0.19041,10.0.99999,True,8,15
+iOS,Sales Team iOS Policy,Compliance for Sales iOS devices,15.0,99.0,True,6,10
+Android,Marketing Android Policy,Compliance for Marketing Android devices,10.0,99.0,True,6,15</code></pre>
+      </div>
+
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Function to create compliance policy from CSV row
+function New-CompliancePolicyFromCSV {
+    param(
+        [Parameter(Mandatory)]
+        [PSCustomObject]$PolicyData
+    )
+    
+    $BasePolicy = @{
+        displayName = $PolicyData.PolicyName
+        description = $PolicyData.Description
+        passwordRequired = [bool]::Parse($PolicyData.PasswordRequired)
+        passwordMinimumLength = [int]$PolicyData.PasswordLength
+        passwordMinutesOfInactivityBeforeLock = [int]$PolicyData.InactivityTimeout
+    }
+    
+    switch ($PolicyData.Platform) {
+        "Windows" {
+            $Policy = $BasePolicy + @{
+                "@odata.type" = "#microsoft.graph.windows10CompliancePolicy"
+                osMinimumVersion = $PolicyData.MinOSVersion
+                osMaximumVersion = $PolicyData.MaxOSVersion
+                bitLockerEnabled = $true
+                secureBootEnabled = $true
+                antivirusRequired = $true
+            }
+        }
+        "iOS" {
+            $Policy = $BasePolicy + @{
+                "@odata.type" = "#microsoft.graph.iosCompliancePolicy"
+                osMinimumVersion = $PolicyData.MinOSVersion
+                osMaximumVersion = $PolicyData.MaxOSVersion
+                jailbrokenDevicesBlocked = $true
+                managedEmailProfileRequired = $true
+            }
+        }
+        "Android" {
+            $Policy = $BasePolicy + @{
+                "@odata.type" = "#microsoft.graph.androidCompliancePolicy"
+                osMinimumVersion = $PolicyData.MinOSVersion
+                osMaximumVersion = $PolicyData.MaxOSVersion
+                securityRequiredAndroidSafetyNetEvaluationType = "basicIntegrity"
+                securityBlockJailbrokenDevices = $true
+            }
+        }
+    }
+    
+    return $Policy
+}
+
+# Process CSV file
+$CSV = Import-Csv -Path ".\compliance-policies.csv"
+$Results = @()
+
+foreach ($Row in $CSV) {
+    try {
+        Write-Host "Creating policy: $($Row.PolicyName)" -ForegroundColor Yellow
+        
+        $PolicyConfig = New-CompliancePolicyFromCSV -PolicyData $Row
+        $NewPolicy = New-MgDeviceManagementDeviceCompliancePolicy -BodyParameter $PolicyConfig
+        
+        $Results += [PSCustomObject]@{
+            PolicyName = $Row.PolicyName
+            Platform = $Row.Platform
+            Status = "Success"
+            PolicyId = $NewPolicy.Id
+            Error = $null
+        }
+        
+        Write-Host "✓ Successfully created: $($Row.PolicyName)" -ForegroundColor Green
+        
+    } catch {
+        $Results += [PSCustomObject]@{
+            PolicyName = $Row.PolicyName
+            Platform = $Row.Platform
+            Status = "Failed"
+            PolicyId = $null
+            Error = $_.Exception.Message
+        }
+        
+        Write-Warning "❌ Failed to create: $($Row.PolicyName) - $($_.Exception.Message)"
+    }
+}
+
+# Display results summary
+$Results | Format-Table -AutoSize</code></pre>
+      </div>
+
+      <h3>Monitoring Compliance Status</h3>
+      <p>Check device compliance status and generate reports:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Get all compliance policies
+$CompliancePolicies = Get-MgDeviceManagementDeviceCompliancePolicy
+Write-Host "Found $($CompliancePolicies.Count) compliance policies" -ForegroundColor Green
+
+# Get compliance summary for all devices
+$ComplianceOverview = Get-MgDeviceManagementDeviceCompliancePolicyDeviceStateSummary
+Write-Host "`nCompliance Overview:" -ForegroundColor Cyan
+Write-Host "Compliant Devices: $($ComplianceOverview.CompliantDeviceCount)" -ForegroundColor Green
+Write-Host "Non-Compliant Devices: $($ComplianceOverview.NonCompliantDeviceCount)" -ForegroundColor Red
+Write-Host "Error Devices: $($ComplianceOverview.ErrorDeviceCount)" -ForegroundColor Yellow
+Write-Host "Conflict Devices: $($ComplianceOverview.ConflictDeviceCount)" -ForegroundColor Magenta
+
+# Get detailed compliance status per policy
+foreach ($Policy in $CompliancePolicies) {
+    Write-Host "`nPolicy: $($Policy.DisplayName)" -ForegroundColor Yellow
+    
+    # Get device compliance states for this policy
+    $DeviceStates = Get-MgDeviceManagementDeviceCompliancePolicyDeviceStatus -DeviceCompliancePolicyId $Policy.Id
+    
+    $StatusSummary = $DeviceStates | Group-Object Status | ForEach-Object {
+        [PSCustomObject]@{
+            Status = $_.Name
+            Count = $_.Count
+            Percentage = "{0:P2}" -f ($_.Count / $DeviceStates.Count)
+        }
+    }
+    
+    $StatusSummary | Format-Table -AutoSize
+}
+
+# Export non-compliant devices to CSV
+$NonCompliantDevices = @()
+foreach ($Policy in $CompliancePolicies) {
+    $PolicyDevices = Get-MgDeviceManagementDeviceCompliancePolicyDeviceStatus -DeviceCompliancePolicyId $Policy.Id
+    
+    $PolicyNonCompliant = $PolicyDevices | Where-Object { $_.Status -eq "nonCompliant" } | ForEach-Object {
+        [PSCustomObject]@{
+            PolicyName = $Policy.DisplayName
+            DeviceName = $_.DeviceDisplayName
+            UserName = $_.UserName
+            Platform = $_.Platform
+            LastReportedDateTime = $_.LastReportedDateTime
+            ComplianceGracePeriodExpirationDateTime = $_.ComplianceGracePeriodExpirationDateTime
+        }
+    }
+    
+    $NonCompliantDevices += $PolicyNonCompliant
+}
+
+# Export results
+$NonCompliantDevices | Export-Csv -Path ".\NonCompliantDevices_$(Get-Date -Format 'yyyyMMdd_HHmmss').csv" -NoTypeInformation
+Write-Host "✓ Non-compliant devices exported to CSV" -ForegroundColor Green</code></pre>
+      </div>
+
+      <h3>Updating Existing Policies</h3>
+      <p>Modify existing compliance policies to update security requirements:</p>
+      
+      <div class="code-container">
+        <div class="code-header">
+          <span class="code-language">PowerShell</span>
+          <button class="copy-btn" onclick="copyCode(this)">
+            <i data-feather="copy" class="w-4 h-4"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+        <pre><code class="language-powershell"># Function to update compliance policy settings
+function Update-CompliancePolicy {
+    param(
+        [Parameter(Mandatory)]
+        [string]$PolicyId,
+        
+        [Parameter(Mandatory)]
+        [hashtable]$UpdatedSettings
+    )
+    
+    try {
+        # Get current policy
+        $CurrentPolicy = Get-MgDeviceManagementDeviceCompliancePolicy -DeviceCompliancePolicyId $PolicyId
+        Write-Host "Updating policy: $($CurrentPolicy.DisplayName)" -ForegroundColor Yellow
+        
+        # Update the policy
+        Update-MgDeviceManagementDeviceCompliancePolicy -DeviceCompliancePolicyId $PolicyId -BodyParameter $UpdatedSettings
+        Write-Host "✓ Successfully updated policy" -ForegroundColor Green
+        
+    } catch {
+        Write-Error "❌ Failed to update policy: $($_.Exception.Message)"
+    }
+}
+
+# Example: Update password requirements for all Windows policies
+$WindowsPolicies = Get-MgDeviceManagementDeviceCompliancePolicy | Where-Object { $_."@odata.type" -eq "#microsoft.graph.windows10CompliancePolicy" }
+
+$NewPasswordSettings = @{
+    passwordMinimumLength = 10
+    passwordExpirationDays = 60
+    passwordPreviousPasswordBlockCount = 10
+    passwordRequiredType = "alphanumeric"
+}
+
+foreach ($Policy in $WindowsPolicies) {
+    Update-CompliancePolicy -PolicyId $Policy.Id -UpdatedSettings $NewPasswordSettings
+    Start-Sleep -Seconds 2  # Rate limiting
+}</code></pre>
+      </div>
+
+      <h3>Best Practices & Security Considerations</h3>
+      <ul>
+        <li>Always test compliance policies on a small group before broad deployment</li>
+        <li>Use grace periods to allow users time to remediate compliance issues</li>
+        <li>Regularly review and update minimum OS version requirements</li>
+        <li>Monitor compliance reports and address non-compliant devices promptly</li>
+        <li>Document policy changes and maintain an audit trail</li>
+        <li>Consider using Conditional Access policies alongside compliance policies</li>
+        <li>Implement device trust policies for enhanced security</li>
+        <li>Regular backup of compliance policy configurations</li>
+      </ul>
+
+      <div class="bg-blue-900/30 border border-blue-600/50 rounded-lg p-4 mt-6">
+        <div class="flex items-start gap-3">
+          <i data-feather="info" class="w-5 h-5 text-blue-400 mt-0.5"></i>
+          <div>
+            <h4 class="text-blue-200 font-semibold mb-1">Pro Tip</h4>
+            <p class="text-blue-100 text-sm">Use Intune's built-in compliance reports and Microsoft Graph APIs to create automated compliance monitoring dashboards and alerting systems for proactive device management.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Navigation -->
+    <div class="mt-12 flex justify-between items-center bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+      <a href="../index.html" class="flex items-center gap-2 text-purple-200 hover:text-white transition-colors">
+        <i data-feather="arrow-left" class="w-4 h-4"></i>
+        <span>Back to Intune Posts</span>
+      </a>
+      <a href="../../../index.html" class="flex items-center gap-2 text-purple-200 hover:text-white transition-colors">
+        <span>View All Posts</span>
+        <i data-feather="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center p-8 text-purple-100/70 border-t border-white/10 mt-12">
+    <p>© 2025 Sam Adhikari • Cloud Solutions Specialist</p>
+  </footer>
+
+  <script>
+    // Initialize Feather icons
+    feather.replace();
+
+    // Copy code functionality
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-container').querySelector('code');
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i data-feather="check" class="w-4 h-4"></i><span>Copied!</span>';
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.classList.remove('copied');
+          feather.replace();
+        }, 2000);
+      });
+    }
+
+    // Enhanced code highlighting
+    Prism.highlightAll();
+  </script>
+</body>
+</html>
