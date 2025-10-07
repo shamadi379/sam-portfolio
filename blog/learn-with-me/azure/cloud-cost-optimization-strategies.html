@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Cost Optimization: 5 Strategies for Immediate ROI | Sam in Cloud</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        .hero-bg { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .copy-btn {
+            position: absolute; top: 10px; right: 10px; background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2); color: white; padding: 8px 12px;
+            border-radius: 6px; cursor: pointer; font-size: 12px; transition: all 0.2s;
+        }
+        .copy-btn:hover { background: rgba(255, 255, 255, 0.2); }
+        .code-container { position: relative; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-lg fixed w-full z-50 shadow-lg border-b border-gray-200/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="../../../index.html" class="text-xl font-bold text-gray-800 tracking-tight">Sam in Cloud</a>
+                <div class="flex items-center space-x-6">
+                    <a href="../../index.html" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium">Blog</a>
+                    <a href="../../../index.html#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg pt-24 pb-12">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <i data-feather="dollar-sign" class="w-10 h-10 text-white"></i>
+                <h1 class="text-3xl md:text-4xl font-bold text-white">Cloud Cost Optimization</h1>
+            </div>
+            <p class="text-lg text-green-100 mb-6">5 proven strategies to reduce your cloud spend by 30-50%</p>
+            <div class="flex items-center justify-center gap-4 text-green-200 text-sm">
+                <span class="flex items-center gap-1"><i data-feather="calendar" class="w-4 h-4"></i>Oct 7, 2025</span>
+                <span class="flex items-center gap-1"><i data-feather="clock" class="w-4 h-4"></i>6 min read</span>
+                <span class="flex items-center gap-1"><i data-feather="trending-down" class="w-4 h-4"></i>30-50% savings</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <article class="max-w-3xl mx-auto px-6 py-8">
+        <!-- Introduction -->
+        <div class="bg-white rounded-lg p-6 shadow-lg mb-8">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" alt="Cloud Cost Analytics" class="w-full h-48 object-cover rounded-lg mb-4">
+            <p class="text-gray-700 leading-relaxed">
+                Cloud costs can spiral quickly without proper governance. These 5 strategies will help you optimize spending while maintaining performance and reliability. Most organizations see 30-50% savings within 90 days.
+            </p>
+        </div>
+
+        <!-- Strategy 1: Right-sizing -->
+        <section class="bg-white rounded-lg p-6 shadow-lg mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</span>
+                Right-size Virtual Machines
+            </h2>
+            
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="VM Right-sizing" class="w-full h-32 object-cover rounded-lg mb-4">
+            
+            <p class="text-gray-700 mb-4">Most VMs are oversized by 40-60%. Use performance data to right-size your instances and save immediately.</p>
+            
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyToClipboard('rightsizing-azure')">
+                    <i data-feather="copy" class="w-3 h-3 inline mr-1"></i>Copy
+                </button>
+                <pre id="rightsizing-azure"><code class="language-powershell"># Azure VM rightsizing analysis
+$subscriptionId = "your-subscription-id"
+$resourceGroup = "your-rg"
+
+# Get VM utilization data (last 30 days)
+$vms = Get-AzVM -ResourceGroupName $resourceGroup
+
+foreach ($vm in $vms) {
+    # Get CPU metrics
+    $cpuMetrics = Get-AzMetric -ResourceId $vm.Id -MetricName "Percentage CPU" `
+        -StartTime (Get-Date).AddDays(-30) -TimeGrain 01:00:00 -Statistic Average
+    
+    $avgCpu = ($cpuMetrics.Data.Average | Measure-Object -Average).Average
+    
+    # Get memory metrics (requires VM insights)
+    $memMetrics = Get-AzMetric -ResourceId $vm.Id -MetricName "Available Memory Bytes" `
+        -StartTime (Get-Date).AddDays(-30) -TimeGrain 01:00:00 -Statistic Average
+    
+    Write-Output "VM: $($vm.Name)"
+    Write-Output "  Current Size: $($vm.HardwareProfile.VmSize)"
+    Write-Output "  Avg CPU: $([math]::Round($avgCpu, 2))%"
+    
+    # Recommend downsizing if CPU < 20%
+    if ($avgCpu -lt 20) {
+        Write-Output "  💡 RECOMMENDATION: Consider downsizing to save ~30%" -ForegroundColor Yellow
+    }
+}
+
+# Get cost savings estimate
+Get-AzConsumptionUsageDetail | Where-Object {$_.InstanceName -like "*VM*"} | 
+    Group-Object InstanceName | Select-Object Name, @{N="MonthlyCost";E={($_.Group.PretaxCost | Measure-Object -Sum).Sum}}</code></pre>
+            </div>
+            
+            <div class="bg-green-50 border-l-4 border-green-400 p-4 mt-4">
+                <p class="text-green-700"><strong>💰 Impact:</strong> Right-sizing typically saves 20-40% on compute costs with zero performance impact!</p>
+            </div>
+        </section>
+
+        <!-- Strategy 2: Reserved Instances -->
+        <section class="bg-white rounded-lg p-6 shadow-lg mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</span>
+                Purchase Reserved Instances
+            </h2>
+            
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Reserved Instances" class="w-full h-32 object-cover rounded-lg mb-4">
+            
+            <p class="text-gray-700 mb-4">For predictable workloads running 24/7, reserved instances offer up to 72% savings compared to pay-as-you-go pricing.</p>
+            
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-gray-800 mb-2">🎯 Best Candidates for RIs</h3>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Domain controllers</li>
+                        <li>• Database servers</li>
+                        <li>• Production web servers</li>
+                        <li>• Always-on development VMs</li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-gray-800 mb-2">💡 RI Recommendations</h3>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Start with 1-year terms</li>
+                        <li>• Focus on stable VM sizes</li>
+                        <li>• Use shared scope when possible</li>
+                        <li>• Monitor usage regularly</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyToClipboard('reserved-analysis')">
+                    <i data-feather="copy" class="w-3 h-3 inline mr-1"></i>Copy
+                </button>
+                <pre id="reserved-analysis"><code class="language-powershell"># Analyze workloads for Reserved Instance opportunities
+# Get VM usage patterns over last 90 days
+
+$vms = Get-AzVM
+$riCandidates = @()
+
+foreach ($vm in $vms) {
+    # Check if VM has been running consistently
+    $powerStates = Get-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name -Status
+    
+    if ($powerStates.Statuses[-1].Code -eq "PowerState/running") {
+        # Get historical usage
+        $usageData = Get-AzMetric -ResourceId $vm.Id -MetricName "Percentage CPU" `
+            -StartTime (Get-Date).AddDays(-90) -TimeGrain 01:00:00
+        
+        $uptime = ($usageData.Data | Where-Object {$_.Average -gt 0}).Count
+        $totalHours = ($usageData.Data).Count
+        $uptimePercentage = ($uptime / $totalHours) * 100
+        
+        if ($uptimePercentage -gt 80) {
+            $riCandidates += [PSCustomObject]@{
+                VMName = $vm.Name
+                Size = $vm.HardwareProfile.VmSize
+                Region = $vm.Location
+                UptimePercentage = [math]::Round($uptimePercentage, 2)
+                EstimatedMonthlySavings = "Calculate based on current spend"
+            }
+        }
+    }
+}
+
+$riCandidates | Format-Table -AutoSize
+Write-Output "Found $($riCandidates.Count) VMs suitable for Reserved Instances"</code></pre>
+            </div>
+        </section>
+
+        <!-- Strategy 3: Auto-scaling -->
+        <section class="bg-white rounded-lg p-6 shadow-lg mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+                Implement Auto-scaling
+            </h2>
+            
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Auto-scaling Dashboard" class="w-full h-32 object-cover rounded-lg mb-4">
+            
+            <p class="text-gray-700 mb-4">Auto-scaling automatically adjusts resources based on demand, ensuring you only pay for what you need.</p>
+            
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyToClipboard('autoscaling-setup')">
+                    <i data-feather="copy" class="w-3 h-3 inline mr-1"></i>Copy
+                </button>
+                <pre id="autoscaling-setup"><code class="language-powershell"># Configure VM Scale Set with auto-scaling
+$resourceGroup = "prod-rg"
+$scaleSetName = "web-vmss"
+
+# Create auto-scale profile
+$profile = New-AzAutoscaleProfile -Name "WebTier-Profile" `
+    -DefaultCapacity 2 -MaximumCapacity 10 -MinimumCapacity 1
+
+# Scale out rule (CPU > 70%)
+$scaleOutRule = New-AzAutoscaleRule -Name "ScaleOut" `
+    -MetricName "Percentage CPU" -MetricResourceId "/subscriptions/.../resourceGroups/$resourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/$scaleSetName" `
+    -Threshold 70 -TimeAggregation Average -TimeGrain 00:01:00 -TimeWindow 00:05:00 `
+    -ScaleActionDirection Increase -ScaleActionType ChangeCount -ScaleActionValue 1 `
+    -ScaleActionCooldown 00:05:00
+
+# Scale in rule (CPU < 30%)
+$scaleInRule = New-AzAutoscaleRule -Name "ScaleIn" `
+    -MetricName "Percentage CPU" -MetricResourceId "/subscriptions/.../resourceGroups/$resourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/$scaleSetName" `
+    -Threshold 30 -TimeAggregation Average -TimeGrain 00:01:00 -TimeWindow 00:10:00 `
+    -ScaleActionDirection Decrease -ScaleActionType ChangeCount -ScaleActionValue 1 `
+    -ScaleActionCooldown 00:10:00
+
+# Add rules to profile
+$profile.Rules.Add($scaleOutRule)
+$profile.Rules.Add($scaleInRule)
+
+# Create autoscale setting
+New-AzAutoscaleSetting -Name "WebTier-AutoScale" -ResourceGroupName $resourceGroup `
+    -TargetResourceId "/subscriptions/.../resourceGroups/$resourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/$scaleSetName" `
+    -Profile $profile -Enabled $true</code></pre>
+            </div>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-4">
+                <p class="text-yellow-700"><strong>⏰ Best Practice:</strong> Set longer cool-down periods for scale-in to avoid thrashing and unnecessary costs!</p>
+            </div>
+        </section>
+
+        <!-- Strategy 4: Unused Resources -->
+        <section class="bg-white rounded-lg p-6 shadow-lg mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">4</span>
+                Clean Up Unused Resources
+            </h2>
+            
+            <img src="https://images.unsplash.com/photo-1558618047-3c8c76c7d0fc?auto=format&fit=crop&w=800&q=80" alt="Resource Cleanup" class="w-full h-32 object-cover rounded-lg mb-4">
+            
+            <p class="text-gray-700 mb-4">Identify and remove orphaned resources that continue to generate costs without providing value.</p>
+            
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyToClipboard('cleanup-script')">
+                    <i data-feather="copy" class="w-3 h-3 inline mr-1"></i>Copy
+                </button>
+                <pre id="cleanup-script"><code class="language-powershell"># Comprehensive cost cleanup script
+$subscriptionId = "your-subscription-id"
+$report = @()
+
+# Find unattached disks
+$unattachedDisks = Get-AzDisk | Where-Object {$_.DiskState -eq "Unattached"}
+foreach ($disk in $unattachedDisks) {
+    $cost = ($disk.DiskSizeGB * 0.05) # Rough estimate: $0.05/GB/month
+    $report += [PSCustomObject]@{
+        Resource = "Disk: $($disk.Name)"
+        Type = "Unattached Disk"
+        EstimatedMonthlyCost = "`$$cost"
+        Action = "Delete if not needed"
+    }
+}
+
+# Find unused NICs
+$unusedNICs = Get-AzNetworkInterface | Where-Object {$_.VirtualMachine -eq $null}
+foreach ($nic in $unusedNICs) {
+    $report += [PSCustomObject]@{
+        Resource = "NIC: $($nic.Name)"
+        Type = "Unused Network Interface"
+        EstimatedMonthlyCost = "`$5"
+        Action = "Delete if orphaned"
+    }
+}
+
+# Find stopped VMs (still charged for storage)
+$stoppedVMs = Get-AzVM -Status | Where-Object {$_.PowerState -eq "VM deallocated"}
+foreach ($vm in $stoppedVMs) {
+    $report += [PSCustomObject]@{
+        Resource = "VM: $($vm.Name)"
+        Type = "Deallocated VM"
+        EstimatedMonthlyCost = "Storage costs still apply"
+        Action = "Delete if no longer needed"
+    }
+}
+
+# Find empty resource groups
+$emptyRGs = Get-AzResourceGroup | Where-Object {
+    (Get-AzResource -ResourceGroupName $_.ResourceGroupName).Count -eq 0
+}
+foreach ($rg in $emptyRGs) {
+    $report += [PSCustomObject]@{
+        Resource = "RG: $($rg.ResourceGroupName)"
+        Type = "Empty Resource Group"
+        EstimatedMonthlyCost = "`$0 (but cleanup recommended)"
+        Action = "Delete if not needed"
+    }
+}
+
+$report | Format-Table -AutoSize
+$totalDisks = $unattachedDisks.Count
+$totalNICs = $unusedNICs.Count
+Write-Output "`nSummary: Found $totalDisks unused disks and $totalNICs unused NICs"</code></pre>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-4 mt-4">
+                <div class="bg-red-50 p-3 rounded-lg text-center">
+                    <h4 class="font-semibold text-red-800">🗑️ High Impact</h4>
+                    <p class="text-sm text-red-700">Unused VMs & Storage</p>
+                </div>
+                <div class="bg-orange-50 p-3 rounded-lg text-center">
+                    <h4 class="font-semibold text-orange-800">⚠️ Medium Impact</h4>
+                    <p class="text-sm text-orange-700">Orphaned NICs & IPs</p>
+                </div>
+                <div class="bg-yellow-50 p-3 rounded-lg text-center">
+                    <h4 class="font-semibold text-yellow-800">📊 Low Impact</h4>
+                    <p class="text-sm text-yellow-700">Empty Resource Groups</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategy 5: Storage Optimization -->
+        <section class="bg-white rounded-lg p-6 shadow-lg mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">5</span>
+                Optimize Storage Costs
+            </h2>
+            
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" alt="Storage Optimization" class="w-full h-32 object-cover rounded-lg mb-4">
+            
+            <p class="text-gray-700 mb-4">Storage often represents 30-40% of cloud costs. Right-tier your storage and implement lifecycle policies for massive savings.</p>
+            
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyToClipboard('storage-optimization')">
+                    <i data-feather="copy" class="w-3 h-3 inline mr-1"></i>Copy
+                </button>
+                <pre id="storage-optimization"><code class="language-powershell"># Storage cost optimization
+$storageAccounts = Get-AzStorageAccount
+
+foreach ($account in $storageAccounts) {
+    $ctx = $account.Context
+    
+    # Analyze blob storage usage
+    $containers = Get-AzStorageContainer -Context $ctx
+    
+    foreach ($container in $containers) {
+        $blobs = Get-AzStorageBlob -Container $container.Name -Context $ctx
+        
+        # Find blobs older than 90 days
+        $oldBlobs = $blobs | Where-Object {$_.LastModified -lt (Get-Date).AddDays(-90)}
+        
+        # Estimate savings by moving to Cool tier
+        $hotStorage = $blobs | Where-Object {$_.Properties.AccessTier -eq "Hot"}
+        $coolSavings = ($hotStorage | Measure-Object -Property Length -Sum).Sum * 0.01 / 1GB
+        
+        Write-Output "Container: $($container.Name)"
+        Write-Output "  Total blobs: $($blobs.Count)"
+        Write-Output "  Old blobs (>90 days): $($oldBlobs.Count)"
+        Write-Output "  Hot tier savings potential: `$$([math]::Round($coolSavings, 2))/month"
+    }
+    
+    # Set lifecycle policy for automatic tiering
+    $rule = @{
+        enabled = $true
+        name = "MoveToCoolgstafter30days"
+        type = "Lifecycle"
+        definition = @{
+            filters = @{
+                blobTypes = @("blockBlob")
+            }
+            actions = @{
+                baseBlob = @{
+                    tierToCool = @{
+                        daysAfterModificationGreaterThan = 30
+                    }
+                    tierToArchive = @{
+                        daysAfterModificationGreaterThan = 90
+                    }
+                }
+            }
+        }
+    }
+    
+    # Apply lifecycle policy
+    Set-AzStorageAccountManagementPolicy -ResourceGroupName $account.ResourceGroupName `
+        -StorageAccountName $account.StorageAccountName -Policy @{rules=@($rule)}
+}</code></pre>
+            </div>
+            
+            <div class="bg-blue-50 p-4 rounded-lg mt-4">
+                <h3 class="font-semibold text-blue-800 mb-2">💾 Storage Tier Comparison</h3>
+                <div class="grid grid-cols-4 gap-2 text-sm">
+                    <div><strong>Tier</strong></div>
+                    <div><strong>Cost/GB</strong></div>
+                    <div><strong>Access Time</strong></div>
+                    <div><strong>Best For</strong></div>
+                    
+                    <div>Hot</div>
+                    <div>$0.020</div>
+                    <div>Immediate</div>
+                    <div>Frequent access</div>
+                    
+                    <div>Cool</div>
+                    <div>$0.010</div>
+                    <div>Immediate</div>
+                    <div>30+ days old</div>
+                    
+                    <div>Archive</div>
+                    <div>$0.002</div>
+                    <div>15+ hours</div>
+                    <div>Long-term backup</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cost Monitoring -->
+        <section class="bg-white rounded-lg p-6 shadow-lg mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <i data-feather="alert-circle" class="w-5 h-5 text-blue-600"></i>
+                Set Up Cost Alerts
+            </h2>
+            
+            <div class="code-container">
+                <button class="copy-btn" onclick="copyToClipboard('cost-alerts')">
+                    <i data-feather="copy" class="w-3 h-3 inline mr-1"></i>Copy
+                </button>
+                <pre id="cost-alerts"><code class="language-powershell"># Create budget alerts for cost monitoring
+$subscriptionId = "your-subscription-id"
+$budgetName = "Monthly-Budget-Alert"
+$budgetAmount = 5000  # Set your monthly budget
+
+# Create budget
+$budget = @{
+    name = $budgetName
+    type = "Microsoft.Consumption/budgets"
+    properties = @{
+        category = "Cost"
+        amount = $budgetAmount
+        timeGrain = "Monthly"
+        timePeriod = @{
+            startDate = (Get-Date -Format "yyyy-MM-01")
+        }
+        notifications = @{
+            "Actual_GreaterThan_80_Percent" = @{
+                enabled = $true
+                operator = "GreaterThan"
+                threshold = 80
+                contactEmails = @("admin@company.com")
+                contactRoles = @("Owner", "Contributor")
+                contactGroups = @()
+            }
+            "Forecast_GreaterThan_100_Percent" = @{
+                enabled = $true
+                operator = "GreaterThan"
+                threshold = 100
+                contactEmails = @("admin@company.com")
+                contactRoles = @("Owner")
+                contactGroups = @()
+            }
+        }
+    }
+}
+
+# Deploy budget using REST API
+$uri = "https://management.azure.com/subscriptions/$subscriptionId/providers/Microsoft.Consumption/budgets/$budgetName" + "?api-version=2019-10-01"
+$headers = @{
+    'Authorization' = "Bearer $((Get-AzAccessToken).Token)"
+    'Content-Type' = 'application/json'
+}
+
+Invoke-RestMethod -Uri $uri -Method PUT -Body ($budget | ConvertTo-Json -Depth 5) -Headers $headers</code></pre>
+            </div>
+        </section>
+
+        <!-- ROI Calculator -->
+        <section class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6 shadow-lg">
+            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <i data-feather="trending-up" class="w-5 h-5 text-green-600"></i>
+                Expected ROI by Strategy
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-3">💰 Cost Savings Potential</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>VM Right-sizing</span>
+                            <span class="font-semibold text-green-600">20-40%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Reserved Instances</span>
+                            <span class="font-semibold text-green-600">30-72%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Auto-scaling</span>
+                            <span class="font-semibold text-green-600">15-30%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Resource Cleanup</span>
+                            <span class="font-semibold text-green-600">5-25%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Storage Optimization</span>
+                            <span class="font-semibold text-green-600">40-60%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-3">⏱️ Implementation Timeline</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span>Week 1: Resource Cleanup</span>
+                            <span class="text-blue-600">Immediate impact</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Week 2: Right-sizing</span>
+                            <span class="text-blue-600">Quick wins</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Week 3: Storage Policies</span>
+                            <span class="text-blue-600">30-day savings</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Week 4: Auto-scaling</span>
+                            <span class="text-blue-600">Ongoing savings</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Month 2: Reserved Instances</span>
+                            <span class="text-blue-600">Long-term savings</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-white rounded-lg">
+                <p class="text-center text-gray-700">
+                    <strong>Total Expected Savings:</strong> 
+                    <span class="text-2xl font-bold text-green-600">30-50%</span> 
+                    of monthly cloud spend within 90 days
+                </p>
+            </div>
+        </section>
+    </article>
+
+    <!-- Call to Action -->
+    <div class="max-w-3xl mx-auto px-6 pb-8">
+        <div class="bg-white rounded-lg p-6 shadow-lg text-center">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Ready to Optimize Your Cloud Costs?</h3>
+            <p class="text-gray-600 mb-4">Let's implement these strategies and reduce your cloud spend significantly.</p>
+            <a href="../../../index.html#contact" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200">
+                <i data-feather="calculator" class="w-4 h-4"></i>
+                Start Saving Now
+            </a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="max-w-3xl mx-auto px-6 pb-8">
+        <div class="flex justify-between items-center bg-white rounded-lg p-4 shadow-lg">
+            <a href="../../index.html" class="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors">
+                <i data-feather="arrow-left" class="w-4 h-4"></i>
+                <span>Back to Blog</span>
+            </a>
+            <a href="../../../index.html" class="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors">
+                <span>Home</span>
+                <i data-feather="home" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+        
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                const btn = element.parentElement.querySelector('.copy-btn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i data-feather="check" class="w-3 h-3 inline mr-1"></i>Copied!';
+                feather.replace();
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    feather.replace();
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

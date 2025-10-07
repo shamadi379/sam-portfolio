@@ -40,5 +40,40 @@
         "url":  "blog/learn-with-me/m365/tenant-security-governance-powershell.html",
         "date":  "2025-10-06",
         "category":  "m365"
+    },
+    {
+        "excerpt":  "Essential Azure security best practices including identity management, network security, and compliance monitoring with practical PowerShell examples.",
+        "title":  "Azure Security Best Practices",
+        "url":  "blog/learn-with-me/azure/azure-security-best-practices.html",
+        "date":  "2025-10-07",
+        "category":  "azure"
+    },
+    {
+        "excerpt":  "Strategic approach to Microsoft 365 migration with detailed planning, execution phases, and post-migration optimization strategies.",
+        "title":  "Microsoft 365 Migration Strategy",
+        "url":  "blog/learn-with-me/m365/microsoft-365-migration-strategy.html",
+        "date":  "2025-10-07",
+        "category":  "m365"
+    },
+    {
+        "excerpt":  "5-step guide to implementing Zero Trust security model with Microsoft Intune, including device compliance and conditional access.",
+        "title":  "Zero Trust Implementation Guide",
+        "url":  "blog/learn-with-me/intune/zero-trust-implementation-guide.html",
+        "date":  "2025-10-07",
+        "category":  "intune"
+    },
+    {
+        "excerpt":  "Step-by-step guide to configure Exchange hybrid deployment with practical PowerShell examples and troubleshooting tips.",
+        "title":  "Exchange Hybrid Setup Guide",
+        "url":  "blog/learn-with-me/exchange/exchange-hybrid-setup-guide.html",
+        "date":  "2025-10-07",
+        "category":  "exchange"
+    },
+    {
+        "excerpt":  "5 proven strategies to reduce your cloud spend by 30-50% including right-sizing, reserved instances, and automated cost optimization.",
+        "title":  "Cloud Cost Optimization Strategies",
+        "url":  "blog/learn-with-me/azure/cloud-cost-optimization-strategies.html",
+        "date":  "2025-10-07",
+        "category":  "azure"
     }
 ]
