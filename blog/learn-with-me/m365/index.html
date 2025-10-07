@@ -3,17 +3,270 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Learn with Me — M365</title>
+  <title>Microsoft 365 - Latest Updates & Best Practices | Sam in Cloud</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .m365-bg {
+      background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+      min-height: 100vh;
+    }
+    
+    .content-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .content-card:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+    
+    .news-item {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid #10b981;
+    }
+    
+    .tip-item {
+      background: rgba(52, 211, 153, 0.1);
+      border-left: 4px solid #34d399;
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-b from-sky-900 via-sky-800 to-indigo-900 text-white min-h-screen">
-  <main class="max-w-3xl mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-4">M365 — Learn with Me</h1>
-    <p class="text-teal-200 mb-6">Microsoft 365 admin tips and short how-tos.</p>
-    <section class="space-y-4">
-      <p class="text-teal-100">No posts yet. Placeholder for M365 category.</p>
+<body class="m365-bg">
+  <!-- Navigation -->
+  <nav class="bg-emerald-800/90 backdrop-blur-lg shadow-lg border-b border-emerald-700/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <a href="../../../index.html" class="text-xl font-bold text-white tracking-tight">Sam in Cloud</a>
+        <div class="flex items-center space-x-6">
+          <a href="../../index.html" class="text-emerald-100 hover:text-white transition-colors duration-200 font-medium">Blog</a>
+          <a href="../../../index.html#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto p-6 mt-8">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="flex items-center justify-center gap-4 mb-6">
+        <div class="p-4 bg-emerald-600 rounded-xl">
+          <i data-feather="layers" class="w-12 h-12 text-white"></i>
+        </div>
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Microsoft 365</h1>
+          <p class="text-xl text-emerald-100">Latest Updates, Security Best Practices & Admin Tips</p>
+        </div>
+      </div>
+      <div class="w-24 h-1 bg-emerald-400 mx-auto rounded-full"></div>
+    </div>
+
+    <!-- Latest M365 News & Updates -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+        <i data-feather="trending-up" class="w-8 h-8 text-emerald-400"></i>
+        Latest Microsoft 365 Updates (October 2025)
+      </h2>
+      
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="content-card rounded-xl p-6 news-item">
+          <div class="flex items-start gap-4">
+            <i data-feather="shield-check" class="w-6 h-6 text-emerald-400 mt-1"></i>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-2">Enhanced Zero Trust Architecture</h3>
+              <p class="text-emerald-100 text-sm mb-3">Microsoft announces new Conditional Access improvements with real-time risk assessment and adaptive authentication policies.</p>
+              <span class="text-xs text-emerald-300 bg-emerald-900/30 px-2 py-1 rounded">Security</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 news-item">
+          <div class="flex items-start gap-4">
+            <i data-feather="cpu" class="w-6 h-6 text-emerald-400 mt-1"></i>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-2">Microsoft 365 Copilot Enhancements</h3>
+              <p class="text-emerald-100 text-sm mb-3">New AI-powered features in Teams, Outlook, and SharePoint with improved natural language processing and context awareness.</p>
+              <span class="text-xs text-emerald-300 bg-emerald-900/30 px-2 py-1 rounded">AI & Productivity</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 news-item">
+          <div class="flex items-start gap-4">
+            <i data-feather="database" class="w-6 h-6 text-emerald-400 mt-1"></i>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-2">Data Loss Prevention 2.0</h3>
+              <p class="text-emerald-100 text-sm mb-3">Advanced DLP capabilities with machine learning-based content classification and real-time policy enforcement across all workloads.</p>
+              <span class="text-xs text-emerald-300 bg-emerald-900/30 px-2 py-1 rounded">Data Protection</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 news-item">
+          <div class="flex items-start gap-4">
+            <i data-feather="globe" class="w-6 h-6 text-emerald-400 mt-1"></i>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-2">Multi-Geo Expansion</h3>
+              <p class="text-emerald-100 text-sm mb-3">New data residency options with expanded geographical coverage for compliance with local regulations and improved performance.</p>
+              <span class="text-xs text-emerald-300 bg-emerald-900/30 px-2 py-1 rounded">Compliance</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- Best Practices & Tips -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+        <i data-feather="lightbulb" class="w-8 h-8 text-emerald-400"></i>
+        Best Practices & Pro Tips
+      </h2>
+      
+      <div class="space-y-4">
+        <div class="content-card rounded-xl p-6 tip-item">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="users" class="w-5 h-5 text-emerald-400"></i>
+            User Lifecycle Management
+          </h3>
+          <p class="text-emerald-100 text-sm mb-3">Implement automated user provisioning and deprovisioning workflows using Microsoft Graph API and Azure Automation to ensure consistent security and compliance.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs text-emerald-200 bg-emerald-800/30 px-2 py-1 rounded">Automation</span>
+            <span class="text-xs text-emerald-200 bg-emerald-800/30 px-2 py-1 rounded">Security</span>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 tip-item">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="eye" class="w-5 h-5 text-emerald-400"></i>
+            Advanced Threat Protection
+          </h3>
+          <p class="text-emerald-100 text-sm mb-3">Configure Microsoft Defender for Office 365 with custom policies for phishing protection, safe attachments, and advanced threat hunting capabilities.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs text-emerald-200 bg-emerald-800/30 px-2 py-1 rounded">Security</span>
+            <span class="text-xs text-emerald-200 bg-emerald-800/30 px-2 py-1 rounded">Email Protection</span>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 tip-item">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="bar-chart-3" class="w-5 h-5 text-emerald-400"></i>
+            Performance Optimization
+          </h3>
+          <p class="text-emerald-100 text-sm mb-3">Leverage Microsoft 365 usage analytics and Microsoft Viva Insights to optimize license utilization and improve user productivity across your organization.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs text-emerald-200 bg-emerald-800/30 px-2 py-1 rounded">Analytics</span>
+            <span class="text-xs text-emerald-200 bg-emerald-800/30 px-2 py-1 rounded">Optimization</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Useful Resources -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+        <i data-feather="bookmark" class="w-8 h-8 text-emerald-400"></i>
+        Essential Resources
+      </h2>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="content-card rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-3">PowerShell Modules</h3>
+          <ul class="space-y-2 text-emerald-100 text-sm">
+            <li>• Microsoft.Graph (Latest)</li>
+            <li>• ExchangeOnlineManagement</li>
+            <li>• Microsoft.Online.SharePoint.PowerShell</li>
+            <li>• MicrosoftTeams</li>
+            <li>• MSOnline (Legacy)</li>
+          </ul>
+        </div>
+        
+        <div class="content-card rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-3">Admin Centers</h3>
+          <ul class="space-y-2 text-emerald-100 text-sm">
+            <li>• Microsoft 365 Admin Center</li>
+            <li>• Security & Compliance</li>
+            <li>• Azure Active Directory</li>
+            <li>• Teams Admin Center</li>
+            <li>• SharePoint Admin Center</li>
+          </ul>
+        </div>
+        
+        <div class="content-card rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-3">Monitoring Tools</h3>
+          <ul class="space-y-2 text-emerald-100 text-sm">
+            <li>• Microsoft 365 Service Health</li>
+            <li>• Audit Log Search</li>
+            <li>• Security & Compliance Reports</li>
+            <li>• Usage Analytics</li>
+            <li>• Microsoft Secure Score</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+        <i data-feather="file-text" class="w-8 h-8 text-emerald-400"></i>
+        Microsoft 365 Tutorials
+      </h2>
+      
+      <div class="content-card rounded-xl p-8">
+        <div class="flex items-start gap-6">
+          <div class="p-4 bg-emerald-600 rounded-lg">
+            <i data-feather="shield" class="w-8 h-8 text-white"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-white mb-3">Microsoft 365 Tenant Security and Governance with PowerShell</h3>
+            <p class="text-emerald-100 mb-4">Implement comprehensive security policies, governance frameworks, and automated compliance monitoring for your Microsoft 365 tenant using PowerShell.</p>
+            <div class="flex items-center gap-4 text-sm text-emerald-200 mb-4">
+              <span class="flex items-center gap-1">
+                <i data-feather="clock" class="w-4 h-4"></i>
+                12 min read
+              </span>
+              <span class="flex items-center gap-1">
+                <i data-feather="calendar" class="w-4 h-4"></i>
+                October 2025
+              </span>
+            </div>
+            <a href="tenant-security-governance-powershell.html" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200">
+              Read Tutorial
+              <i data-feather="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+      <a href="../../index.html" class="flex items-center gap-2 text-emerald-200 hover:text-white transition-colors">
+        <i data-feather="arrow-left" class="w-4 h-4"></i>
+        <span>Back to All Posts</span>
+      </a>
+      <a href="../../../index.html" class="flex items-center gap-2 text-emerald-200 hover:text-white transition-colors">
+        <span>Home</span>
+        <i data-feather="home" class="w-4 h-4"></i>
+      </a>
+    </div>
   </main>
-  <footer class="text-center p-6 text-sm text-white/70">© 2025 Sam Adhikari</footer>
+
+  <!-- Footer -->
+  <footer class="text-center p-8 text-emerald-100/70 border-t border-white/10 mt-12">
+    <p>© 2025 Sam Adhikari • Cloud Solutions Specialist</p>
+  </footer>
+
+  <script>
+    feather.replace();
+  </script>
 </body>
 </html>

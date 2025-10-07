@@ -3,6 +3,285 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Azure Cloud - Latest Updates & Best Practices | Sam in Cloud</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .azure-bg {
+      background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #38bdf8 100%);
+      min-height: 100vh;
+    }
+    
+    .content-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .content-card:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+    
+    .news-item {
+      background: rgba(14, 165, 233, 0.1);
+      border-left: 4px solid #0ea5e9;
+    }
+    
+    .tip-item {
+      background: rgba(56, 189, 248, 0.1);
+      border-left: 4px solid #38bdf8;
+    }
+  </style>
+</head>
+<body class="azure-bg">
+  <!-- Navigation -->
+  <nav class="bg-blue-800/90 backdrop-blur-lg shadow-lg border-b border-blue-700/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <a href="../../../index.html" class="text-xl font-bold text-white tracking-tight">Sam in Cloud</a>
+        <div class="flex items-center space-x-6">
+          <a href="../../index.html" class="text-blue-100 hover:text-white transition-colors duration-200 font-medium">Blog</a>
+          <a href="../../../index.html#contact" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto p-6 mt-8">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="flex items-center justify-center gap-4 mb-6">
+        <div class="p-4 bg-blue-600 rounded-xl">
+          <i data-feather="cloud" class="w-12 h-12 text-white"></i>
+        </div>
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Microsoft Azure</h1>
+          <p class="text-xl text-blue-100">Latest Cloud Updates, Infrastructure & Security Best Practices</p>
+        </div>
+      </div>
+      <div class="w-24 h-1 bg-blue-400 mx-auto rounded-full"></div>
+    </div>
+
+    <!-- Latest Azure News & Updates -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+        <i data-feather="trending-up" class="w-8 h-8 text-blue-400"></i>
+        Latest Azure Updates (October 2025)
+      </h2>
+      
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="content-card rounded-xl p-6 news-item">
+          <div class="flex items-start gap-4">
+            <i data-feather="zap" class="w-6 h-6 text-blue-400 mt-1"></i>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-2">Azure AI Studio General Availability</h3>
+              <p class="text-blue-100 text-sm mb-3">New unified platform for building, training, and deploying AI models with enhanced MLOps capabilities and integrated responsible AI governance.</p>
+              <span class="text-xs text-blue-300 bg-blue-900/30 px-2 py-1 rounded">AI & Machine Learning</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 news-item">
+          <div class="flex items-start gap-4">
+            <i data-feather="server" class="w-6 h-6 text-blue-400 mt-1"></i>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-2">Azure Container Apps Enhancements</h3>
+              <p class="text-blue-100 text-sm mb-3">New microservices capabilities with improved scaling, networking, and integrated observability for containerized applications.</p>
+              <span class="text-xs text-blue-300 bg-blue-900/30 px-2 py-1 rounded">Containers</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 news-item">
+          <div class="flex items-start gap-4">
+            <i data-feather="shield" class="w-6 h-6 text-blue-400 mt-1"></i>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-2">Azure Confidential Computing Updates</h3>
+              <p class="text-blue-100 text-sm mb-3">Enhanced confidential VMs with Intel TDX and AMD SEV-SNP support for protecting data in use with hardware-based encryption.</p>
+              <span class="text-xs text-blue-300 bg-blue-900/30 px-2 py-1 rounded">Security</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 news-item">
+          <div class="flex items-start gap-4">
+            <i data-feather="database" class="w-6 h-6 text-blue-400 mt-1"></i>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-2">Azure Cosmos DB Vector Search</h3>
+              <p class="text-blue-100 text-sm mb-3">Native vector search capabilities for AI applications with support for semantic search and hybrid queries across all APIs.</p>
+              <span class="text-xs text-blue-300 bg-blue-900/30 px-2 py-1 rounded">Database & AI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Practices & Tips -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+        <i data-feather="lightbulb" class="w-8 h-8 text-blue-400"></i>
+        Best Practices & Pro Tips
+      </h2>
+      
+      <div class="space-y-4">
+        <div class="content-card rounded-xl p-6 tip-item">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="dollar-sign" class="w-5 h-5 text-blue-400"></i>
+            Cost Optimization Strategies
+          </h3>
+          <p class="text-blue-100 text-sm mb-3">Implement Azure Cost Management with budget alerts, reserved instances, and Azure Hybrid Benefit to optimize spending. Use Azure Advisor recommendations for rightsizing resources.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs text-blue-200 bg-blue-800/30 px-2 py-1 rounded">Cost Management</span>
+            <span class="text-xs text-blue-200 bg-blue-800/30 px-2 py-1 rounded">Optimization</span>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 tip-item">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="lock" class="w-5 h-5 text-blue-400"></i>
+            Zero Trust Security Architecture
+          </h3>
+          <p class="text-blue-100 text-sm mb-3">Implement comprehensive Zero Trust with Azure AD Conditional Access, Privileged Identity Management (PIM), and continuous security monitoring across all Azure resources.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs text-blue-200 bg-blue-800/30 px-2 py-1 rounded">Security</span>
+            <span class="text-xs text-blue-200 bg-blue-800/30 px-2 py-1 rounded">Identity</span>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 tip-item">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="git-branch" class="w-5 h-5 text-blue-400"></i>
+            Infrastructure as Code (IaC)
+          </h3>
+          <p class="text-blue-100 text-sm mb-3">Use Azure Resource Manager (ARM) templates, Bicep, or Terraform for consistent, repeatable deployments. Implement GitOps workflows with Azure DevOps or GitHub Actions.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs text-blue-200 bg-blue-800/30 px-2 py-1 rounded">DevOps</span>
+            <span class="text-xs text-blue-200 bg-blue-800/30 px-2 py-1 rounded">Automation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Azure Services -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+        <i data-feather="grid" class="w-8 h-8 text-blue-400"></i>
+        Essential Azure Services
+      </h2>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="content-card rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="server" class="w-5 h-5 text-blue-400"></i>
+            Compute Services
+          </h3>
+          <ul class="space-y-2 text-blue-100 text-sm">
+            <li>• Azure Virtual Machines</li>
+            <li>• Azure Container Instances</li>
+            <li>• Azure Kubernetes Service</li>
+            <li>• Azure Functions</li>
+            <li>• Azure App Service</li>
+          </ul>
+        </div>
+        
+        <div class="content-card rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="hard-drive" class="w-5 h-5 text-blue-400"></i>
+            Storage & Data
+          </h3>
+          <ul class="space-y-2 text-blue-100 text-sm">
+            <li>• Azure Blob Storage</li>
+            <li>• Azure SQL Database</li>
+            <li>• Azure Cosmos DB</li>
+            <li>• Azure Data Factory</li>
+            <li>• Azure Synapse Analytics</li>
+          </ul>
+        </div>
+        
+        <div class="content-card rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="wifi" class="w-5 h-5 text-blue-400"></i>
+            Networking & Security
+          </h3>
+          <ul class="space-y-2 text-blue-100 text-sm">
+            <li>• Azure Virtual Network</li>
+            <li>• Azure Load Balancer</li>
+            <li>• Azure VPN Gateway</li>
+            <li>• Azure Firewall</li>
+            <li>• Azure Front Door</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+        <i data-feather="file-text" class="w-8 h-8 text-blue-400"></i>
+        Azure Tutorials
+      </h2>
+      
+      <div class="content-card rounded-xl p-8">
+        <div class="flex items-start gap-6">
+          <div class="p-4 bg-blue-600 rounded-lg">
+            <i data-feather="users" class="w-8 h-8 text-white"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-white mb-3">Azure RBAC and Resource Management with PowerShell</h3>
+            <p class="text-blue-100 mb-4">Advanced PowerShell automation for Azure RBAC assignments, custom roles, and resource management at scale with comprehensive security auditing.</p>
+            <div class="flex items-center gap-4 text-sm text-blue-200 mb-4">
+              <span class="flex items-center gap-1">
+                <i data-feather="clock" class="w-4 h-4"></i>
+                15 min read
+              </span>
+              <span class="flex items-center gap-1">
+                <i data-feather="calendar" class="w-4 h-4"></i>
+                October 2025
+              </span>
+            </div>
+            <a href="rbac-resource-management-powershell.html" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200">
+              Read Tutorial
+              <i data-feather="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+      <a href="../../index.html" class="flex items-center gap-2 text-blue-200 hover:text-white transition-colors">
+        <i data-feather="arrow-left" class="w-4 h-4"></i>
+        <span>Back to All Posts</span>
+      </a>
+      <a href="../../../index.html" class="flex items-center gap-2 text-blue-200 hover:text-white transition-colors">
+        <span>Home</span>
+        <i data-feather="home" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center p-8 text-blue-100/70 border-t border-white/10 mt-12">
+    <p>© 2025 Sam Adhikari • Cloud Solutions Specialist</p>
+  </footer>
+
+  <script>
+    feather.replace();
+  </script>
+</body>
+</html>tml lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Learn with Me — Azure</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>

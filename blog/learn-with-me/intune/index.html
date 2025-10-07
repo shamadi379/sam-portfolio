@@ -3,17 +3,333 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Learn with Me — Intune</title>
+  <title>Microsoft Intune - Latest Updates & Best Practices | Sam in Cloud</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .intune-bg {
+      background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #a78bfa 100%);
+      min-height: 100vh;
+    }
+    
+    .content-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .content-card:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+    
+    .news-item {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid #8b5cf6;
+    }
+    
+    .tip-item {
+      background: rgba(167, 139, 250, 0.1);
+      border-left: 4px solid #a78bfa;
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-b from-sky-900 via-sky-800 to-indigo-900 text-white min-h-screen">
-  <main class="max-w-3xl mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-4">Intune — Learn with Me</h1>
-    <p class="text-teal-200 mb-6">Intune device management and compliance tips.</p>
-    <section class="space-y-4">
-      <p class="text-teal-100">No posts yet. Placeholder for Intune category.</p>
+<body class="intune-bg">
+  <!-- Navigation -->
+  <nav class="bg-purple-800/90 backdrop-blur-lg shadow-lg border-b border-purple-700/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <a href="../../../index.html" class="text-xl font-bold text-white tracking-tight">Sam in Cloud</a>
+        <div class="flex items-center space-x-6">
+          <a href="../../index.html" class="text-purple-100 hover:text-white transition-colors duration-200 font-medium">Blog</a>
+          <a href="../../../index.html#contact" class="bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-200">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto p-6 mt-8">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="flex items-center justify-center gap-4 mb-6">
+        <div class="p-4 bg-purple-600 rounded-xl">
+          <i data-feather="smartphone" class="w-12 h-12 text-white"></i>
+        </div>
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Microsoft Intune</h1>
+          <p class="text-xl text-purple-100">Device Management, Compliance & Mobile Security</p>
+        </div>
+      </div>
+      <div class="w-24 h-1 bg-purple-400 mx-auto rounded-full"></div>
+    </div>
+
+    <!-- Latest Intune News & Updates -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+        <i data-feather="trending-up" class="w-8 h-8 text-purple-400"></i>
+        Latest Intune Updates (October 2025)
+      </h2>
+      
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="content-card rounded-xl p-6 news-item">
+          <div class="flex items-start gap-4">
+            <i data-feather="cpu" class="w-6 h-6 text-purple-400 mt-1"></i>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-2">AI-Powered Device Insights</h3>
+              <p class="text-purple-100 text-sm mb-3">New machine learning capabilities for predictive device health monitoring and automated remediation suggestions based on usage patterns.</p>
+              <span class="text-xs text-purple-300 bg-purple-900/30 px-2 py-1 rounded">AI & Analytics</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 news-item">
+          <div class="flex items-start gap-4">
+            <i data-feather="shield-check" class="w-6 h-6 text-purple-400 mt-1"></i>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-2">Enhanced Zero Trust for BYOD</h3>
+              <p class="text-purple-100 text-sm mb-3">Advanced device trust verification with hardware-based attestation and continuous compliance assessment for personal devices.</p>
+              <span class="text-xs text-purple-300 bg-purple-900/30 px-2 py-1 rounded">Security</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 news-item">
+          <div class="flex items-start gap-4">
+            <i data-feather="layers" class="w-6 h-6 text-purple-400 mt-1"></i>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-2">Unified Endpoint Management</h3>
+              <p class="text-purple-100 text-sm mb-3">Integrated management for Windows 365 Cloud PCs, Azure Virtual Desktop, and physical devices through a single console.</p>
+              <span class="text-xs text-purple-300 bg-purple-900/30 px-2 py-1 rounded">Management</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 news-item">
+          <div class="flex items-start gap-4">
+            <i data-feather="package" class="w-6 h-6 text-purple-400 mt-1"></i>
+            <div>
+              <h3 class="text-lg font-semibold text-white mb-2">Win32 App Deployment Enhancements</h3>
+              <p class="text-purple-100 text-sm mb-3">Improved application packaging with dependency management, delta updates, and enhanced deployment analytics for enterprise applications.</p>
+              <span class="text-xs text-purple-300 bg-purple-900/30 px-2 py-1 rounded">App Management</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- Best Practices & Tips -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+        <i data-feather="lightbulb" class="w-8 h-8 text-purple-400"></i>
+        Best Practices & Pro Tips
+      </h2>
+      
+      <div class="space-y-4">
+        <div class="content-card rounded-xl p-6 tip-item">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="target" class="w-5 h-5 text-purple-400"></i>
+            Dynamic Device Groups
+          </h3>
+          <p class="text-purple-100 text-sm mb-3">Use Azure AD dynamic groups with device attributes for automated policy assignment. Leverage device categories and custom compliance attributes for sophisticated targeting.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs text-purple-200 bg-purple-800/30 px-2 py-1 rounded">Automation</span>
+            <span class="text-xs text-purple-200 bg-purple-800/30 px-2 py-1 rounded">Policy Management</span>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 tip-item">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="eye" class="w-5 h-5 text-purple-400"></i>
+            Proactive Monitoring
+          </h3>
+          <p class="text-purple-100 text-sm mb-3">Implement comprehensive device health monitoring with custom compliance policies, endpoint analytics, and integration with Microsoft Sentinel for security insights.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs text-purple-200 bg-purple-800/30 px-2 py-1 rounded">Monitoring</span>
+            <span class="text-xs text-purple-200 bg-purple-800/30 px-2 py-1 rounded">Compliance</span>
+          </div>
+        </div>
+        
+        <div class="content-card rounded-xl p-6 tip-item">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="users" class="w-5 h-5 text-purple-400"></i>
+            User Experience Optimization
+          </h3>
+          <p class="text-purple-100 text-sm mb-3">Design enrollment flows with Company Portal customization, self-service capabilities, and clear communication about compliance requirements to improve user adoption.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs text-purple-200 bg-purple-800/30 px-2 py-1 rounded">User Experience</span>
+            <span class="text-xs text-purple-200 bg-purple-800/30 px-2 py-1 rounded">Enrollment</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Device Platforms -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+        <i data-feather="monitor" class="w-8 h-8 text-purple-400"></i>
+        Supported Platforms
+      </h2>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="content-card rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="monitor" class="w-5 h-5 text-purple-400"></i>
+            Windows Devices
+          </h3>
+          <ul class="space-y-2 text-purple-100 text-sm">
+            <li>• Windows 10/11 Pro & Enterprise</li>
+            <li>• Windows 365 Cloud PCs</li>
+            <li>• Azure Virtual Desktop</li>
+            <li>• HoloLens 2</li>
+            <li>• Surface Hub</li>
+          </ul>
+        </div>
+        
+        <div class="content-card rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="smartphone" class="w-5 h-5 text-purple-400"></i>
+            Mobile Devices
+          </h3>
+          <ul class="space-y-2 text-purple-100 text-sm">
+            <li>• iOS/iPadOS</li>
+            <li>• Android Enterprise</li>
+            <li>• Android AOSP</li>
+            <li>• Android (device admin)</li>
+            <li>• Samsung Knox</li>
+          </ul>
+        </div>
+        
+        <div class="content-card rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+            <i data-feather="laptop" class="w-5 h-5 text-purple-400"></i>
+            Other Platforms
+          </h3>
+          <ul class="space-y-2 text-purple-100 text-sm">
+            <li>• macOS</li>
+            <li>• Linux (Ubuntu)</li>
+            <li>• Windows 10/11 IoT Enterprise</li>
+            <li>• Web browsers (Edge)</li>
+            <li>• Microsoft Teams Rooms</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Management Capabilities -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+        <i data-feather="settings" class="w-8 h-8 text-purple-400"></i>
+        Key Management Capabilities
+      </h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="content-card rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Device Management</h3>
+          <ul class="space-y-3 text-purple-100 text-sm">
+            <li class="flex items-center gap-2">
+              <i data-feather="check-circle" class="w-4 h-4 text-purple-400"></i>
+              Device enrollment & provisioning
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-feather="check-circle" class="w-4 h-4 text-purple-400"></i>
+              Configuration profiles
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-feather="check-circle" class="w-4 h-4 text-purple-400"></i>
+              Compliance policies
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-feather="check-circle" class="w-4 h-4 text-purple-400"></i>
+              Remote wipe & lock
+            </li>
+          </ul>
+        </div>
+        
+        <div class="content-card rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-white mb-4">Application Management</h3>
+          <ul class="space-y-3 text-purple-100 text-sm">
+            <li class="flex items-center gap-2">
+              <i data-feather="check-circle" class="w-4 h-4 text-purple-400"></i>
+              Win32 app deployment
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-feather="check-circle" class="w-4 h-4 text-purple-400"></i>
+              Microsoft Store apps
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-feather="check-circle" class="w-4 h-4 text-purple-400"></i>
+              App protection policies
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-feather="check-circle" class="w-4 h-4 text-purple-400"></i>
+              App configuration
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-3">
+        <i data-feather="file-text" class="w-8 h-8 text-purple-400"></i>
+        Intune Tutorials
+      </h2>
+      
+      <div class="content-card rounded-xl p-8">
+        <div class="flex items-start gap-6">
+          <div class="p-4 bg-purple-600 rounded-lg">
+            <i data-feather="shield" class="w-8 h-8 text-white"></i>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-white mb-3">Device Compliance Policies with PowerShell</h3>
+            <p class="text-purple-100 mb-4">Comprehensive guide to creating and managing Intune device compliance policies using PowerShell automation for Windows, iOS, and Android devices.</p>
+            <div class="flex items-center gap-4 text-sm text-purple-200 mb-4">
+              <span class="flex items-center gap-1">
+                <i data-feather="clock" class="w-4 h-4"></i>
+                10 min read
+              </span>
+              <span class="flex items-center gap-1">
+                <i data-feather="calendar" class="w-4 h-4"></i>
+                October 2025
+              </span>
+            </div>
+            <a href="device-compliance-policies-powershell.html" class="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200">
+              Read Tutorial
+              <i data-feather="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="flex justify-between items-center bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+      <a href="../../index.html" class="flex items-center gap-2 text-purple-200 hover:text-white transition-colors">
+        <i data-feather="arrow-left" class="w-4 h-4"></i>
+        <span>Back to All Posts</span>
+      </a>
+      <a href="../../../index.html" class="flex items-center gap-2 text-purple-200 hover:text-white transition-colors">
+        <span>Home</span>
+        <i data-feather="home" class="w-4 h-4"></i>
+      </a>
+    </div>
   </main>
-  <footer class="text-center p-6 text-sm text-white/70">© 2025 Sam Adhikari</footer>
+
+  <!-- Footer -->
+  <footer class="text-center p-8 text-purple-100/70 border-t border-white/10 mt-12">
+    <p>© 2025 Sam Adhikari • Cloud Solutions Specialist</p>
+  </footer>
+
+  <script>
+    feather.replace();
+  </script>
 </body>
 </html>
