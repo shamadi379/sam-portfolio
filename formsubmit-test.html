@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Contact Form - Sam in Cloud</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">FormSubmit Test Form</h1>
+        
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+            <h3 class="font-semibold text-blue-800 mb-2">Instructions:</h3>
+            <ol class="text-blue-700 text-sm space-y-1">
+                <li>1. Submit this form first to activate FormSubmit for your email</li>
+                <li>2. Check your email (including spam) for verification from FormSubmit</li>
+                <li>3. Click the verification link</li>
+                <li>4. After verification, your main contact form will work</li>
+            </ol>
+        </div>
+        
+        <form action="https://formsubmit.co/shamsherintech@gmail.com" method="POST" class="space-y-4">
+            <input type="hidden" name="_subject" value="FormSubmit Activation Test - Sam in Cloud">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://samincloud.com/thank-you.html">
+            <input type="hidden" name="_template" value="table">
+            
+            <div>
+                <label class="block text-gray-700 font-semibold mb-2">Your Name</label>
+                <input type="text" name="name" value="Sam Test" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500">
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 font-semibold mb-2">Your Email</label>
+                <input type="email" name="email" value="shamsherintech@gmail.com" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500">
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 font-semibold mb-2">Message</label>
+                <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-blue-500">This is a test message to activate FormSubmit for shamsherintech@gmail.com. Please verify this email address to enable the contact form on samincloud.com.</textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                Send Activation Test
+            </button>
+        </form>
+        
+        <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <p class="text-yellow-800 text-sm">
+                <strong>Note:</strong> After submitting this test form, check your email (shamsherintech@gmail.com) for a verification message from FormSubmit. You may need to check your spam folder.
+            </p>
+        </div>
+        
+        <div class="mt-4 text-center">
+            <a href="index.html" class="text-blue-600 hover:text-blue-800 underline">← Back to Main Site</a>
+        </div>
+    </div>
+</body>
+</html>
