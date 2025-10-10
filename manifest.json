@@ -9,13 +9,23 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDQwIDQwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iY2xvdWRHcmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzEwYjk4MTtzdG9wLW9wYWNpdHk6MSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzA1OTY2OTtzdG9wLW9wYWNpdHk6MSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxwYXRoIGQ9Ik0zMiAyNGMxLjUgMCAzLTEgMy0zIDAtMy0yLjUtNS41LTUuNS01LjUtLjUtMy0zLTUuNS02LjUtNS41LTIuNSAwLTQuNSAxLjUtNS41IDMuNS0xLS41LTItLjUtMyAwQzEzIDE1IDEyIDE3IDEyIDE5Yy0yIDAtNCAyLTQgNHMyIDQgNCA0aDIweiIgZmlsbD0idXJsKCNjbG91ZEdyYWRpZW50KSIgc3Ryb2tlPSIjMDQ3ODU3IiBzdHJva2Utd2lkdGg9IjEiLz48cGF0aCBkPSJNMTggMThjMC0xIDEtMiAyLTJoMmMxIDAgMiAxIDIgMnMtMSAyLTIgMmgtMmMtMSAwLTIgMS0yIDJzMSAyIDIgMmgyYzEgMCAyLTEgMi0yIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+",
+      "src": "favicon-16x16.svg",
+      "sizes": "16x16",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "favicon.svg",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDQwIDQwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iY2xvdWRHcmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzEwYjk4MTtzdG9wLW9wYWNpdHk6MSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzA1OTY2OTtzdG9wLW9wYWNpdHk6MSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxwYXRoIGQ9Ik0zMiAyNGMxLjUgMCAzLTEgMy0zIDAtMy0yLjUtNS41LTUuNS01LjUtLjUtMy0zLTUuNS02LjUtNS41LTIuNSAwLTQuNSAxLjUtNS41IDMuNS0xLS41LTItLjUtMyAwQzEzIDE1IDEyIDE3IDEyIDE5Yy0yIDAtNCAyLTQgNHMyIDQgNCA0aDIweiIgZmlsbD0idXJsKCNjbG91ZEdyYWRpZW50KSIgc3Ryb2tlPSIjMDQ3ODU3IiBzdHJva2Utd2lkdGg9IjEiLz48cGF0aCBkPSJNMTggMThjMC0xIDEtMiAyLTJoMmMxIDAgMiAxIDIgMnMtMSAyLTIgMmgtMmMtMSAwLTIgMS0yIDJzMSAyIDIgMmgyYzEgMCAyLTEgMi0yIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+",
+      "src": "favicon.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"

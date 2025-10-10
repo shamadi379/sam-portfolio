@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Cloud Solutions Specialist with expertise in Microsoft 365, Azure, Intune, and Exchange. Professional L2/L3 cloud services for small to medium businesses.">
+    <meta name="description" content="Cloud Solutions Specialist with expertise in Microsoft 365, Azure, Intune, and Exchange. Professional Microsoft cloud services for small to medium businesses.">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Sam Adhikari">
     <meta name="keywords" content="cloud, azure, microsoft 365, intune, exchange, powershell, automation, security, cloud specialist">
@@ -47,8 +47,26 @@
     <link rel="canonical" href="https://samincloud.com">
     <link rel="manifest" href="/manifest.json">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iY2xvdWRHcmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMxMGI5ODE7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzA1OTY2OTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwYXRoIGQ9Ik0zMiAyNGMxLjUgMCAzLTEgMy0zIDAtMy0yLjUtNS41LTUuNS01LjUtLjUtMy0zLTUuNS02LjUtNS41LTIuNSAwLTQuNSAxLjUtNS41IDMuNS0xLS41LTItLjUtMyAwQzEzIDE1IDEyIDE3IDEyIDE5Yy0yIDAtNCAyLTQgNHMyIDQgNCA0aDIweiIgZmlsbD0idXJsKCNjbG91ZEdyYWRpZW50KSIgc3Ryb2tlPSIjMDQ3ODU3IiBzdHJva2Utd2lkdGg9IjEiLz4KICA8cGF0aCBkPSJNMTggMThjMC0xIDEtMiAyLTJoMmMxIDAgMiAxIDIgMnMtMSAyLTIgMmgtMmMtMSAwLTIgMS0yIDJzMSAyIDIgMmgyYzEgMCAyLTEgMi0yIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPg==">
+    <!-- Comprehensive Favicon Setup (like Reddit/Google) -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="favicon-16x16.svg">
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" sizes="48x48" href="favicon.svg">
+    
+    <!-- Fallback for browsers that don't support SVG favicons -->
+    <link rel="alternate icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon.svg">
+    
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileColor" content="#10b981">
+    <meta name="msapplication-TileImage" content="favicon.svg">
+    <meta name="theme-color" content="#10b981">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
@@ -69,6 +87,11 @@
             --surface-white: rgba(255,255,255,0.96);
             --panel-gray: rgba(255,255,255,0.06);
             --muted-text: #94a3b8;
+        }
+        
+        /* Favicon optimization for browser tab display */
+        link[rel="icon"] {
+            background-color: transparent;
         }
         
         /* Enhanced background image */
@@ -121,34 +144,60 @@
         
         /* Logo animations */
         .logo-container svg {
-            filter: drop-shadow(0 4px 8px rgba(16, 185, 129, 0.3));
+            filter: drop-shadow(0 4px 12px rgba(16, 185, 129, 0.4));
+            transition: all 0.3s ease;
         }
         
         .logo-hero svg {
             filter: drop-shadow(0 8px 16px rgba(16, 185, 129, 0.4));
         }
         
-        /* Logo hover effects */
+        /* Enhanced logo hover effects */
         .logo-container:hover svg,
         .logo-hero:hover svg {
             animation: logoFloat 2s ease-in-out infinite;
+            filter: drop-shadow(0 6px 16px rgba(16, 185, 129, 0.6));
+        }
+        
+        /* Brand enhancement */
+        .site-brand {
+            padding: 8px 0;
+        }
+        
+        .site-brand:hover .logo-container svg {
+            transform: scale(1.1);
         }
         
         @keyframes logoFloat {
-            0%, 100% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-5px) scale(1.05); }
+            0%, 100% { transform: translateY(0px) scale(1.1); }
+            50% { transform: translateY(-6px) scale(1.15); }
         }
         
         /* Mobile logo adjustments */
         @media (max-width: 768px) {
             .logo-container svg {
-                width: 40px;
-                height: 40px;
+                width: 56px;
+                height: 56px;
+            }
+            
+            .site-brand span {
+                font-size: 1.375rem; /* text-xl equivalent for mobile */
             }
             
             .logo-hero svg {
-                width: 64px;
+                width: 72px;
                 height: 64px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-container svg {
+                width: 48px;
+                height: 48px;
+            }
+            
+            .site-brand span {
+                font-size: 1.25rem; /* text-lg for very small screens */
             }
         }
         
@@ -218,74 +267,49 @@
             -webkit-backdrop-filter: blur(16px) saturate(180%);
         }
         
-        /* Blog showcase animations */
-        .blog-scroll-container {
-            height: 320px;
-            mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent);
-        }
-        
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-        
-        .animate-scroll {
-            animation: scroll 30s linear infinite;
-        }
-        
-        .animate-scroll:hover {
-            animation-play-state: paused;
-        }
-        
-        .blog-card {
-            flex-shrink: 0;
-            width: 350px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        /* Microsoft Hub Styles */
+        .hub-card {
+            background: white;
             border-radius: 1rem;
             padding: 1.5rem;
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(59, 130, 246, 0.1);
         }
-        
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 0.15);
+
+        .hub-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(59, 130, 246, 0.2);
         }
-        
-        .blog-card-category {
+
+        .hub-card-source {
             display: inline-block;
-            background: linear-gradient(135deg, #10b981, #059669);
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
             color: white;
             padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
+            border-radius: 0.375rem;
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
-        
-        .blog-card-title {
-            color: white;
+
+        .hub-card-title {
             font-size: 1.125rem;
             font-weight: 700;
+            color: #1f2937;
+            margin: 1rem 0 0.5rem 0;
             line-height: 1.4;
-            margin: 0.75rem 0;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-        
-        .blog-card-excerpt {
-            color: #d1d5db;
+
+        .hub-card-excerpt {
+            color: #6b7280;
             font-size: 0.875rem;
             line-height: 1.5;
             display: -webkit-box;
@@ -293,15 +317,107 @@
             line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            margin-bottom: 1rem;
         }
-        
-        .blog-card-meta {
+
+        .hub-card-meta {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
+            justify-content: space-between;
             font-size: 0.75rem;
             color: #9ca3af;
+        }
+
+        .hub-refresh-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hub-refresh-btn:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: rotate(180deg);
+        }
+
+        /* Category Tabs */
+        .category-tab {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            background: white;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-tab:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .category-tab.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            border-color: #1d4ed8;
+        }
+
+        /* Tool Links */
+        .tool-link {
+            display: block;
+            padding: 1rem;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .tool-link:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Enhanced Hub Cards with Categories */
+        .hub-card[data-category] {
+            position: relative;
+        }
+
+        .hub-card.hidden-category {
+            display: none;
+        }
+
+        .hub-card-category-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.625rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Search Results Highlighting */
+        .search-highlight {
+            background: yellow;
+            font-weight: bold;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .category-tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
         }
     </style>
 </head>
@@ -312,12 +428,12 @@
     <!-- Navigation -->
     <nav class="bg-emerald-800/90 backdrop-blur-lg fixed w-full z-10 shadow-lg border-b border-emerald-700/20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
+            <div class="flex justify-between h-20 items-center">
                 <!-- left: brand + primary links -->
                 <div class="flex items-center space-x-8">
                     <div class="site-brand flex items-center space-x-3">
                         <div class="logo-container">
-                            <svg width="48" height="48" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" class="transition-transform duration-300 hover:scale-110">
+                            <svg width="64" height="64" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" class="transition-transform duration-300 hover:scale-110">
                                 <!-- Cloud background -->
                                 <defs>
                                     <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -347,21 +463,24 @@
                                 <circle cx="20" cy="20" r="18" fill="none" stroke="rgba(16,185,129,0.3)" stroke-width="1" opacity="0.5"/>
                             </svg>
                         </div>
-                        <span class="text-xl font-bold text-white tracking-tight">Sam in Cloud</span>
+                        <span class="text-2xl font-bold text-white tracking-tight hover:text-emerald-100 transition-colors duration-300">Sam in Cloud</span>
                     </div>
                     <div class="hidden md:flex items-center space-x-6">
                         <a href="#home" class="text-emerald-100 hover:text-white transition-colors duration-200 font-medium">Home</a>
                         <a href="#about" class="text-emerald-100 hover:text-white transition-colors duration-200 font-medium">About</a>
                         <a href="#services" class="text-emerald-100 hover:text-white transition-colors duration-200 font-medium">Services</a>
-                        <a href="/blog/index.html" class="text-emerald-100 hover:text-white transition-colors duration-200 font-medium">Blog</a>
+                        <a href="#contact" class="text-emerald-100 hover:text-white transition-colors duration-200 font-medium">Contact</a>
+                        <a href="#it-news" class="text-emerald-100 hover:text-white transition-colors duration-200 font-medium">IT News</a>
                     </div>
                 </div>
 
                 <!-- right: contact -->
                 <div class="hidden md:flex items-center">
-                    <a href="#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                        Get Free Quote
-                    </a>
+                    <button onclick="openITChatbot()" class="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 flex items-center gap-2 relative overflow-hidden group">
+                        <i data-feather="zap" class="w-4 h-4"></i>
+                        <span id="help-button-text">Quick IT Help</span>
+                        <div class="absolute inset-0 bg-white/10 translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+                    </button>
                 </div>
 
                 <!-- mobile menu button -->
@@ -477,8 +596,12 @@
             <a href="#home" class="text-2xl text-white hover:text-emerald-200 transition-colors duration-200 font-medium py-2">Home</a>
             <a href="#about" class="text-2xl text-white hover:text-emerald-200 transition-colors duration-200 font-medium py-2">About</a>
             <a href="#services" class="text-2xl text-white hover:text-emerald-200 transition-colors duration-200 font-medium py-2">Services</a>
-            <a href="/blog/index.html" class="text-2xl text-white hover:text-emerald-200 transition-colors duration-200 font-medium py-2">Blog</a>
-            <a href="#contact" class="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 shadow-lg w-full text-center">Get Free Quote</a>
+            <a href="#it-news" class="text-2xl text-white hover:text-emerald-200 transition-colors duration-200 font-medium py-2">IT News</a>
+            <button onclick="openITChatbot()" class="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 shadow-lg w-full text-center flex items-center justify-center gap-2 relative overflow-hidden group">
+                <i data-feather="zap" class="w-5 h-5"></i>
+                <span id="mobile-help-button-text">Quick IT Help</span>
+                <div class="absolute inset-0 bg-white/10 translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+            </button>
             <button id="close-menu" class="absolute top-6 right-6 text-white hover:text-emerald-200 transition-colors">
                 <i data-feather="x" class="w-7 h-7"></i>
             </button>
@@ -520,403 +643,326 @@
         </div>
     </section>
 
-        <!-- Centered intro: Let's dive in !! and category links -->
-        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 relative">
-            <!-- Background overlay for better text readability -->
+        <!-- IT News & Updates Section -->
+        <section id="it-news" class="py-16 px-4 sm:px-6 lg:px-8 relative">
             <div class="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
-            <div class="max-w-6xl mx-auto text-center relative z-10">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">Explore My Expertise</h2>
-                <p class="text-xl text-white font-semibold mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
-                    Dive into practical guides, tutorials, and real-world solutions across Microsoft's cloud ecosystem.
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <a href="/blog/learn-with-me/m365/index.html" class="group bg-white/95 backdrop-blur-sm rounded-xl p-6 transition-all duration-300 hover:bg-white hover:shadow-2xl hover:-translate-y-2 border border-white/20">
-                        <div class="flex flex-col items-center text-center space-y-4">
-                            <div class="p-4 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 group-hover:from-emerald-600 group-hover:to-emerald-700 transition-all duration-300 shadow-lg">
-                                <i data-feather="layers" class="text-white w-8 h-8"></i>
+            <div class="max-w-6xl mx-auto relative z-10">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-white mb-4 drop-shadow-lg">Latest Microsoft & Windows IT Updates</h2>
+                    <p class="text-lg text-emerald-100 mb-6">Stay current with the latest IT updates</p>
+                </div>
+                
+                <!-- IT News Feed -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Microsoft Official News -->
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                <i data-feather="monitor" class="w-5 h-5 text-white"></i>
                             </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors">Microsoft 365</h3>
-                                <p class="text-sm text-gray-600 leading-relaxed">Admin tasks, security governance, and compliance strategies for modern workplaces.</p>
-                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900">Microsoft Tech Community</h3>
                         </div>
-                    </a>
-                    <a href="/blog/learn-with-me/azure/index.html" class="group bg-white/95 backdrop-blur-sm rounded-xl p-6 transition-all duration-300 hover:bg-white hover:shadow-2xl hover:-translate-y-2 border border-white/20">
-                        <div class="flex flex-col items-center text-center space-y-4">
-                            <div class="p-4 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-300 shadow-lg">
-                                <i data-feather="cloud" class="text-white w-8 h-8"></i>
+                        <p class="text-sm text-gray-600 mb-4">Official Microsoft updates, announcements, and technical insights</p>
+                        <a href="https://techcommunity.microsoft.com/" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+                            <span>Visit Tech Community</span>
+                            <i data-feather="external-link" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Windows Updates -->
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center mr-3">
+                                <i data-feather="download" class="w-5 h-5 text-white"></i>
                             </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">Azure Cloud</h3>
-                                <p class="text-sm text-gray-600 leading-relaxed">Infrastructure automation, RBAC policies, and PowerShell optimization techniques.</p>
-                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900">Windows Update History</h3>
                         </div>
-                    </a>
-                    <a href="/blog/learn-with-me/intune/index.html" class="group bg-white/95 backdrop-blur-sm rounded-xl p-6 transition-all duration-300 hover:bg-white hover:shadow-2xl hover:-translate-y-2 border border-white/20">
-                        <div class="flex flex-col items-center text-center space-y-4">
-                            <div class="p-4 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 group-hover:from-purple-600 group-hover:to-purple-700 transition-all duration-300 shadow-lg">
-                                <i data-feather="smartphone" class="text-white w-8 h-8"></i>
+                        <p class="text-sm text-gray-600 mb-4">Latest Windows updates, patches, and security releases</p>
+                        <a href="https://support.microsoft.com/en-us/windows/windows-update-history" target="_blank" class="inline-flex items-center text-emerald-600 hover:text-emerald-700 font-medium">
+                            <span>Check Updates</span>
+                            <i data-feather="external-link" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Microsoft 365 Roadmap -->
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center mr-3">
+                                <i data-feather="calendar" class="w-5 h-5 text-white"></i>
                             </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors">Intune</h3>
-                                <p class="text-sm text-gray-600 leading-relaxed">Device management, compliance policies, and automated provisioning workflows.</p>
-                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900">M365 Roadmap</h3>
                         </div>
-                    </a>
-                    <a href="/blog/learn-with-me/exchange/index.html" class="group bg-white/95 backdrop-blur-sm rounded-xl p-6 transition-all duration-300 hover:bg-white hover:shadow-2xl hover:-translate-y-2 border border-white/20">
-                        <div class="flex flex-col items-center text-center space-y-4">
-                            <div class="p-4 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 group-hover:from-orange-600 group-hover:to-orange-700 transition-all duration-300 shadow-lg">
-                                <i data-feather="mail" class="text-white w-8 h-8"></i>
+                        <p class="text-sm text-gray-600 mb-4">Upcoming features for Teams, SharePoint, Exchange, and more</p>
+                        <a href="https://www.microsoft.com/en-us/microsoft-365/roadmap" target="_blank" class="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium">
+                            <span>View Roadmap</span>
+                            <i data-feather="external-link" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Azure Updates -->
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-cyan-600 rounded-lg flex items-center justify-center mr-3">
+                                <i data-feather="cloud" class="w-5 h-5 text-white"></i>
                             </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-700 transition-colors">Exchange</h3>
-                                <p class="text-sm text-gray-600 leading-relaxed">Mail flow optimization, permissions management, and automation recipes.</p>
-                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900">Azure Updates</h3>
                         </div>
-                    </a>
+                        <p class="text-sm text-gray-600 mb-4">Latest Azure services, features, and cloud infrastructure updates</p>
+                        <a href="https://azure.microsoft.com/en-us/updates/" target="_blank" class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium">
+                            <span>Azure Updates</span>
+                            <i data-feather="external-link" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- Security Updates -->
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center mr-3">
+                                <i data-feather="shield" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900">Security Updates</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">Microsoft Security Response Center alerts and bulletins</p>
+                        <a href="https://msrc.microsoft.com/" target="_blank" class="inline-flex items-center text-red-600 hover:text-red-700 font-medium">
+                            <span>Security Center</span>
+                            <i data-feather="external-link" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+
+                    <!-- IT Pro Resources -->
+                    <div class="bg-white/95 backdrop-blur-sm rounded-lg p-6 shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center mr-3">
+                                <i data-feather="users" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900">IT Pro Community</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">Connect with IT professionals and access training resources</p>
+                        <a href="https://learn.microsoft.com/en-us/training/" target="_blank" class="inline-flex items-center text-orange-600 hover:text-orange-700 font-medium">
+                            <span>Microsoft Learn</span>
+                            <i data-feather="external-link" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Update Notice -->
+                <div class="mt-8 text-center">
+                    <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-white">
+                        <i data-feather="refresh-cw" class="w-4 h-4 mr-2"></i>
+                        <span class="text-sm">Links updated daily to provide the latest Microsoft ecosystem news</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Professional interactive section removed per user request -->
 
-    <!-- Services Section -->
-    <section id="services" class="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-50 to-teal-50 relative">
+    <!-- Cloud Services Section - Sam's Microsoft Expertise -->
+    <section id="services" class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-50 to-teal-50">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Professional Cloud Services</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                    L2/L3 cloud expertise to help small and medium businesses optimize their technology infrastructure
-                </p>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">My Microsoft Expertise</h2>
+                <p class="text-lg text-gray-600 mb-8">Specialized Microsoft cloud professional with deep experience in the Microsoft ecosystem</p>
             </div>
-
-            <!-- Core Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <!-- Microsoft 365 Services -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-emerald-100">
-                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6">
-                        <i data-feather="cloud" class="w-8 h-8 text-white"></i>
+            
+            <!-- Sam's Microsoft Expertise Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Microsoft 365 -->
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="cloud" class="w-6 h-6 text-blue-600"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Microsoft 365 Management</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Complete M365 administration, migration, and optimization for seamless productivity.</p>
-                    <ul class="space-y-3 text-sm text-gray-700">
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Tenant setup & configuration</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Email migration & Exchange Online</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>SharePoint & Teams deployment</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Security & compliance setup</li>
-                    </ul>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Microsoft 365</h3>
+                    <p class="text-gray-600 mb-3 text-sm">Expert in Office 365 deployment, Teams administration, SharePoint configuration, and Exchange Online management. Specialized in tenant migrations and security configurations.</p>
+                    <div class="text-xs text-emerald-600 font-medium mb-3">✓ My expertise: Tenant setup, migrations, security policies</div>
+                    <a href="https://portal.office.com" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-700 text-sm font-medium">
+                        <span>Access Portal</span>
+                        <i data-feather="external-link" class="w-4 h-4 ml-1"></i>
+                    </a>
                 </div>
 
-                <!-- Azure Cloud Services -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-emerald-100">
-                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6">
-                        <i data-feather="server" class="w-8 h-8 text-white"></i>
+                <!-- Azure Cloud -->
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="server" class="w-6 h-6 text-cyan-600"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Azure Infrastructure</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Scalable cloud infrastructure design and management for growing businesses.</p>
-                    <ul class="space-y-3 text-sm text-gray-700">
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>VM deployment & management</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Virtual networks & VPN setup</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Backup & disaster recovery</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Cost optimization strategies</li>
-                    </ul>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Azure Cloud</h3>
+                    <p class="text-gray-600 mb-3 text-sm">Hands-on experience with Azure VMs, storage accounts, networking, and Active Directory integration. Skilled in hybrid cloud setups and Azure security best practices.</p>
+                    <div class="text-xs text-emerald-600 font-medium mb-3">✓ My expertise: Infrastructure deployment, hybrid configurations</div>
                 </div>
 
-                <!-- Intune Device Management -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-emerald-100">
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6">
-                        <i data-feather="smartphone" class="w-8 h-8 text-white"></i>
+                <!-- Exchange Online -->
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="mail" class="w-6 h-6 text-orange-600"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Intune Device Management</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Modern endpoint management and security for all your devices.</p>
-                    <ul class="space-y-3 text-sm text-gray-700">
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Device enrollment & policies</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>App deployment & management</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Compliance & security policies</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Zero Trust implementation</li>
-                    </ul>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Exchange Online</h3>
+                    <p class="text-gray-600 mb-3 text-sm">Advanced Exchange Online administration including mail flow rules, retention policies, and calendar permissions. Expert in hybrid Exchange deployments and migrations.</p>
+                    <div class="text-xs text-emerald-600 font-medium mb-3">✓ My expertise: Mail flow, hybrid setups, PowerShell automation</div>
+                    <a href="https://admin.exchange.microsoft.com" target="_blank" class="inline-flex items-center text-orange-600 hover:text-orange-700 text-sm font-medium">
+                        <span>Exchange Admin</span>
+                        <i data-feather="external-link" class="w-4 h-4 ml-1"></i>
+                    </a>
                 </div>
 
-                <!-- Exchange & Email Security -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-emerald-100">
-                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-6">
-                        <i data-feather="mail" class="w-8 h-8 text-white"></i>
+                <!-- Intune MDM -->
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="smartphone" class="w-6 h-6 text-purple-600"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Exchange & Email Security</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Advanced email solutions and security for business communications.</p>
-                    <ul class="space-y-3 text-sm text-gray-700">
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Exchange hybrid setup</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Email security & ATP</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Calendar & mailbox management</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Migration & data protection</li>
-                    </ul>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Intune MDM</h3>
+                    <p class="text-gray-600 mb-3 text-sm">Advanced skills in device compliance policies, application deployment, and conditional access. Expert in zero-trust security implementations.</p>
+                    <div class="text-xs text-emerald-600 font-medium mb-3">✓ My expertise: Zero-trust policies, device management</div>
+                    <a href="https://endpoint.microsoft.com" target="_blank" class="inline-flex items-center text-purple-600 hover:text-purple-700 text-sm font-medium">
+                        <span>Endpoint Portal</span>
+                        <i data-feather="external-link" class="w-4 h-4 ml-1"></i>
+                    </a>
+                </div>
+
+                <!-- SharePoint & Teams -->
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="users" class="w-6 h-6 text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">SharePoint & Teams</h3>
+                    <p class="text-gray-600 mb-3 text-sm">Expert in SharePoint site collections, permissions, and content management. Teams governance, policy management, and phone system integrations.</p>
+                    <div class="text-xs text-emerald-600 font-medium mb-3">✓ My expertise: Site governance, Teams policies, collaboration</div>
+                    <a href="https://admin.teams.microsoft.com" target="_blank" class="inline-flex items-center text-green-600 hover:text-green-700 text-sm font-medium">
+                        <span>Teams Admin</span>
+                        <i data-feather="external-link" class="w-4 h-4 ml-1"></i>
+                    </a>
                 </div>
 
                 <!-- Security & Compliance -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-emerald-100">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
-                        <i data-feather="shield" class="w-8 h-8 text-white"></i>
+                <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="shield" class="w-6 h-6 text-red-600"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Security & Compliance</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Comprehensive security solutions to protect your business data.</p>
-                    <ul class="space-y-3 text-sm text-gray-700">
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Conditional access policies</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Multi-factor authentication</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Data loss prevention</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Compliance reporting</li>
-                    </ul>
-                </div>
-
-                <!-- Automation & PowerShell -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-emerald-100">
-                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6">
-                        <i data-feather="zap" class="w-8 h-8 text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Automation & PowerShell</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed">Custom automation solutions to streamline your operations.</p>
-                    <ul class="space-y-3 text-sm text-gray-700">
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>PowerShell script development</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Azure automation workflows</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Reporting & monitoring</li>
-                        <li class="flex items-center"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Process optimization</li>
-                    </ul>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Security & Compliance</h3>
+                    <p class="text-gray-600 mb-3 text-sm">Specialized in Microsoft Defender, Sentinel SIEM, compliance frameworks, and incident response. Expert in PowerShell automation for security tasks.</p>
+                    <div class="text-xs text-emerald-600 font-medium mb-3">✓ My expertise: SIEM, automation, incident response</div>
+                    <a href="https://security.microsoft.com" target="_blank" class="inline-flex items-center text-red-600 hover:text-red-700 text-sm font-medium">
+                        <span>Security Center</span>
+                        <i data-feather="external-link" class="w-4 h-4 ml-1"></i>
+                    </a>
                 </div>
             </div>
 
-            <!-- Service Packages -->
-            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-emerald-100">
-                <div class="text-center mb-12">
-                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Service Packages for SMBs</h3>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Choose the right level of support for your business needs</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Starter Package -->
-                    <div class="border-2 border-emerald-200 rounded-2xl p-8 text-center hover:border-emerald-400 transition-colors">
-                        <h4 class="text-xl font-bold text-gray-900 mb-2">Cloud Starter</h4>
-                        <p class="text-gray-600 mb-6">Perfect for small businesses getting started with cloud</p>
-                        <ul class="text-left space-y-2 mb-8">
-                            <li class="flex items-center text-sm"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>M365 basic setup</li>
-                            <li class="flex items-center text-sm"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Email migration</li>
-                            <li class="flex items-center text-sm"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Basic security setup</li>
-                            <li class="flex items-center text-sm"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Documentation & training</li>
-                        </ul>
-                        <a href="#contact" class="inline-block bg-emerald-100 text-emerald-800 px-6 py-3 rounded-lg font-semibold hover:bg-emerald-200 transition-colors">Get Quote</a>
-                    </div>
-
-                    <!-- Professional Package -->
-                    <div class="border-2 border-emerald-500 rounded-2xl p-8 text-center bg-emerald-50 relative">
-                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full text-sm font-semibold">Most Popular</div>
-                        <h4 class="text-xl font-bold text-gray-900 mb-2">Cloud Professional</h4>
-                        <p class="text-gray-600 mb-6">Comprehensive cloud solution for growing businesses</p>
-                        <ul class="text-left space-y-2 mb-8">
-                            <li class="flex items-center text-sm"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Full M365 & Azure setup</li>
-                            <li class="flex items-center text-sm"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Intune device management</li>
-                            <li class="flex items-center text-sm"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Advanced security & compliance</li>
-                            <li class="flex items-center text-sm"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Ongoing support & monitoring</li>
-                        </ul>
-                        <a href="#contact" class="inline-block bg-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition-colors">Get Quote</a>
-                    </div>
-
-                    <!-- Enterprise Package -->
-                    <div class="border-2 border-emerald-200 rounded-2xl p-8 text-center hover:border-emerald-400 transition-colors">
-                        <h4 class="text-xl font-bold text-gray-900 mb-2">Cloud Enterprise</h4>
-                        <p class="text-gray-600 mb-6">Complete enterprise-grade cloud transformation</p>
-                        <ul class="text-left space-y-2 mb-8">
-                            <li class="flex items-center text-sm"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Custom architecture design</li>
-                            <li class="flex items-center text-sm"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>PowerShell automation</li>
-                            <li class="flex items-center text-sm"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>24/7 support & maintenance</li>
-                            <li class="flex items-center text-sm"><i data-feather="check" class="w-4 h-4 text-emerald-500 mr-2"></i>Strategic consulting</li>
-                        </ul>
-                        <a href="#contact" class="inline-block bg-emerald-100 text-emerald-800 px-6 py-3 rounded-lg font-semibold hover:bg-emerald-200 transition-colors">Get Quote</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA Section -->
-            <div class="text-center mt-16">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Ready to Transform Your Business?</h3>
-                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                    Let's discuss how I can help optimize your cloud infrastructure and boost your productivity.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        Get Free Consultation
-                    </a>
-                    <a href="/blog/index.html" class="bg-white hover:bg-gray-50 text-emerald-600 border-2 border-emerald-600 px-8 py-4 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        View Technical Blog
-                    </a>
-                </div>
+            <!-- Call to Action -->
+            <div class="text-center mt-12">
+                <button onclick="openITChatbot()" class="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-2">
+                    <i data-feather="message-circle" class="w-5 h-5"></i>
+                    <span>Chat with Sam's AI Assistant</span>
+                </button>
+                <p class="text-sm text-gray-500 mt-3">Get personalized Microsoft guidance based on Sam's expertise and experience</p>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials & Social Proof Section -->
-    <section id="testimonials" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 to-emerald-900 relative">
-        <div class="absolute inset-0 bg-black/20"></div>
-        <div class="max-w-6xl mx-auto relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Trusted by Growing Businesses</h2>
-                <p class="text-xl text-emerald-100 max-w-3xl mx-auto leading-relaxed">
-                    See how I've helped small and medium businesses transform their cloud infrastructure
-                </p>
-            </div>
 
-            <!-- Stats Row -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-emerald-400 mb-2">25+</div>
-                    <div class="text-emerald-100 font-medium">Businesses Transformed</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-emerald-400 mb-2">500+</div>
-                    <div class="text-emerald-100 font-medium">Users Migrated</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-emerald-400 mb-2">99.9%</div>
-                    <div class="text-emerald-100 font-medium">Uptime Achieved</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-4xl font-bold text-emerald-400 mb-2">24/7</div>
-                    <div class="text-emerald-100 font-medium">Support Available</div>
-                </div>
-            </div>
 
-            <!-- Testimonials Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <!-- Testimonial 1 -->
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                    <div class="flex items-center mb-4">
-                        <div class="flex text-yellow-400">
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                        </div>
-                    </div>
-                    <p class="text-white mb-6 leading-relaxed italic">
-                        "Sam transformed our entire email system and moved us to Microsoft 365. The migration was seamless and our productivity has increased significantly."
-                    </p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                            M
-                        </div>
-                        <div>
-                            <div class="text-white font-semibold">Maria Rodriguez</div>
-                            <div class="text-emerald-200 text-sm">CEO, Tech Solutions Inc</div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Testimonial 2 -->
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                    <div class="flex items-center mb-4">
-                        <div class="flex text-yellow-400">
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                        </div>
-                    </div>
-                    <p class="text-white mb-6 leading-relaxed italic">
-                        "Outstanding Azure setup and security implementation. Sam's expertise in Intune helped us secure all our devices across multiple locations."
-                    </p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                            J
-                        </div>
-                        <div>
-                            <div class="text-white font-semibold">James Wilson</div>
-                            <div class="text-emerald-200 text-sm">IT Manager, Growth Corp</div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Testimonial 3 -->
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                    <div class="flex items-center mb-4">
-                        <div class="flex text-yellow-400">
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                            <i data-feather="star" class="w-5 h-5 fill-current"></i>
-                        </div>
-                    </div>
-                    <p class="text-white mb-6 leading-relaxed italic">
-                        "The PowerShell automation Sam created saves us hours every week. Professional service and excellent communication throughout the project."
-                    </p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                            S
-                        </div>
-                        <div>
-                            <div class="text-white font-semibold">Sarah Chen</div>
-                            <div class="text-emerald-200 text-sm">Operations Director, StartupHub</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Value Propositions -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i data-feather="clock" class="w-8 h-8 text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Fast Implementation</h3>
-                    <p class="text-emerald-100">Get up and running quickly with proven methodologies and minimal downtime</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i data-feather="dollar-sign" class="w-8 h-8 text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Cost Effective</h3>
-                    <p class="text-emerald-100">Optimize your cloud spend and reduce operational costs with smart solutions</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i data-feather="headphones" class="w-8 h-8 text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Ongoing Support</h3>
-                    <p class="text-emerald-100">Continuous monitoring and support to keep your systems running smoothly</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Latest Blog Posts - Moving Showcase -->
-    <section id="blog-showcase" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900/90 to-emerald-900/90 backdrop-blur-sm relative overflow-hidden">
-        <div class="absolute inset-0 bg-black/20"></div>
-        <div class="max-w-6xl mx-auto relative z-10">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Latest Blog Posts</h2>
-                <p class="text-xl text-emerald-100 font-medium max-w-3xl mx-auto leading-relaxed">
-                    Stay updated with my latest tutorials, guides, and insights on cloud technologies.
-                </p>
-            </div>
-            
-            <!-- Moving blog posts container -->
-            <div class="relative">
-                <div class="blog-scroll-container overflow-hidden">
-                    <div class="blog-scroll-content flex gap-6 animate-scroll" id="blogScrollContent">
-                        <!-- Blog posts will be dynamically loaded here -->
+
+
+    <!-- Essential IT Resources Panel -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-900 text-center mb-8">Essential IT Resources</h3>
+                
+                <!-- Standardized Links Row -->
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+                    <a href="https://learn.microsoft.com" target="_blank" rel="noopener" class="flex flex-col items-center p-4 rounded-lg hover:bg-blue-50 transition-colors group">
+                        <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+                            <i data-feather="book" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700 text-center">Microsoft Learn</span>
+                    </a>
+                    
+                    <a href="https://4sysops.com" target="_blank" rel="noopener" class="flex flex-col items-center p-4 rounded-lg hover:bg-green-50 transition-colors group">
+                        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+                            <i data-feather="monitor" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700 text-center">4sysops</span>
+                    </a>
+                    
+                    <a href="https://woshub.com" target="_blank" rel="noopener" class="flex flex-col items-center p-4 rounded-lg hover:bg-purple-50 transition-colors group">
+                        <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+                            <i data-feather="settings" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700 text-center">Windows OS Hub</span>
+                    </a>
+                    
+                    <a href="https://practical365.com" target="_blank" rel="noopener" class="flex flex-col items-center p-4 rounded-lg hover:bg-indigo-50 transition-colors group">
+                        <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+                            <i data-feather="calendar" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700 text-center">Practical 365</span>
+                    </a>
+                    
+                    <a href="https://stackoverflow.com" target="_blank" rel="noopener" class="flex flex-col items-center p-4 rounded-lg hover:bg-yellow-50 transition-colors group">
+                        <div class="w-12 h-12 bg-yellow-600 rounded-lg flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+                            <i data-feather="help-circle" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700 text-center">Stack Overflow</span>
+                    </a>
+                    
+                    <a href="https://reddit.com/r/sysadmin" target="_blank" rel="noopener" class="flex flex-col items-center p-4 rounded-lg hover:bg-orange-50 transition-colors group">
+                        <div class="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+                            <i data-feather="users" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700 text-center">SysAdmin Reddit</span>
+                    </a>
+                    
+                    <a href="https://docs.docker.com" target="_blank" rel="noopener" class="flex flex-col items-center p-4 rounded-lg hover:bg-blue-50 transition-colors group">
+                        <div class="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+                            <i data-feather="package" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700 text-center">Docker Docs</span>
+                    </a>
+                    
+                    <a href="https://spiceworks.com" target="_blank" rel="noopener" class="flex flex-col items-center p-4 rounded-lg hover:bg-red-50 transition-colors group">
+                        <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
+                            <i data-feather="shield" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700 text-center">Spiceworks</span>
+                    </a>
+                </div>
+                
+                <!-- Microsoft Cloud Services Section -->
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div onclick="showCloudInfo('azure')" class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 cursor-pointer hover:shadow-lg transition-all duration-300 group">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                                <i data-feather="cloud" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-800">Microsoft Azure</h4>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3">Build, deploy, and scale applications with Microsoft's global cloud platform. Perfect for Windows environments with seamless Office 365 integration.</p>
+                        <div class="text-xs text-blue-700 mb-2">✨ <strong>Best for:</strong> Enterprise Windows shops, hybrid scenarios</div>
+                        <a href="https://portal.azure.com" target="_blank" rel="noopener" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Access Portal →</a>
+                    </div>
+                    
+                    <div onclick="showCloudInfo('m365')" class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 cursor-pointer hover:shadow-lg transition-all duration-300 group">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center mr-3">
+                                <i data-feather="users" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-800">Microsoft 365</h4>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3">Complete productivity suite with Teams, SharePoint, Exchange Online, and advanced security features for modern collaboration.</p>
+                        <div class="text-xs text-green-700 mb-2">✨ <strong>Best for:</strong> Productivity, collaboration, remote work</div>
+                        <a href="https://portal.office.com" target="_blank" rel="noopener" class="text-green-600 hover:text-green-800 text-sm font-medium">Access Portal →</a>
                     </div>
                 </div>
                 
-                <!-- Gradient overlays for fade effect -->
-                <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-900/90 to-transparent z-10 pointer-events-none"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-900/90 to-transparent z-10 pointer-events-none"></div>
-            </div>
-            
-            <!-- View All Blog Posts Button -->
-            <div class="text-center mt-12">
-                <a href="/blog/index.html" class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    <i data-feather="book-open" class="w-5 h-5"></i>
-                    View All Blog Posts
-                </a>
+                <!-- Quick Access Note -->
+                <div class="mt-6 text-center">
+                    <p class="text-gray-500 text-sm">Quick access to essential IT documentation and cloud platforms</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1039,6 +1085,85 @@
         </div>
     </section>
 
+    <!-- IT Help Chatbot Popup -->
+    <div id="it-chatbot-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg shadow-2xl w-full max-w-md h-96 flex flex-col">
+                <!-- Chatbot Header -->
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white p-4 rounded-t-lg flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                            <i data-feather="cpu" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Sam's AI Assistant</h3>
+                            <p class="text-xs text-emerald-100">Expert knowledge of Sam's experience</p>
+                        </div>
+                    </div>
+                    <button onclick="closeITChatbot()" class="text-white hover:text-emerald-200 transition-colors">
+                        <i data-feather="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                
+                <!-- Chat Messages Area -->
+                <div id="chat-messages" class="flex-1 p-4 overflow-y-auto bg-gray-50">
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-2">
+                            <div class="w-6 h-6 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i data-feather="cpu" class="w-3 h-3 text-white"></i>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg shadow-sm max-w-xs">
+                                <p class="text-sm text-gray-800">🚀 <strong>I'm Sam's AI Assistant - Expert knowledge of his Microsoft experience!</strong></p>
+                                <p class="text-xs text-gray-600 mt-2">Ask me about Sam's experience with:</p>
+                                <ul class="text-xs text-gray-600 mt-1 space-y-1">
+                                    <li>⭐ <strong>Microsoft 365</strong> (Teams, SharePoint, Exchange migrations)</li>
+                                    <li>☁️ <strong>Azure Cloud</strong> (VMs, hybrid setups, Active Directory)</li>
+                                    <li>🔧 <strong>Exchange Online</strong> (Mail flow, calendar permissions, PowerShell)</li>
+                                    <li>🛡️ <strong>Intune & Security</strong> (Zero-trust, compliance, Defender)</li>
+                                    <li>⚡ <strong>PowerShell Automation</strong> (Scripts, security tasks)</li>
+                                    <li>👥 <strong>Teams & SharePoint</strong> (Governance, permissions, policies)</li>
+                                </ul>
+                                <p class="text-xs text-emerald-600 mt-2 font-medium">✨ I can help with licensing, pricing, troubleshooting, and any Microsoft ecosystem question!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Action Buttons -->
+                <div class="p-3 border-t bg-white">
+                    <div class="grid grid-cols-2 gap-2 mb-3">
+                        <button onclick="askPredefinedQuestion('I forgot my password, how do I reset it?')" class="text-xs bg-green-50 hover:bg-green-100 text-green-700 px-2 py-1 rounded transition-colors">
+                            Password Reset
+                        </button>
+                        <button onclick="askPredefinedQuestion('Computer is running very slow, what should I check?')" class="text-xs bg-blue-50 hover:bg-blue-100 text-blue-700 px-2 py-1 rounded transition-colors">
+                            Slow Computer
+                        </button>
+                        <button onclick="askPredefinedQuestion('Exchange mail flow problems, emails not delivering')" class="text-xs bg-orange-50 hover:bg-orange-100 text-orange-700 px-2 py-1 rounded transition-colors">
+                            Email Issues
+                        </button>
+                        <button onclick="askPredefinedQuestion('How much does Microsoft 365 cost in Australia?')" class="text-xs bg-purple-50 hover:bg-purple-100 text-purple-700 px-2 py-1 rounded transition-colors">
+                            M365 Pricing
+                        </button>
+                    </div>
+                    
+                    <!-- Chat Input -->
+                    <div class="flex gap-2">
+                        <input 
+                            type="text" 
+                            id="chat-input" 
+                            placeholder="Describe your IT issue in detail..."
+                            class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+                            onkeypress="handleChatKeyPress(event)"
+                        >
+                        <button onclick="sendChatMessage()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded-lg transition-colors">
+                            <i data-feather="send" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16 px-4 sm:px-6 lg:px-8">
         <div class="max-w-6xl mx-auto">
@@ -1069,7 +1194,7 @@
                         <a href="#home" class="block text-gray-300 hover:text-white transition-colors">Home</a>
                         <a href="#about" class="block text-gray-300 hover:text-white transition-colors">About</a>
                         <a href="#services" class="block text-gray-300 hover:text-white transition-colors">Services</a>
-                        <a href="/blog/index.html" class="block text-gray-300 hover:text-white transition-colors">Blog</a>
+                        <a href="#it-news" class="block text-gray-300 hover:text-white transition-colors">IT News</a>
                         <a href="#contact" class="block text-gray-300 hover:text-white transition-colors">Contact</a>
                     </div>
                 </div>
@@ -1085,6 +1210,34 @@
     </footer>
 
     <script>
+        // Conversation History for AI Context
+        let conversationHistory = [];
+        const MAX_HISTORY = 10; // Keep last 10 exchanges for context
+        
+        // Enhanced AI with conversation memory
+        function addToConversationHistory(message, sender) {
+            conversationHistory.push({
+                role: sender === 'user' ? 'user' : 'assistant',
+                content: message,
+                timestamp: new Date()
+            });
+            
+            // Keep only the last MAX_HISTORY messages
+            if (conversationHistory.length > MAX_HISTORY * 2) { // *2 because we store both user and assistant
+                conversationHistory = conversationHistory.slice(-MAX_HISTORY * 2);
+            }
+        }
+        
+        // Get conversation context for AI
+        function getConversationContext() {
+            if (conversationHistory.length === 0) return '';
+            
+            return conversationHistory
+                .slice(-6) // Last 3 exchanges (6 messages)
+                .map(msg => `${msg.role}: ${msg.content}`)
+                .join('\n');
+        }
+
         // Vanta background removed (user requested no blue background)
 
         // Mobile menu toggle
@@ -1143,103 +1296,1751 @@
 
         // Initialize feather icons
         feather.replace();
-        
-        // Load and display blog posts
-        async function loadBlogPosts() {
-            try {
-                const response = await fetch('blog/posts.json');
-                const posts = await response.json();
-                
-                const blogContainer = document.getElementById('blogScrollContent');
-                if (!blogContainer) return;
-                
-                // Filter and sort posts
-                const recentPosts = posts
-                    .filter(post => post.category !== 'blog') // Exclude meta blog posts
-                    .sort((a, b) => new Date(b.date) - new Date(a.date))
-                    .slice(0, 6); // Get latest 6 posts
-                
-                // Duplicate posts for seamless scrolling
-                const allPosts = [...recentPosts, ...recentPosts];
-                
-                blogContainer.innerHTML = allPosts.map(post => `
-                    <article class="blog-card">
-                        <div class="blog-card-category">${post.category}</div>
-                        <h3 class="blog-card-title">${post.title}</h3>
-                        <p class="blog-card-excerpt">${post.excerpt}</p>
-                        <div class="blog-card-meta">
-                            <div class="flex items-center gap-1">
-                                <i data-feather="calendar" class="w-3 h-3"></i>
-                                <span>${formatDate(post.date)}</span>
-                            </div>
-                            <div class="flex items-center gap-1">
-                                <i data-feather="clock" class="w-3 h-3"></i>
-                                <span>5 min read</span>
-                            </div>
-                        </div>
-                        <a href="${post.url}" class="absolute inset-0 z-10" aria-label="Read ${post.title}"></a>
-                    </article>
-                `).join('');
-                
-                // Re-initialize feather icons for the new content
-                feather.replace();
-                
-            } catch (error) {
-                console.error('Error loading blog posts:', error);
-                
-                // Fallback content
-                const blogContainer = document.getElementById('blogScrollContent');
-                if (blogContainer) {
-                    blogContainer.innerHTML = `
-                        <article class="blog-card">
-                            <div class="blog-card-category">Exchange</div>
-                            <h3 class="blog-card-title">Grant Calendar Permissions via PowerShell</h3>
-                            <p class="blog-card-excerpt">Quick examples for granting calendar folder permissions using Exchange Online / Microsoft 365 PowerShell — single mailbox and bulk CSV examples.</p>
-                            <div class="blog-card-meta">
-                                <div class="flex items-center gap-1">
-                                    <i data-feather="calendar" class="w-3 h-3"></i>
-                                    <span>Oct 2025</span>
-                                </div>
-                                <div class="flex items-center gap-1">
-                                    <i data-feather="clock" class="w-3 h-3"></i>
-                                    <span>5 min read</span>
-                                </div>
-                            </div>
-                            <a href="blog/learn-with-me/exchange/grant-calendar-permissions-powershell.html" class="absolute inset-0 z-10" aria-label="Read Grant Calendar Permissions via PowerShell"></a>
-                        </article>
-                        <article class="blog-card">
-                            <div class="blog-card-category">Coming Soon</div>
-                            <h3 class="blog-card-title">More Posts Coming Soon</h3>
-                            <p class="blog-card-excerpt">Stay tuned for more practical guides and tutorials on Microsoft 365, Azure, and cloud technologies.</p>
-                            <div class="blog-card-meta">
-                                <div class="flex items-center gap-1">
-                                    <i data-feather="calendar" class="w-3 h-3"></i>
-                                    <span>Soon</span>
-                                </div>
-                            </div>
-                        </article>
-                    `;
-                    feather.replace();
-                }
-            }
-        }
-        
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'short'
-            });
-        }
-        
         // Track form submission for debugging
         function trackFormSubmission() {
             console.log('Contact form submitted at:', new Date().toISOString());
             // You can check browser console for this message
         }
-        
-        // Load blog posts when page loads
-        document.addEventListener('DOMContentLoaded', loadBlogPosts);
+
+        // Load content when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Content loaded - no blog posts to load anymore
+        });
+
+        async function loadMicrosoftHub() {
+            const hubContent = document.getElementById('hub-content');
+            const hubLoading = document.getElementById('hub-loading');
+            
+            try {
+                // Comprehensive IT search directory with natural language support
+                const searchDirectory = [
+                    // Microsoft Azure - How to guides
+                    {
+                        title: "How to Fix Azure Backup Failures",
+                        description: "Complete guide to troubleshoot Azure backup errors, recovery vault issues, and backup agent problems.",
+                        link: "https://learn.microsoft.com/en-us/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft Learn",
+                        sourceColor: "bg-blue-600",
+                        category: "azure microsoft troubleshooting backup",
+                        keywords: "how to fix azure backup failed error recovery vault agent snapshot timeout troubleshoot"
+                    },
+                    {
+                        title: "How to Set Up Azure Virtual Machines",
+                        description: "Step-by-step guide to create, configure, and manage Azure VMs with best practices and troubleshooting.",
+                        link: "https://learn.microsoft.com/en-us/azure/virtual-machines/",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft Learn",
+                        sourceColor: "bg-blue-600",
+                        category: "azure microsoft setup configuration",
+                        keywords: "how to create azure vm virtual machine setup configure deploy troubleshoot"
+                    },
+                    {
+                        title: "How to Configure Azure Active Directory",
+                        description: "Complete AAD setup guide including user management, security policies, and sync troubleshooting.",
+                        link: "https://learn.microsoft.com/en-us/azure/active-directory/",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft Learn",
+                        sourceColor: "bg-blue-600",
+                        category: "azure microsoft activedirectory security",
+                        keywords: "how to setup azure active directory aad users sync configure troubleshoot authentication"
+                    },
+                    // Exchange & Email - How to guides
+                    {
+                        title: "How to Migrate to Exchange Online",
+                        description: "Complete Exchange migration guide with hybrid setup, mailbox moves, and troubleshooting steps.",
+                        link: "https://learn.microsoft.com/en-us/exchange/mailbox-migration/mailbox-migration",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft Learn",
+                        sourceColor: "bg-blue-600",
+                        category: "exchange microsoft migration email",
+                        keywords: "how to migrate exchange online mailbox hybrid setup troubleshoot email migration"
+                    },
+                    {
+                        title: "How to Fix Email Delivery Issues",
+                        description: "Troubleshoot email delivery problems, message trace, and mail flow issues in Exchange Online.",
+                        link: "https://learn.microsoft.com/en-us/exchange/mail-flow-best-practices/troubleshoot-mail-flow",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft Learn",
+                        sourceColor: "bg-blue-600",
+                        category: "exchange microsoft troubleshooting email",
+                        keywords: "how to fix email delivery issues message trace mail flow troubleshoot exchange online"
+                    },
+                    // PowerShell - How to guides
+                    {
+                        title: "How to Fix PowerShell Execution Policy Errors",
+                        description: "Resolve PowerShell execution policy issues, script signing, and security policy configurations.",
+                        link: "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft Learn",
+                        sourceColor: "bg-blue-600",
+                        category: "powershell microsoft troubleshooting scripting",
+                        keywords: "how to fix powershell execution policy error script signing security troubleshoot"
+                    },
+                    {
+                        title: "How to Automate Tasks with PowerShell",
+                        description: "Learn PowerShell automation techniques, scripting best practices, and task scheduling.",
+                        link: "https://learn.microsoft.com/en-us/powershell/scripting/",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft Learn",
+                        sourceColor: "bg-blue-600",
+                        category: "powershell microsoft automation scripting",
+                        keywords: "how to automate tasks powershell script automation scheduled tasks"
+                    },
+                    // Windows Server - How to guides
+                    {
+                        title: "How to Fix DNS Resolution Problems",
+                        description: "Troubleshoot DNS issues, configure forwarders, and resolve name resolution problems in Windows Server.",
+                        link: "https://learn.microsoft.com/en-us/windows-server/networking/dns/troubleshoot/troubleshoot-dns-client",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft Learn",
+                        sourceColor: "bg-blue-600",
+                        category: "server microsoft troubleshooting dns networking",
+                        keywords: "how to fix dns resolution problems troubleshoot name resolution windows server"
+                    },
+                    {
+                        title: "How to Set Up Windows Server Roles",
+                        description: "Install and configure Windows Server roles including AD DS, DHCP, DNS, and file services.",
+                        link: "https://learn.microsoft.com/en-us/windows-server/get-started/server-roles",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft Learn",
+                        sourceColor: "bg-blue-600",
+                        category: "server microsoft setup configuration",
+                        keywords: "how to setup windows server roles install configure ad ds dhcp dns file services"
+                    },
+                    // Networking - How to guides
+                    {
+                        title: "How to Troubleshoot Network Connectivity",
+                        description: "Network diagnostic commands, tools, and techniques for resolving connectivity issues.",
+                        link: "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-5.html",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Cisco Support",
+                        sourceColor: "bg-blue-800",
+                        category: "networking troubleshooting connectivity infrastructure",
+                        keywords: "how to troubleshoot network connectivity ping traceroute telnet netstat nslookup"
+                    },
+                    {
+                        title: "How to Configure Cisco Switches and Routers",
+                        description: "Basic and advanced Cisco device configuration, VLAN setup, and routing protocols.",
+                        link: "https://www.cisco.com/c/en/us/support/switches/catalyst-2960-series-switches/products-configuration-guides-list.html",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Cisco Support",
+                        sourceColor: "bg-blue-800",
+                        category: "networking cisco configuration setup",
+                        keywords: "how to configure cisco switch router vlan setup routing protocols"
+                    },
+                    // Linux - How to guides
+                    {
+                        title: "How to Monitor Linux Server Performance",
+                        description: "Linux performance monitoring tools, commands, and techniques for system optimization.",
+                        link: "https://www.redhat.com/en/topics/linux/linux-performance-monitoring-tools",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Red Hat",
+                        sourceColor: "bg-red-600",
+                        category: "linux monitoring performance administration",
+                        keywords: "how to monitor linux server performance top htop iotop vmstat troubleshoot"
+                    },
+                    {
+                        title: "How to Set Up Linux File Permissions",
+                        description: "Understanding and configuring Linux file permissions, ownership, and access control.",
+                        link: "https://www.redhat.com/en/topics/linux/what-are-linux-file-permissions",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Red Hat",
+                        sourceColor: "bg-red-600",
+                        category: "linux security permissions administration",
+                        keywords: "how to setup linux file permissions chmod chown access control security"
+                    },
+                    // Security - How to guides
+                    {
+                        title: "How to Implement Network Security",
+                        description: "Network security best practices, firewall configuration, and intrusion detection systems.",
+                        link: "https://www.sans.org/white-papers/1920/",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "SANS Institute",
+                        sourceColor: "bg-red-500",
+                        category: "security networking firewall protection",
+                        keywords: "how to implement network security firewall ids ips intrusion detection protection"
+                    },
+                    {
+                        title: "How to Respond to Security Incidents",
+                        description: "Incident response procedures, forensics, and security breach management strategies.",
+                        link: "https://www.sans.org/white-papers/504/",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "SANS Institute",
+                        sourceColor: "bg-red-500",
+                        category: "security incident response forensics",
+                        keywords: "how to respond security incident breach forensics investigation response plan"
+                    },
+                    // Database - How to guides
+                    {
+                        title: "How to Optimize SQL Server Performance",
+                        description: "SQL Server performance tuning, query optimization, and database maintenance techniques.",
+                        link: "https://learn.microsoft.com/en-us/sql/relational-databases/performance/performance-monitoring-and-tuning-tools",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft SQL Docs",
+                        sourceColor: "bg-red-600",
+                        category: "database sql performance optimization",
+                        keywords: "how to optimize sql server performance tuning query database maintenance troubleshoot"
+                    },
+                    {
+                        title: "How to Backup and Restore Databases",
+                        description: "Database backup strategies, restoration procedures, and disaster recovery planning.",
+                        link: "https://learn.microsoft.com/en-us/sql/relational-databases/backup-restore/",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft SQL Docs",
+                        sourceColor: "bg-red-600",
+                        category: "database sql backup recovery",
+                        keywords: "how to backup restore database sql server disaster recovery maintenance"
+                    },
+                    // Virtualization - How to guides
+                    {
+                        title: "How to Set Up VMware vSphere",
+                        description: "VMware vSphere installation, configuration, and virtual machine management guide.",
+                        link: "https://docs.vmware.com/en/VMware-vSphere/",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "VMware Docs",
+                        sourceColor: "bg-green-600",
+                        category: "virtualization vmware setup configuration",
+                        keywords: "how to setup vmware vsphere virtual machine vm configuration installation"
+                    },
+                    {
+                        title: "How to Troubleshoot Hyper-V Issues",
+                        description: "Windows Hyper-V troubleshooting, VM performance issues, and configuration problems.",
+                        link: "https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft Learn",
+                        sourceColor: "bg-blue-600",
+                        category: "virtualization hyperv troubleshooting microsoft",
+                        keywords: "how to troubleshoot hyper-v issues vm virtual machine performance problems"
+                    },
+                    // DevOps & Containers - How to guides
+                    {
+                        title: "How to Use Docker for Applications",
+                        description: "Docker container basics, image creation, deployment, and troubleshooting guide.",
+                        link: "https://docs.docker.com/get-started/",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Docker Docs",
+                        sourceColor: "bg-blue-400",
+                        category: "containers docker devops deployment",
+                        keywords: "how to use docker containers image deployment application troubleshoot"
+                    },
+                    {
+                        title: "How to Manage Kubernetes Clusters",
+                        description: "Kubernetes cluster management, pod troubleshooting, and application deployment strategies.",
+                        link: "https://kubernetes.io/docs/tutorials/",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Kubernetes Docs",
+                        sourceColor: "bg-blue-700",
+                        category: "kubernetes containers orchestration devops",
+                        keywords: "how to manage kubernetes cluster pods deployment troubleshoot orchestration"
+                    },
+                    // General IT Support - How to guides
+                    {
+                        title: "How to Troubleshoot Computer Problems",
+                        description: "General computer troubleshooting techniques, hardware diagnostics, and software issues.",
+                        link: "https://support.microsoft.com/en-us/windows/troubleshoot-pc-problems-c427c4b0-f51d-4bd3-b6c6-3e15e6b70c1c",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft Support",
+                        sourceColor: "bg-blue-600",
+                        category: "troubleshooting computer support general",
+                        keywords: "how to troubleshoot computer problems hardware software issues diagnostics repair"
+                    },
+                    {
+                        title: "How to Set Up Remote Access",
+                        description: "Configure VPN, RDP, SSH, and other remote access solutions for secure connectivity.",
+                        link: "https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Microsoft Learn",
+                        sourceColor: "bg-blue-600",
+                        category: "remote access vpn rdp ssh connectivity",
+                        keywords: "how to setup remote access vpn rdp ssh remote desktop connectivity"
+                    },
+                    // Community Resources
+                    {
+                        title: "IT Community Support and Forums",
+                        description: "Get help from IT professionals worldwide on Reddit, Stack Overflow, and specialized forums.",
+                        link: "https://reddit.com/r/sysadmin/",
+                        pubDate: new Date().toISOString(),
+                        sourceName: "Reddit SysAdmin",
+                        sourceColor: "bg-orange-600",
+                        category: "community support forums help",
+                        keywords: "it community support forums help sysadmin questions answers troubleshooting"
+                    }
+                ];
+
+                allHubContent = searchDirectory;
+                
+                // Don't display any content by default - only show search interface
+                hubLoading.classList.add('hidden');
+                hubContent.classList.remove('hidden');
+                hubContent.innerHTML = `
+                    <div class="col-span-full text-center py-16">
+                        <div class="max-w-2xl mx-auto">
+                            <i data-feather="search" class="w-16 h-16 text-gray-400 mx-auto mb-4"></i>
+                            <h3 class="text-2xl font-bold text-gray-700 mb-4">Ask Your IT Questions</h3>
+                            <p class="text-gray-600 mb-6">
+                                Ask me anything about IT troubleshooting, setup guides, or system administration. 
+                                I understand natural language and will find the exact resources you need.
+                            </p>
+                            <div class="bg-blue-50 rounded-lg p-4 mb-6 text-left">
+                                <h4 class="font-semibold text-blue-800 mb-2">Try asking questions like:</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li>• "How to fix Azure backup failures?"</li>
+                                    <li>• "Troubleshoot Exchange email delivery issues"</li>
+                                    <li>• "PowerShell execution policy error"</li>
+                                    <li>• "Setup Windows Server DNS"</li>
+                                    <li>• "Linux server performance monitoring"</li>
+                                    <li>• "Docker container networking problems"</li>
+                                </ul>
+                            </div>
+                            <p class="text-sm text-gray-500">
+                                Just type your question or describe your problem above - I'll understand and direct you to the right solution!
+                            </p>
+                        </div>
+                    </div>
+                `;
+
+                // Initialize feather icons
+                if (typeof feather !== 'undefined') {
+                    feather.replace();
+                }
+
+            } catch (error) {
+                console.error('Error loading IT Hub:', error);
+                hubLoading.innerHTML = `
+                    <div class="text-center py-12">
+                        <p class="text-gray-600">Search functionality temporarily unavailable.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function displayHubContent(articles) {
+            const hubContent = document.getElementById('hub-content');
+            
+            if (articles.length === 0) {
+                hubContent.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <i data-feather="search" class="w-12 h-12 text-gray-400 mx-auto mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-700 mb-2">No Results Found</h3>
+                        <p class="text-gray-600 mb-4">Try searching with different keywords or browse by category.</p>
+                        <button onclick="clearSearch()" class="text-blue-600 hover:text-blue-800 font-medium">Clear Search</button>
+                    </div>
+                `;
+                if (typeof feather !== 'undefined') {
+                    feather.replace();
+                }
+                return;
+            }
+            
+            hubContent.innerHTML = articles.map(article => {
+                const categoryBadge = getCategoryBadge(article.category);
+                const categoryClass = getCategoryClass(article.category);
+                
+                return `
+                    <div class="hub-card ${categoryClass}" data-category="${article.category}">
+                        <div class="hub-card-category-badge">${categoryBadge}</div>
+                        <div class="hub-card-source ${article.sourceColor}">
+                            ${article.sourceName}
+                        </div>
+                        <h3 class="hub-card-title">
+                            <a href="${article.link}" target="_blank" rel="noopener" class="hover:text-blue-600 transition-colors">
+                                ${article.title}
+                            </a>
+                        </h3>
+                        <p class="hub-card-excerpt">${article.description}</p>
+                        <div class="hub-card-meta">
+                            <span>Official Resource</span>
+                            <a href="${article.link}" target="_blank" rel="noopener" class="text-blue-600 hover:text-blue-800 font-medium transition-colors">
+                                Visit Resource →
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function getCategoryBadge(category) {
+            const badges = {
+                'azure': 'AZURE',
+                'exchange': 'EXCHANGE',
+                'intune': 'INTUNE',
+                'powershell': 'PS',
+                'server': 'SERVER',
+                'troubleshooting': 'FIX',
+                'security': 'SEC'
+            };
+            
+            for (const [key, badge] of Object.entries(badges)) {
+                if (category.includes(key)) return badge;
+            }
+            return 'GUIDE';
+        }
+
+        function getCategoryClass(category) {
+            return category.replace(/\s+/g, '-').toLowerCase();
+        }
+
+        // Enhanced search functionality with natural language support
+        function searchHub(query = null) {
+            const searchInput = document.getElementById('hub-search');
+            const searchTerm = (query || searchInput.value).toLowerCase().trim();
+            
+            if (!searchTerm) {
+                // Show default search interface when no search term
+                loadMicrosoftHub();
+                return;
+            }
+
+            // Enhanced search with natural language understanding
+            const filteredContent = allHubContent.filter(article => {
+                const searchWords = searchTerm.split(' ').filter(word => word.length > 2);
+                const itemText = `${article.title} ${article.description} ${article.keywords}`.toLowerCase();
+                
+                // Question pattern matching for natural language queries
+                const questionPatterns = [
+                    { pattern: /how to (.*)/i, weight: 3 },
+                    { pattern: /how do i (.*)/i, weight: 3 },
+                    { pattern: /how can i (.*)/i, weight: 3 },
+                    { pattern: /what is (.*)/i, weight: 2 },
+                    { pattern: /why is (.*)/i, weight: 2 },
+                    { pattern: /troubleshoot (.*)/i, weight: 3 },
+                    { pattern: /fix (.*)/i, weight: 3 },
+                    { pattern: /setup (.*)/i, weight: 2 },
+                    { pattern: /configure (.*)/i, weight: 2 },
+                    { pattern: /install (.*)/i, weight: 2 },
+                    { pattern: /migrate (.*)/i, weight: 2 },
+                    { pattern: /backup (.*)/i, weight: 2 },
+                    { pattern: /restore (.*)/i, weight: 2 },
+                    { pattern: /monitor (.*)/i, weight: 2 },
+                    { pattern: /optimize (.*)/i, weight: 2 }
+                ];
+
+                let score = 0;
+                
+                // Check for question patterns and extract key terms
+                questionPatterns.forEach(pattern => {
+                    if (pattern.pattern.test(searchTerm)) {
+                        const extracted = searchTerm.match(pattern.pattern)[1];
+                        if (itemText.includes(extracted)) {
+                            score += pattern.weight;
+                        }
+                    }
+                });
+
+                // Word matching with relevance scoring
+                searchWords.forEach(word => {
+                    if (itemText.includes(word)) {
+                        // Higher score for title matches
+                        if (article.title.toLowerCase().includes(word)) score += 3;
+                        // Medium score for keyword matches
+                        else if (article.keywords.toLowerCase().includes(word)) score += 2;
+                        // Lower score for description matches
+                        else if (article.description.toLowerCase().includes(word)) score += 1;
+                    }
+                });
+
+                // Technology-specific boosting for better IT context understanding
+                const techKeywords = {
+                    'azure': ['azure', 'microsoft', 'cloud', 'vm', 'virtual', 'machine'],
+                    'exchange': ['exchange', 'email', 'mailbox', 'mail', 'message', 'delivery'],
+                    'powershell': ['powershell', 'script', 'automation', 'cmdlet', 'execution', 'policy'],
+                    'windows': ['windows', 'server', 'microsoft', 'domain', 'controller'],
+                    'network': ['network', 'dns', 'ping', 'connectivity', 'router', 'switch', 'cisco'],
+                    'linux': ['linux', 'ubuntu', 'centos', 'redhat', 'unix', 'command'],
+                    'docker': ['docker', 'container', 'kubernetes', 'orchestration', 'deployment'],
+                    'security': ['security', 'firewall', 'breach', 'incident', 'vulnerability'],
+                    'database': ['sql', 'database', 'mysql', 'postgres', 'backup', 'restore'],
+                    'active': ['active', 'directory', 'ad', 'authentication', 'ldap'],
+                    'virtualization': ['vmware', 'hyper-v', 'virtual', 'vm', 'vsphere'],
+                    'backup': ['backup', 'restore', 'recovery', 'disaster', 'vault'],
+                    'performance': ['performance', 'optimization', 'monitoring', 'tuning', 'slow'],
+                    'error': ['error', 'problem', 'issue', 'troubleshoot', 'fix', 'broken'],
+                    'migration': ['migration', 'migrate', 'move', 'transfer', 'upgrade']
+                };
+
+                Object.keys(techKeywords).forEach(tech => {
+                    if (searchTerm.includes(tech)) {
+                        techKeywords[tech].forEach(keyword => {
+                            if (itemText.includes(keyword)) score += 2;
+                        });
+                    }
+                });
+
+                // Common IT problem keywords get extra boost
+                const problemKeywords = ['failed', 'error', 'not working', 'broken', 'slow', 'timeout', 'connection', 'access denied'];
+                problemKeywords.forEach(problem => {
+                    if (searchTerm.includes(problem) && itemText.includes(problem)) {
+                        score += 2;
+                    }
+                });
+
+                return score > 0;
+            }).sort((a, b) => {
+                // Sort by relevance score
+                const scoreA = calculateRelevanceScore(a, searchTerm);
+                const scoreB = calculateRelevanceScore(b, searchTerm);
+                return scoreB - scoreA;
+            });
+
+            displayHubContent(filteredContent);
+            
+            if (query) {
+                searchInput.value = query;
+            }
+        }
+
+        function calculateRelevanceScore(item, searchTerm) {
+            const searchWords = searchTerm.split(' ').filter(word => word.length > 2);
+            const itemText = `${item.title} ${item.description} ${item.keywords}`.toLowerCase();
+            let score = 0;
+
+            searchWords.forEach(word => {
+                if (itemText.includes(word)) {
+                    if (item.title.toLowerCase().includes(word)) score += 3;
+                    else if (item.keywords.toLowerCase().includes(word)) score += 2;
+                    else if (item.description.toLowerCase().includes(word)) score += 1;
+                }
+            });
+
+            return score;
+        }
+
+        // Clear search and return to default state
+        function clearSearch() {
+            const searchInput = document.getElementById('hub-search');
+            searchInput.value = '';
+            loadMicrosoftHub();
+        }
+
+        // Category filtering
+        function switchCategory(category) {
+            currentCategory = category;
+            
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+
+            // Filter content by category
+            if (category === 'all') {
+                // Don't show all content by default, show search interface
+                loadMicrosoftHub();
+            } else {
+                const filteredContent = allHubContent.filter(article => 
+                    article.category.toLowerCase().includes(category.toLowerCase())
+                );
+                displayHubContent(filteredContent);
+            }
+        }
+
+        // Auto-refresh content periodically
+        function setupHubAutoRefresh() {
+            const lastUpdate = localStorage.getItem('hubLastUpdate');
+            const twentyFourHours = 24 * 60 * 60 * 1000;
+            
+            if (!lastUpdate || (Date.now() - parseInt(lastUpdate)) > twentyFourHours) {
+                loadMicrosoftHub();
+            }
+            
+            setInterval(() => {
+                loadMicrosoftHub();
+            }, twentyFourHours);
+        }
+
+        // Add refresh button and search event listeners
+        function initializeHub() {
+            // Add refresh button
+            const hubSection = document.getElementById('microsoft-hub');
+            if (hubSection) {
+                const refreshBtn = document.createElement('button');
+                refreshBtn.className = 'hub-refresh-btn';
+                refreshBtn.innerHTML = '<i data-feather="refresh-cw" class="w-4 h-4"></i>';
+                refreshBtn.onclick = loadMicrosoftHub;
+                refreshBtn.title = 'Refresh content';
+                hubSection.style.position = 'relative';
+                hubSection.appendChild(refreshBtn);
+            }
+
+            // Add search event listeners
+            const searchInput = document.getElementById('hub-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', () => searchHub());
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        searchHub();
+                    }
+                });
+            }
+
+            // Initialize feather icons
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        }
+
+        // Load content when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Content loaded - blog posts removed
+        });
+
+        // IT Chatbot Functions
+        function openITChatbot() {
+            document.getElementById('it-chatbot-overlay').classList.remove('hidden');
+            document.getElementById('chat-input').focus();
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        }
+
+        function closeITChatbot() {
+            document.getElementById('it-chatbot-overlay').classList.add('hidden');
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function askPredefinedQuestion(question) {
+            document.getElementById('chat-input').value = question;
+            sendChatMessage();
+        }
+
+        async function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message to chat and conversation history
+            addMessageToChat(message, 'user');
+            addToConversationHistory(message, 'user');
+            input.value = '';
+            
+            // Show typing indicator
+            addTypingIndicator();
+            
+            try {
+                // First, try to find solutions in our knowledge base
+                const localSolution = findLocalSolution(message);
+                
+                if (localSolution) {
+                    removeTypingIndicator();
+                    addMessageToChat(localSolution.response, 'bot', localSolution.links);
+                    addToConversationHistory(localSolution.response, 'bot');
+                } else {
+                    // If no local solution, use free AI API with conversation context
+                    const aiResponse = await getAIResponse(message);
+                    removeTypingIndicator();
+                    addMessageToChat(aiResponse, 'bot');
+                    addToConversationHistory(aiResponse, 'bot');
+                }
+            } catch (error) {
+                const errorMsg = "I'm having trouble connecting right now. Please check our IT Knowledge Hub above for solutions, or use the contact form for direct help.";
+                removeTypingIndicator();
+                addMessageToChat(errorMsg, 'bot');
+                addToConversationHistory(errorMsg, 'bot');
+            }
+        }
+
+        function findLocalSolution(question) {
+            const lowerQuestion = question.toLowerCase();
+            
+            // IT Solution Database
+            const solutions = {
+                'azure backup': {
+                    response: "🔧 **Azure Backup Issues Solution:**\n\n1. **Check Recovery Vault status**\n2. **Verify backup agent version**\n3. **Review network connectivity**\n4. **Check storage account permissions**\n\nFor detailed steps, check the official guide below:",
+                    links: [{ text: "Azure Backup Troubleshooting Guide", url: "https://learn.microsoft.com/en-us/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout" }]
+                },
+                'powershell execution policy': {
+                    response: "⚡ **PowerShell Execution Policy Fix:**\n\n1. **Run as Administrator:**\n   `Set-ExecutionPolicy RemoteSigned`\n\n2. **For current user only:**\n   `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`\n\n3. **Check current policy:**\n   `Get-ExecutionPolicy -List`",
+                    links: [{ text: "PowerShell Execution Policies Documentation", url: "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies" }]
+                },
+                'exchange email delivery': {
+                    response: "📧 **Email Delivery Issues Fix:**\n\n1. **Run Message Trace** in Exchange Admin Center\n2. **Check Mail Flow Rules**\n3. **Verify DNS MX records**\n4. **Review Transport Rules**\n5. **Check recipient permissions**",
+                    links: [{ text: "Exchange Mail Flow Troubleshooting", url: "https://learn.microsoft.com/en-us/exchange/mail-flow-best-practices/troubleshoot-mail-flow" }]
+                },
+                'linux performance': {
+                    response: "🐧 **Linux Performance Monitoring:**\n\n**Essential Commands:**\n• `top` - Real-time processes\n• `htop` - Enhanced process viewer\n• `iotop` - I/O monitoring\n• `vmstat` - System statistics\n• `free -h` - Memory usage\n• `df -h` - Disk usage",
+                    links: [{ text: "Linux Performance Tools Guide", url: "https://www.redhat.com/en/topics/linux/linux-performance-monitoring-tools" }]
+                },
+                'dns resolution': {
+                    response: "🌐 **DNS Resolution Problems:**\n\n1. **Clear DNS cache:** `ipconfig /flushdns`\n2. **Check DNS servers:** `nslookup`\n3. **Test connectivity:** `ping 8.8.8.8`\n4. **Verify DNS settings** in network adapter\n5. **Restart DNS service** if on server",
+                    links: [{ text: "DNS Troubleshooting Guide", url: "https://learn.microsoft.com/en-us/windows-server/networking/dns/troubleshoot/troubleshoot-dns-client" }]
+                },
+                'network connectivity': {
+                    response: "🔗 **Network Connectivity Troubleshooting:**\n\n**Step-by-step diagnosis:**\n1. `ping 127.0.0.1` (loopback)\n2. `ping [gateway]` (local network)\n3. `ping 8.8.8.8` (internet)\n4. `nslookup google.com` (DNS)\n5. `tracert [destination]` (routing)",
+                    links: [{ text: "Network Troubleshooting Guide", url: "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-5.html" }]
+                }
+            };
+            
+            // Find matching solution
+            for (const [key, solution] of Object.entries(solutions)) {
+                if (lowerQuestion.includes(key)) {
+                    return solution;
+                }
+            }
+            
+            return null;
+        }
+
+        async function getAIResponse(message) {
+            const conversationContext = getConversationContext();
+            const contextPrompt = conversationContext ? `Previous conversation:\n${conversationContext}\n\n` : '';
+            
+            try {
+                // Try multiple free AI APIs in order of preference
+                
+                // 1. Try OpenRouter (has free models)
+                try {
+                    const messages = [
+                        {
+                            role: 'system', 
+                            content: `You are Sam's AI assistant with expert knowledge of his Microsoft cloud specialization. Sam has hands-on experience with Microsoft 365, Azure, Intune MDM, Exchange Online, PowerShell automation, and IT infrastructure. You should provide detailed, practical solutions based on Sam's expertise. Always be helpful, professional, and focus on Microsoft technologies. Include specific commands, scripts, or step-by-step instructions when relevant. Keep responses conversational and remember the context of our chat.`
+                        }
+                    ];
+                    
+                    // Add conversation history for context
+                    if (conversationHistory.length > 0) {
+                        conversationHistory.slice(-4).forEach(msg => {
+                            messages.push({
+                                role: msg.role,
+                                content: msg.content
+                            });
+                        });
+                    }
+                    
+                    messages.push({
+                        role: 'user', 
+                        content: message
+                    });
+
+                    const openRouterResponse = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'HTTP-Referer': window.location.href,
+                            'X-Title': 'Sam Portfolio AI Assistant'
+                        },
+                        body: JSON.stringify({
+                            model: 'microsoft/wizardlm-2-8x22b:free',
+                            messages: messages,
+                            max_tokens: 800,
+                            temperature: 0.7
+                        })
+                    });
+
+                    if (openRouterResponse.ok) {
+                        const data = await openRouterResponse.json();
+                        if (data.choices && data.choices[0] && data.choices[0].message) {
+                            return data.choices[0].message.content;
+                        }
+                    }
+                } catch (error) {
+                    console.log('OpenRouter API unavailable, trying next option...');
+                }
+
+                // 2. Try Cohere AI (has free tier)
+                try {
+                    const cohereResponse = await fetch('https://api.cohere.ai/v1/generate', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer TRIAL-KEY', // Cohere allows trial usage
+                        },
+                        body: JSON.stringify({
+                            model: 'command-light',
+                            prompt: `You are Sam's AI assistant with expert knowledge of Microsoft cloud technologies. Sam specializes in Microsoft 365, Azure, Exchange Online, Intune, and PowerShell automation.
+
+${contextPrompt}Current User Question: ${message}
+
+Provide a helpful, detailed response based on Sam's Microsoft expertise:`,
+                            max_tokens: 800,
+                            temperature: 0.7,
+                            return_likelihoods: 'NONE'
+                        })
+                    });
+
+                    if (cohereResponse.ok) {
+                        const data = await cohereResponse.json();
+                        if (data.generations && data.generations[0]) {
+                            return data.generations[0].text.trim();
+                        }
+                    }
+                } catch (error) {
+                    console.log('Cohere API unavailable, trying next option...');
+                }
+
+                // 3. Try Together AI (has free tier)
+                try {
+                    const togetherResponse = await fetch('https://api.together.xyz/inference', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            model: 'togethercomputer/RedPajama-INCITE-Chat-3B-v1',
+                            prompt: `<human>: You are Sam's AI assistant specializing in Microsoft technologies. ${contextPrompt}Answer this question with expertise in Microsoft 365, Azure, Exchange Online, Intune, and PowerShell: ${message}\n<bot>:`,
+                            max_tokens: 800,
+                            temperature: 0.7,
+                            top_p: 0.7,
+                            top_k: 50,
+                            repetition_penalty: 1,
+                            stop: ['<human>:', '\n<human>:', '<|endoftext|>']
+                        })
+                    });
+
+                    if (togetherResponse.ok) {
+                        const data = await togetherResponse.json();
+                        if (data.output && data.output.choices && data.output.choices[0]) {
+                            return data.output.choices[0].text.trim();
+                        }
+                    }
+                } catch (error) {
+                    console.log('Together AI unavailable, trying next option...');
+                }
+
+                // 4. Try Hugging Face with better model and proper context
+                try {
+                    const hfResponse = await fetch('https://api-inference.huggingface.co/models/microsoft/DialoGPT-large', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            inputs: {
+                                past_user_inputs: conversationHistory.filter(msg => msg.role === 'user').slice(-3).map(msg => msg.content),
+                                generated_responses: conversationHistory.filter(msg => msg.role === 'assistant').slice(-3).map(msg => msg.content),
+                                text: `As Sam's Microsoft cloud specialist AI assistant, please answer: ${message}`
+                            },
+                            parameters: {
+                                max_length: 800,
+                                min_length: 50,
+                                temperature: 0.7,
+                                do_sample: true,
+                                top_p: 0.9
+                            }
+                        })
+                    });
+
+                    if (hfResponse.ok) {
+                        const data = await hfResponse.json();
+                        if (data.generated_text) {
+                            return data.generated_text;
+                        }
+                    }
+                } catch (error) {
+                    console.log('Hugging Face API unavailable, using local knowledge...');
+                }
+
+            } catch (error) {
+                console.log('All AI APIs unavailable, using Sam\'s knowledge base');
+            }
+
+            // Fallback to enhanced local knowledge base with context awareness
+            return getSamAIResponse(message);
+        }
+
+        function getSamAIResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            // Check conversation context for follow-up questions
+            const recentContext = conversationHistory.slice(-4);
+            const hasRecentPricingQuestion = recentContext.some(msg => 
+                msg.content.toLowerCase().includes('licens') || 
+                msg.content.toLowerCase().includes('price') || 
+                msg.content.toLowerCase().includes('cost')
+            );
+            const hasRecentTechQuestion = recentContext.some(msg => 
+                msg.content.toLowerCase().includes('powershell') || 
+                msg.content.toLowerCase().includes('azure') || 
+                msg.content.toLowerCase().includes('teams')
+            );
+            
+            // Natural language processing for conversational responses
+            const greetings = ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'];
+            const thanks = ['thank', 'thanks', 'appreciate'];
+            const goodbyes = ['bye', 'goodbye', 'see you', 'later'];
+            const followUps = ['more', 'tell me more', 'explain', 'details', 'how', 'what about', 'can you'];
+            
+            // Check for follow-up questions with context
+            if (followUps.some(follow => lowerMessage.includes(follow)) && lowerMessage.length < 50) {
+                if (hasRecentPricingQuestion) {
+                    return `💡 **More about Microsoft Licensing:**
+
+**Additional Pricing Considerations:**
+• **Volume Licensing**: Better rates for 250+ users
+• **CSP vs Direct**: Cloud Solution Provider often offers better support
+• **Seasonal Promotions**: Microsoft often runs Q4 promotions
+• **Non-profit Discounts**: Up to 75% off for eligible organizations
+• **Education Pricing**: Significant discounts for schools/universities
+
+**Hidden Costs to Consider:**
+• **Training & Adoption**: Budget 10-20% for user training
+• **Migration Services**: Professional services for large migrations
+• **Backup Solutions**: Third-party backup (Microsoft's is limited)
+• **Compliance Add-ons**: Advanced compliance may require E5
+
+**Pro Tips:**
+• **Annual vs Monthly**: Annual saves ~16%
+• **Mix Plans**: Not everyone needs E5 - mix E3/E5 strategically
+• **Shared Mailboxes**: Free with any M365 plan
+• **PowerBI**: Often cheaper as standalone vs E5
+
+Want specific recommendations for your organization size? 🎯`;
+                }
+                
+                if (hasRecentTechQuestion) {
+                    return `🔧 **Let me provide more technical depth:**
+
+**Advanced PowerShell Resources:**
+• **Exchange Online Management**: \`Connect-ExchangeOnline\`
+• **Azure AD Module**: \`Connect-AzureAD\`
+• **Microsoft Graph**: \`Connect-MgGraph\`
+• **Security & Compliance**: \`Connect-IPPSSession\`
+
+**Common Admin Scenarios:**
+• **Bulk User Operations**: CSV imports, license assignments
+• **Security Auditing**: Sign-in logs, risky users, MFA status
+• **Mail Flow Rules**: Transport rules, anti-spam policies
+• **Conditional Access**: Location-based, device compliance
+
+**Best Practices:**
+• **Error Handling**: Always use try/catch blocks
+• **Logging**: Write-Output for progress tracking
+• **Credentials**: Use \`Get-Credential\` for security
+• **Modules**: Keep PowerShell modules updated
+
+What specific scenario would you like a script for? 💻`;
+                }
+            }
+            
+            // Check for greetings
+            if (greetings.some(greeting => lowerMessage.includes(greeting))) {
+                return `👋 Hello! I'm Sam's AI assistant, specialized in Microsoft cloud technologies. I can help you with:
+
+• **Microsoft 365** (Teams, SharePoint, Exchange migrations)
+• **Azure Cloud** (VMs, networking, security, cost optimization)
+• **PowerShell automation** (scripts, administration, security)
+• **Exchange Online** (mail flow, compliance, troubleshooting)
+• **Intune & MDM** (device management, policies, security)
+• **Licensing & pricing** (Australian market expertise)
+
+What Microsoft challenge can I help you solve today? 🚀`;
+            }
+            
+            // Check for thanks
+            if (thanks.some(thank => lowerMessage.includes(thank))) {
+                const responses = [
+                    `😊 You're very welcome! I'm always here to help with any Microsoft-related questions or challenges.`,
+                    `🙂 My pleasure! That's what I'm here for - making Microsoft tech easier to understand.`,
+                    `😊 Glad I could help! Sam's experience really shines through these scenarios.`
+                ];
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                
+                return `${randomResponse}
+
+Is there anything else about Microsoft 365, Azure, PowerShell, or IT administration that I can assist you with? Feel free to ask about specific scenarios, troubleshooting, or best practices! 💡`;
+            }
+            
+            // Check for goodbyes
+            if (goodbyes.some(goodbye => lowerMessage.includes(goodbye))) {
+                return `👋 Goodbye! Feel free to come back anytime you need help with Microsoft technologies. Have a great day! 
+
+Remember: I'm always here for your Microsoft 365, Azure, PowerShell, and cloud infrastructure questions. 🌟`;
+            }
+            
+            // Check for unclear or very short questions
+            if ((lowerMessage.includes('help') && lowerMessage.length < 20) || lowerMessage.length < 10) {
+                return `🤔 I'd love to help! I'm Sam's AI assistant specializing in Microsoft technologies. Here are some example questions you could ask:
+
+**Microsoft 365 & Exchange:**
+• "How do I migrate mailboxes to Exchange Online?"
+• "What are the best Teams governance policies?"
+• "How to set up hybrid Exchange configuration?"
+
+**Azure & Cloud:**
+• "How to optimize Azure costs for small business?"
+• "What's the best VM size for my workload?"
+• "How to implement Azure security best practices?"
+
+**PowerShell & Automation:**
+• "Create a script to manage user permissions"
+• "How to automate Office 365 license assignments?"
+• "PowerShell commands for Exchange management"
+
+**Licensing & Pricing:**
+• "What Microsoft 365 plan should I choose?"
+• "Azure pricing in Australia"
+• "Compare E3 vs E5 licensing"
+
+**Troubleshooting:**
+• "User can't access SharePoint site"
+• "Teams calls dropping frequently"
+• "Slow computer performance issues"
+
+What specific Microsoft challenge would you like help with? 🔧`;
+            }
+            
+            // Microsoft Licensing & Pricing (Australia Focus)
+            if (lowerMessage.includes('licens') || lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('australia')) {
+                return `💰 **Microsoft Licensing & Pricing (Australia):**
+
+**Microsoft 365 Business Plans (AUD Monthly):**
+• **Microsoft 365 Business Basic**: ~$8.20 AUD/user/month
+• **Microsoft 365 Business Standard**: ~$16.40 AUD/user/month  
+• **Microsoft 365 Business Premium**: ~$28.60 AUD/user/month
+• **Microsoft 365 Apps for Business**: ~$11.50 AUD/user/month
+
+**Microsoft 365 Enterprise Plans:**
+• **E3**: ~$30.00 AUD/user/month (full productivity + security)
+• **E5**: ~$69.00 AUD/user/month (includes advanced security, analytics, voice)
+• **F3 (Frontline)**: ~$6.00 AUD/user/month (for frontline workers)
+
+**Azure Pricing (Australia East):**
+• **B1s VM**: ~$0.0152 AUD/hour (~$11 AUD/month)
+• **D2s v3 VM**: ~$0.155 AUD/hour (~$113 AUD/month)
+• **Storage (LRS)**: ~$0.024 AUD/GB/month
+• **Azure AD Premium P1**: ~$8.20 AUD/user/month
+
+**Windows Server Licensing:**
+• **Windows Server 2022 Standard**: ~$1,200 AUD (16 cores)
+• **Windows Server 2022 Datacenter**: ~$8,000 AUD (16 cores)
+• **SQL Server Standard**: ~$4,500 AUD/core
+• **SQL Server Enterprise**: ~$18,000 AUD/core
+
+**Exchange Online Plans:**
+• **Exchange Online Plan 1**: ~$5.50 AUD/user/month
+• **Exchange Online Plan 2**: ~$11.00 AUD/user/month
+
+**Pro Tips for Australian Businesses:**
+• Consider **CSP (Cloud Solution Provider)** pricing for better rates
+• **Annual commitment** saves ~10-15%
+• **Non-profit organizations** get significant discounts
+• **Educational institutions** have special pricing
+
+*Note: Prices vary by partner and commitment level. Contact Microsoft partners for exact quotes.*`;
+            }
+
+            // Windows Troubleshooting - Complete Solutions
+            if (lowerMessage.includes('windows') && (lowerMessage.includes('slow') || lowerMessage.includes('performance'))) {
+                return `🐌 **Windows Performance Issues - Complete Solution:**
+
+**Immediate Performance Checks:**
+1. **Check CPU & Memory Usage:**
+   • Open Task Manager (Ctrl+Shift+Esc)
+   • Look for high CPU/Memory processes
+   • End unnecessary applications
+
+2. **Disk Space & Health:**
+   • Run Disk Cleanup: \`cleanmgr\`
+   • Check disk health: \`chkdsk C: /f /r\`
+   • Free up space: Delete temp files, downloads
+
+3. **Startup Programs:**
+   • Open Task Manager → Startup tab
+   • Disable unnecessary startup programs
+   • Focus on "High" impact programs
+
+**Advanced Performance Optimization:**
+4. **System File Check:**
+   \`\`\`cmd
+   sfc /scannow
+   DISM /Online /Cleanup-Image /RestoreHealth
+   \`\`\`
+
+5. **Memory Diagnostic:**
+   \`\`\`cmd
+   mdsched.exe
+   \`\`\`
+
+6. **Registry Cleanup:**
+   • Use built-in Registry Editor carefully
+   • Consider CCleaner for automated cleanup
+
+7. **Update Drivers:**
+   • Device Manager → Update all drivers
+   • Download latest GPU drivers
+   • Windows Update for driver updates
+
+**PowerShell Performance Commands:**
+\`\`\`powershell
+# Check system information
+Get-ComputerInfo | Select-Object TotalPhysicalMemory, CsProcessors
+
+# Find large files
+Get-ChildItem C:\\ -Recurse -File | Sort-Object Length -Descending | Select-Object -First 10
+
+# Check Windows services
+Get-Service | Where-Object {$_.Status -eq "Running"} | Sort-Object Name
+\`\`\`
+
+**Long-term Solutions:**
+• Upgrade to SSD if using HDD
+• Add more RAM (8GB minimum, 16GB recommended)
+• Regular maintenance schedule
+• Keep Windows updated`;
+            }
+
+            if (lowerMessage.includes('password') && (lowerMessage.includes('reset') || lowerMessage.includes('forgot'))) {
+                return `🔐 **Password Reset Solutions:**
+
+**For End Users:**
+1. **Self-Service Password Reset:**
+   • Go to portal.office.com
+   • Click "Can't access your account?"
+   • Follow verification steps (phone/email)
+
+2. **Windows Local Account:**
+   • Boot from Windows installation media
+   • Press Shift+F10 for command prompt
+   • Use \`net user [username] [newpassword]\`
+
+3. **Microsoft Account:**
+   • Visit account.microsoft.com
+   • Select "Sign-in options"
+   • Choose "I forgot my password"
+
+**For IT Administrators:**
+4. **Azure AD Password Reset:**
+   \`\`\`powershell
+   Connect-AzureAD
+   Set-AzureADUserPassword -ObjectId user@domain.com -Password (Read-Host -AsSecureString)
+   \`\`\`
+
+5. **On-Premises Active Directory:**
+   \`\`\`powershell
+   Set-ADAccountPassword -Identity username -Reset -NewPassword (Read-Host -AsSecureString)
+   Set-ADUser -Identity username -ChangePasswordAtLogon $true
+   \`\`\`
+
+6. **Exchange Online Mailbox:**
+   \`\`\`powershell
+   Connect-ExchangeOnline
+   Set-Mailbox -Identity user@domain.com -Password (Read-Host -AsSecureString)
+   \`\`\`
+
+**Security Best Practices:**
+• Require password change on next login
+• Enable multi-factor authentication
+• Use complex password policies
+• Monitor failed login attempts`;
+            }
+
+            // Microsoft 365 Administration
+            if (lowerMessage.includes('teams') && (lowerMessage.includes('admin') || lowerMessage.includes('policy'))) {
+                return `👥 **Microsoft Teams Administration:**
+
+**Teams Policy Management:**
+1. **Meeting Policies:**
+   \`\`\`powershell
+   Connect-MicrosoftTeams
+   New-CsTeamsMeetingPolicy -Identity "SecureMeetings" -AllowAnonymousUsersToStartMeeting $false
+   Grant-CsTeamsMeetingPolicy -Identity user@domain.com -PolicyName "SecureMeetings"
+   \`\`\`
+
+2. **Messaging Policies:**
+   • Control chat, file sharing, reactions
+   • Set retention policies
+   • Configure external access
+
+3. **App Permission Policies:**
+   • Control which apps users can install
+   • Block/allow specific apps
+   • Custom app upload permissions
+
+**Common Teams Administration Tasks:**
+4. **User Management:**
+   \`\`\`powershell
+   # Add user to team
+   Add-TeamUser -GroupId [TeamID] -User user@domain.com -Role Member
+
+   # Create new team
+   New-Team -DisplayName "Project Team" -Description "Project collaboration"
+   \`\`\`
+
+5. **Guest Access Configuration:**
+   • Enable/disable guest access
+   • Set guest permissions
+   • Configure external sharing
+
+6. **Phone System Setup:**
+   • Assign phone numbers
+   • Configure calling policies
+   • Set up auto attendants
+
+**Teams Analytics & Reporting:**
+• Teams usage reports in admin center
+• Call quality dashboard
+• Teams advisor for deployment guidance`;
+            }
+
+            // Exchange Online Administration
+            if (lowerMessage.includes('exchange') || lowerMessage.includes('email') || lowerMessage.includes('mailbox')) {
+                return `📧 **Exchange Online Administration:**
+
+**Mailbox Management:**
+1. **Create New Mailboxes:**
+   \`\`\`powershell
+   Connect-ExchangeOnline
+   New-Mailbox -Name "John Smith" -UserPrincipalName john@domain.com -Password (Read-Host -AsSecureString)
+   \`\`\`
+
+2. **Mailbox Permissions:**
+   \`\`\`powershell
+   # Grant full access
+   Add-MailboxPermission -Identity john@domain.com -User admin@domain.com -AccessRights FullAccess
+
+   # Grant send-as permission
+   Add-RecipientPermission -Identity john@domain.com -Trustee admin@domain.com -AccessRights SendAs
+   \`\`\`
+
+3. **Calendar Permissions:**
+   \`\`\`powershell
+   Set-MailboxFolderPermission -Identity john@domain.com:\\Calendar -User admin@domain.com -AccessRights Editor
+   \`\`\`
+
+**Mail Flow & Transport Rules:**
+4. **Anti-Spam Configuration:**
+   • Configure spam filter policies
+   • Set up quarantine settings
+   • Create allowed/blocked sender lists
+
+5. **Transport Rules:**
+   \`\`\`powershell
+   # External email warning
+   New-TransportRule -Name "External Email Warning" -FromScope NotInOrganization -PrependSubject "[EXTERNAL]"
+
+   # Block attachments
+   New-TransportRule -Name "Block EXE Files" -AttachmentExtensionMatchesWords "exe,bat,cmd" -RejectMessageReasonText "Executable files not allowed"
+   \`\`\`
+
+**Migration & Hybrid:**
+6. **Mailbox Migration:**
+   • IMAP migration for external providers
+   • Cutover migration for small organizations
+   • Staged migration for large deployments
+   • Hybrid configuration for gradual migration
+
+**Troubleshooting Common Issues:**
+• Message trace for delivery issues
+• Connectivity analyzer tool
+• SMTP authentication problems
+• Mobile device synchronization`;
+            }
+
+            // Azure Administration
+            if (lowerMessage.includes('azure') || lowerMessage.includes('vm') || lowerMessage.includes('virtual machine')) {
+                return `☁️ **Azure Administration & Management:**
+
+**Virtual Machine Management:**
+1. **Create VM with PowerShell:**
+   \`\`\`powershell
+   # Connect to Azure
+   Connect-AzAccount
+
+   # Create resource group
+   New-AzResourceGroup -Name "rg-production" -Location "Australia East"
+
+   # Create VM
+   New-AzVm -ResourceGroupName "rg-production" -Name "vm-web01" -Location "Australia East" -VirtualNetworkName "vnet-prod" -SubnetName "subnet-web" -SecurityGroupName "nsg-web" -PublicIpAddressName "pip-web01" -OpenPorts 80,443,3389
+   \`\`\`
+
+2. **VM Monitoring & Management:**
+   • Enable Azure Monitor
+   • Set up alerts for CPU/Memory
+   • Configure backup policies
+   • Implement update management
+
+**Azure Active Directory:**
+3. **User Management:**
+   \`\`\`powershell
+   Connect-AzureAD
+   
+   # Create new user
+   New-AzureADUser -DisplayName "John Smith" -UserPrincipalName john@domain.onmicrosoft.com -PasswordProfile $passwordProfile -AccountEnabled $true
+
+   # Add user to group
+   Add-AzureADGroupMember -ObjectId [GroupID] -RefObjectId [UserID]
+   \`\`\`
+
+4. **Conditional Access Policies:**
+   • Require MFA for admin accounts
+   • Block access from untrusted locations
+   • Device compliance requirements
+
+**Cost Management:**
+5. **Azure Cost Optimization:**
+   • Use Azure Advisor recommendations
+   • Implement auto-shutdown for dev VMs
+   • Right-size virtual machines
+   • Use reserved instances for production
+
+6. **Resource Management:**
+   • Proper resource tagging
+   • Resource group organization
+   • Azure Policy implementation
+   • Resource locks for critical resources
+
+**Security Best Practices:**
+• Enable Azure Security Center
+• Configure Key Vault for secrets
+• Implement network security groups
+• Regular security assessments`;
+            }
+
+            // SharePoint & OneDrive
+            if (lowerMessage.includes('sharepoint') || lowerMessage.includes('onedrive')) {
+                return `📁 **SharePoint & OneDrive Administration:**
+
+**SharePoint Site Management:**
+1. **Site Collection Creation:**
+   \`\`\`powershell
+   Connect-SPOService -Url https://tenant-admin.sharepoint.com
+   New-SPOSite -Url https://tenant.sharepoint.com/sites/project -Owner admin@domain.com -StorageQuota 1024 -Title "Project Site"
+   \`\`\`
+
+2. **Permission Management:**
+   • Use SharePoint groups instead of individual permissions
+   • Implement least privilege principle
+   • Regular permission audits
+
+3. **Content Management:**
+   • Document versioning settings
+   • Content type management
+   • Information management policies
+
+**OneDrive Management:**
+4. **OneDrive Policies:**
+   \`\`\`powershell
+   # Set default storage quota
+   Set-SPOTenant -OneDriveStorageQuota 5120
+
+   # Configure sharing settings
+   Set-SPOTenant -DefaultSharingLinkType Internal
+   \`\`\`
+
+5. **Data Migration:**
+   • SharePoint Migration Tool (SPMT)
+   • Mover for bulk migrations
+   • PowerShell for automated migrations
+
+**Governance & Compliance:**
+6. **Information Governance:**
+   • Retention policies
+   • Data loss prevention (DLP)
+   • Sensitivity labels
+   • eDiscovery configuration
+
+**Troubleshooting Common Issues:**
+• Sync client problems
+• Permission inheritance issues
+• Search service problems
+• Workflow failures`;
+            }
+
+            // Windows Security & Troubleshooting
+            if (lowerMessage.includes('virus') || lowerMessage.includes('malware') || lowerMessage.includes('security')) {
+                return `🛡️ **Windows Security & Malware Removal:**
+
+**Immediate Security Response:**
+1. **Isolate the System:**
+   • Disconnect from network immediately
+   • Boot into Safe Mode if needed
+   • Document what you observed
+
+2. **Run Security Scans:**
+   \`\`\`cmd
+   # Windows Defender full scan
+   "%ProgramFiles%\\Windows Defender\\MpCmdRun.exe" -Scan -ScanType 2
+
+   # System file check
+   sfc /scannow
+
+   # Check system integrity
+   DISM /Online /Cleanup-Image /ScanHealth
+   \`\`\`
+
+3. **Advanced Malware Removal:**
+   • Use Microsoft Safety Scanner
+   • Run Malwarebytes Anti-Malware
+   • Use ESET Online Scanner
+   • Check with Process Explorer
+
+**Security Hardening:**
+4. **Windows Security Configuration:**
+   \`\`\`powershell
+   # Enable Windows Defender features
+   Set-MpPreference -EnableControlledFolderAccess Enabled
+   Set-MpPreference -EnableNetworkProtection Enabled
+
+   # Check Windows Update status
+   Get-WUInstall -ListOnly
+   \`\`\`
+
+5. **User Account Control:**
+   • Keep UAC enabled
+   • Use standard user accounts for daily work
+   • Admin accounts only for administrative tasks
+
+6. **Network Security:**
+   • Enable Windows Firewall
+   • Disable unnecessary services
+   • Regular security updates
+
+**Prevention Strategies:**
+• Regular system backups
+• Employee security training
+• Keep software updated
+• Use standard user accounts
+• Implement application whitelisting`;
+            }
+
+            // PowerShell & Automation
+            if (lowerMessage.includes('powershell') || lowerMessage.includes('script') || lowerMessage.includes('automation')) {
+                return `⚡ **PowerShell Automation & Scripting:**
+
+**Essential PowerShell Commands:**
+1. **System Information:**
+   \`\`\`powershell
+   # Computer information
+   Get-ComputerInfo | Select-Object WindowsProductName, TotalPhysicalMemory
+
+   # Disk space
+   Get-WmiObject -Class Win32_LogicalDisk | Select-Object DeviceID, Size, FreeSpace
+
+   # Running services
+   Get-Service | Where-Object {$_.Status -eq "Running"}
+   \`\`\`
+
+2. **User & Group Management:**
+   \`\`\`powershell
+   # Local users
+   Get-LocalUser
+   New-LocalUser -Name "testuser" -Password (Read-Host -AsSecureString)
+
+   # Active Directory users
+   Get-ADUser -Filter * -Properties LastLogonDate | Select-Object Name, LastLogonDate
+   \`\`\`
+
+**Microsoft 365 PowerShell:**
+3. **Exchange Online:**
+   \`\`\`powershell
+   Connect-ExchangeOnline
+   Get-Mailbox | Select-Object DisplayName, PrimarySmtpAddress
+   Set-MailboxPermission -Identity user@domain.com -User admin@domain.com -AccessRights FullAccess
+   \`\`\`
+
+4. **Teams Administration:**
+   \`\`\`powershell
+   Connect-MicrosoftTeams
+   Get-Team | Select-Object DisplayName, GroupId
+   New-Team -DisplayName "New Project Team"
+   \`\`\`
+
+**Azure PowerShell:**
+5. **Azure Resource Management:**
+   \`\`\`powershell
+   Connect-AzAccount
+   Get-AzVM | Select-Object Name, ResourceGroupName, Location
+   Start-AzVM -ResourceGroupName "myRG" -Name "myVM"
+   \`\`\`
+
+**Automation Scripts:**
+6. **Common Administrative Tasks:**
+   • Bulk user creation from CSV
+   • Automated backup scripts
+   • System health monitoring
+   • Software deployment automation
+
+**Best Practices:**
+• Always test scripts in dev environment
+• Use proper error handling
+• Document your scripts
+• Version control with Git`;
+            }
+
+            // Network Troubleshooting
+            if (lowerMessage.includes('network') || lowerMessage.includes('internet') || lowerMessage.includes('connectivity')) {
+                return `🌐 **Network Connectivity Troubleshooting:**
+
+**Basic Network Diagnostics:**
+1. **Check Physical Connectivity:**
+   • Verify cable connections
+   • Check network adapter status
+   • Test with different cable/port
+
+2. **IP Configuration:**
+   \`\`\`cmd
+   ipconfig /all
+   ipconfig /release
+   ipconfig /renew
+   ipconfig /flushdns
+   \`\`\`
+
+3. **DNS Resolution:**
+   \`\`\`cmd
+   nslookup google.com
+   nslookup google.com 8.8.8.8
+   ping 8.8.8.8
+   ping google.com
+   \`\`\`
+
+**Advanced Network Testing:**
+4. **Connectivity Testing:**
+   \`\`\`cmd
+   # Test route to destination
+   tracert google.com
+   
+   # Test specific ports
+   telnet google.com 80
+   
+   # Network statistics
+   netstat -an | findstr :80
+   \`\`\`
+
+5. **Network Adapter Troubleshooting:**
+   \`\`\`powershell
+   # Reset network adapters
+   netsh int ip reset
+   netsh winsock reset
+   
+   # Disable and enable adapter
+   Disable-NetAdapter -Name "Ethernet" -Confirm:$false
+   Enable-NetAdapter -Name "Ethernet"
+   \`\`\`
+
+**Wireless Issues:**
+6. **WiFi Troubleshooting:**
+   \`\`\`cmd
+   # Show wireless profiles
+   netsh wlan show profiles
+   
+   # Connect to network
+   netsh wlan connect name="NetworkName"
+   
+   # Reset wireless
+   netsh wlan delete profile name="NetworkName"
+   \`\`\`
+
+**Corporate Network Issues:**
+7. **Domain Connectivity:**
+   \`\`\`cmd
+   # Test domain connectivity
+   nltest /dclist:domain.com
+   
+   # Check trust relationship
+   nltest /sc_query:domain.com
+   \`\`\`
+
+**Tools for Advanced Diagnosis:**
+• Wireshark for packet analysis
+• PingPlotter for route analysis
+• Network scanner tools
+• Port scanner utilities`;
+            }
+
+            // General IT Support
+            return `🔧 **General IT Support - Sam's AI Assistant:**
+
+I'm Sam's comprehensive IT assistant! I can help with:
+
+**💰 Licensing & Pricing:**
+• Microsoft 365 plans and pricing (Australia specific)
+• Azure cost estimates and optimization
+• Windows Server and SQL licensing
+• Comparison of different plans
+
+**🖥️ Windows Support:**
+• Performance issues and optimization
+• Blue screen troubleshooting  
+• Driver and hardware problems
+• Security and malware removal
+
+**☁️ Microsoft 365:**
+• Exchange Online administration
+• Teams management and policies
+• SharePoint and OneDrive setup
+• Security and compliance configuration
+
+**🔧 Azure Cloud:**
+• Virtual machine management
+• Azure AD administration
+• Cost optimization strategies
+• Security best practices
+
+**⚡ PowerShell & Automation:**
+• Script examples for common tasks
+• Microsoft 365 PowerShell
+• Azure PowerShell management
+• Automation solutions
+
+**🌐 Network Issues:**
+• Connectivity troubleshooting
+• DNS and DHCP problems
+• Wireless network issues
+• Firewall configuration
+
+**🛡️ Security:**
+• Malware removal procedures
+• Security hardening steps
+• Multi-factor authentication setup
+• Incident response guidance
+
+**Just ask me anything specific!** For example:
+• "How much does Microsoft 365 E3 cost in Australia?"
+• "How to fix slow Windows performance?"
+• "PowerShell script to reset passwords"
+• "Azure VM won't start troubleshooting"
+
+I can provide detailed solutions for any Microsoft ecosystem issue. Just describe:
+- What exactly is the problem?
+- When did it start?
+- What error messages do you see?
+- What have you tried already?
+
+Ask me anything from basic user issues to complex infrastructure problems!`;
+        }
+
+        function addMessageToChat(message, sender, links = null) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            
+            if (sender === 'user') {
+                messageDiv.innerHTML = `
+                    <div class="flex items-start gap-2 justify-end">
+                        <div class="bg-emerald-600 text-white p-3 rounded-lg shadow-sm max-w-xs">
+                            <p class="text-sm">${message}</p>
+                        </div>
+                        <div class="w-6 h-6 bg-gray-400 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i data-feather="user" class="w-3 h-3 text-white"></i>
+                        </div>
+                    </div>
+                `;
+            } else {
+                let linksHtml = '';
+                if (links) {
+                    linksHtml = links.map(link => 
+                        `<a href="${link.url}" target="_blank" class="inline-block mt-2 text-xs bg-blue-100 hover:bg-blue-200 text-blue-700 px-2 py-1 rounded transition-colors">${link.text} →</a>`
+                    ).join(' ');
+                }
+                
+                messageDiv.innerHTML = `
+                    <div class="flex items-start gap-2">
+                        <div class="w-6 h-6 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i data-feather="cpu" class="w-3 h-3 text-white"></i>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg shadow-sm max-w-xs">
+                            <p class="text-sm text-gray-800 whitespace-pre-line">${message}</p>
+                            ${linksHtml}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        }
+
+        function addTypingIndicator() {
+            const chatMessages = document.getElementById('chat-messages');
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="flex items-start gap-2">
+                    <div class="w-6 h-6 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-feather="cpu" class="w-3 h-3 text-white"></i>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow-sm">
+                        <div class="flex space-x-1">
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        }
+
+        function removeTypingIndicator() {
+            const typingIndicator = document.getElementById('typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        // Close chatbot when clicking outside
+        document.addEventListener('click', function(event) {
+            const chatbotOverlay = document.getElementById('it-chatbot-overlay');
+            if (event.target === chatbotOverlay) {
+                closeITChatbot();
+            }
+        });
+
+        // Auto-changing text for Quick IT Help button
+        function startHelpButtonAnimation() {
+            const helpTexts = [
+                "Quick IT Help",
+                "Ask: Azure issues?",
+                "Ask: Exchange problems?", 
+                "Ask: Network down?",
+                "Ask: PowerShell errors?",
+                "Ask: Linux performance?",
+                "Ask: Security breach?",
+                "Ask: Server crashes?",
+                "Ask: Docker issues?",
+                "Ask: Azure optimization?",
+                "Ask: Backup failures?",
+                "Ask: Any IT question!"
+            ];
+            
+            let currentIndex = 0;
+            const desktopButton = document.getElementById('help-button-text');
+            const mobileButton = document.getElementById('mobile-help-button-text');
+            
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % helpTexts.length;
+                if (desktopButton) desktopButton.textContent = helpTexts[currentIndex];
+                if (mobileButton) mobileButton.textContent = helpTexts[currentIndex];
+            }, 3000); // Change every 3 seconds
+        }
+
+        // Cloud service information popup
+        function showCloudInfo(service) {
+            const services = {
+                azure: {
+                    title: "Microsoft Azure",
+                    description: "Azure is Microsoft's comprehensive cloud computing platform that provides:\n\n• Virtual Machines and App Services\n• AI and Machine Learning tools\n• Storage and Database solutions\n• Networking and Security services\n• Developer tools and DevOps\n\nPerfect for enterprises already using Microsoft products.",
+                },
+                m365: {
+                    title: "Microsoft 365",
+                    description: "Microsoft 365 is a complete productivity suite that includes:\n\n• Office applications (Word, Excel, PowerPoint)\n• Teams for collaboration and communication\n• SharePoint for document management\n• Exchange Online for email\n• OneDrive for cloud storage\n• Advanced security and compliance tools\n\nIdeal for organizations seeking integrated productivity solutions.",
+                }
+            };
+            
+            const info = services[service];
+            if (info) {
+                alert(`${info.title}\n\n${info.description}`);
+            }
+        }
+
+        // Initialize button animation when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(startHelpButtonAnimation, 2000); // Start after 2 seconds
+        });
     </script>
 </body>
 </html>
