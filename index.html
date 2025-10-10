@@ -75,9 +75,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
         
+        /* Remove Unsplash dependency - use gradient background instead */
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
         }
         
         /* Theme variables */
@@ -94,10 +96,13 @@
             background-color: transparent;
         }
         
-        /* Enhanced background image */
+        /* Enhanced background - copyright-safe gradient */
         .site-bg {
-            background-image: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%), 
-                             url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80');
+            background: linear-gradient(135deg, 
+                rgba(16, 185, 129, 0.1) 0%, 
+                rgba(59, 130, 246, 0.1) 50%,
+                rgba(15, 23, 42, 0.2) 100%),
+                linear-gradient(45deg, #0f172a, #1e293b, #334155);
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -1204,6 +1209,9 @@
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-400 mb-4 md:mb-0">© 2025 Sam Adhikari. All rights reserved.</p>
                     <p class="text-gray-500 text-sm">Built with passion for cloud technology</p>
+                </div>
+                <div class="text-center mt-4 pt-4 border-t border-gray-800">
+                    <p class="text-gray-500 text-xs">Website design and AI assistant © Sam Adhikari | External libraries used under their respective licenses</p>
                 </div>
             </div>
         </div>
