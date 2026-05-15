@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Adhikari - Azure & Microsoft Cloud Specialist</title>
+    <meta name="description" content="Sam Adhikari - Microsoft Azure Cloud Specialist in Australia. Expert in Microsoft 365, Exchange Online, PowerShell automation, and cloud infrastructure solutions.">
+    <meta name="keywords" content="Azure, Microsoft 365, Cloud Computing, PowerShell, Exchange Online, IT Consultant, Australia">
+    <meta name="author" content="Sam Adhikari">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Sam Adhikari - Azure & Microsoft Cloud Specialist">
+    <meta property="og:description" content="Microsoft Azure Cloud Specialist in Australia. Expert in Microsoft 365, Exchange Online, PowerShell automation, and cloud infrastructure solutions.">
+    <meta property="og:image" content="https://shamadi379.github.io/sam-portfolio/images/sam-cloud-logo-og.svg">
+    <meta property="og:url" content="https://shamadi379.github.io/sam-portfolio/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sam Adhikari - Azure & Microsoft Cloud Specialist">
+    <meta name="twitter:description" content="Microsoft Azure Cloud Specialist in Australia. Expert in Microsoft 365, Exchange Online, PowerShell automation.">
+    <meta name="twitter:image" content="https://shamadi379.github.io/sam-portfolio/images/sam-cloud-logo-og.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.svg">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .hero-pattern {
+            background-color: #667eea;
+            background-image: 
+                radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0);
+            background-size: 20px 20px;
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .skill-card {
+            transition: all 0.3s ease;
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pulse-slow {
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .service-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        
+        .about-panel {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .mobile-menu {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .contact-form {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cloud-icon {
+            display: inline-block;
+            margin: 0 8px;
+            vertical-align: middle;
+        }
+        
+        .cloud-services {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .service-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .service-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        /* Animation for scroll */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-animate.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .skill-card {
+                padding: 1rem;
+            }
+            
+            .cloud-services {
+                justify-content: center;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold text-gradient">Sam Adhikari</h1>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-gray-700 hover:text-purple-600 transition-colors font-medium">Home</a>
+                        <a href="#about" class="text-gray-700 hover:text-purple-600 transition-colors font-medium">About</a>
+                        <a href="#skills" class="text-gray-700 hover:text-purple-600 transition-colors font-medium">Skills</a>
+                        <a href="#services" class="text-gray-700 hover:text-purple-600 transition-colors font-medium">Services</a>
+                        <a href="#contact" class="text-gray-700 hover:text-purple-600 transition-colors font-medium">Contact</a>
+                        <button onclick="downloadResume()" class="btn-primary">
+                            <i data-feather="download" class="w-4 h-4 inline mr-2"></i>
+                            Resume
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-gray-700 hover:text-purple-600 transition-colors">
+                        <i data-feather="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden mobile-menu border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <div class="flex justify-between items-center p-3">
+                    <span class="text-lg font-semibold text-gray-800">Menu</span>
+                    <button id="close-menu" class="text-gray-500 hover:text-gray-700">
+                        <i data-feather="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-purple-600 font-medium">Home</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-purple-600 font-medium">About</a>
+                <a href="#skills" class="block px-3 py-2 text-gray-700 hover:text-purple-600 font-medium">Skills</a>
+                <a href="#services" class="block px-3 py-2 text-gray-700 hover:text-purple-600 font-medium">Services</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-purple-600 font-medium">Contact</a>
+                <div class="px-3 py-2">
+                    <button onclick="downloadResume()" class="btn-primary w-full">
+                        <i data-feather="download" class="w-4 h-4 inline mr-2"></i>
+                        Download Resume
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Panel (Initially Hidden) -->
+    <div id="about-panel" class="hidden fixed top-16 left-0 right-0 z-40 about-panel text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex justify-between items-start mb-6">
+                <h2 class="text-3xl font-bold">About Sam Adhikari</h2>
+                <button id="close-about-panel" class="text-white hover:text-gray-200 transition-colors">
+                    <i data-feather="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Microsoft Cloud Specialist</h3>
+                    <p class="text-gray-100 mb-4">
+                        With extensive experience in Microsoft cloud technologies, I specialize in helping organizations 
+                        migrate to and optimize their Microsoft 365 and Azure environments. My expertise spans across 
+                        Exchange Online, SharePoint, Teams, and Azure infrastructure.
+                    </p>
+                    <h4 class="font-semibold mb-2">Key Expertise Areas:</h4>
+                    <ul class="text-gray-100 space-y-2">
+                        <li>• Microsoft 365 Migration & Administration</li>
+                        <li>• Azure Cloud Infrastructure</li>
+                        <li>• PowerShell Automation & Scripting</li>
+                        <li>• Exchange Online Management</li>
+                        <li>• Intune Device Management</li>
+                        <li>• Security & Compliance Implementation</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Professional Experience</h3>
+                    <p class="text-gray-100 mb-4">
+                        I've worked with organizations of various sizes across Australia, helping them leverage Microsoft 
+                        cloud technologies to improve productivity, security, and cost-effectiveness. From small business 
+                        migrations to enterprise-level Azure deployments, I bring practical experience and best practices.
+                    </p>
+                    <h4 class="font-semibold mb-2">Certifications & Skills:</h4>
+                    <ul class="text-gray-100 space-y-2">
+                        <li>• Microsoft Certified: Azure Administrator</li>
+                        <li>• Microsoft 365 Certified: Administrator Expert</li>
+                        <li>• PowerShell Scripting & Automation</li>
+                        <li>• Hybrid Cloud Configurations</li>
+                        <li>• Security & Compliance Implementation</li>
+                        <li>• Project Management & Training</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-pattern min-h-screen flex items-center justify-center text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <div class="mb-8">
+                <img src="images/sam-cloud-logo-og.svg" alt="Sam Adhikari Logo" class="w-32 h-32 mx-auto mb-6 float">
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Sam Adhikari
+                <span class="block text-2xl sm:text-3xl lg:text-4xl font-light mt-2">
+                    Microsoft Cloud Specialist
+                </span>
+            </h1>
+            
+            <p class="text-xl sm:text-2xl mb-8 text-gray-100 max-w-3xl mx-auto leading-relaxed">
+                Empowering businesses with Microsoft Azure, Office 365, and cloud infrastructure solutions across Australia
+            </p>
+            
+            <div class="cloud-services mb-8">
+                <span class="service-badge" onclick="showCloudInfo('azure')">
+                    <i data-feather="cloud" class="w-4 h-4 inline mr-1"></i>
+                    Microsoft Azure
+                </span>
+                <span class="service-badge" onclick="showCloudInfo('m365')">
+                    <i data-feather="briefcase" class="w-4 h-4 inline mr-1"></i>
+                    Microsoft 365
+                </span>
+                <span class="service-badge">
+                    <i data-feather="terminal" class="w-4 h-4 inline mr-1"></i>
+                    PowerShell
+                </span>
+                <span class="service-badge">
+                    <i data-feather="mail" class="w-4 h-4 inline mr-1"></i>
+                    Exchange Online
+                </span>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#contact" class="btn-primary text-lg px-8 py-3">
+                    <i data-feather="mail" class="w-5 h-5 inline mr-2"></i>
+                    Get In Touch
+                </a>
+                <button onclick="downloadResume()" class="glassmorphism text-white px-8 py-3 rounded-lg hover:bg-white hover:bg-opacity-25 transition-all font-semibold text-lg">
+                    <i data-feather="download" class="w-5 h-5 inline mr-2"></i>
+                    Download Resume
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Technical Expertise</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Specialized in Microsoft cloud technologies with hands-on experience in enterprise implementations
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Microsoft Azure -->
+                <div class="skill-card scroll-animate">
+                    <div class="service-icon">
+                        <i data-feather="cloud" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">Microsoft Azure</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li>• Virtual Machines & App Services</li>
+                        <li>• Azure Active Directory</li>
+                        <li>• Storage & Networking Solutions</li>
+                        <li>• Azure Security & Monitoring</li>
+                        <li>• Cost Optimization Strategies</li>
+                    </ul>
+                </div>
+                
+                <!-- Microsoft 365 -->
+                <div class="skill-card scroll-animate">
+                    <div class="service-icon">
+                        <i data-feather="briefcase" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">Microsoft 365</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li>• Teams Administration & Policies</li>
+                        <li>• SharePoint & OneDrive Management</li>
+                        <li>• Security & Compliance Center</li>
+                        <li>• Power Platform Integration</li>
+                        <li>• User Training & Adoption</li>
+                    </ul>
+                </div>
+                
+                <!-- Exchange Online -->
+                <div class="skill-card scroll-animate">
+                    <div class="service-icon">
+                        <i data-feather="mail" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">Exchange Online</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li>• Email Migration Strategies</li>
+                        <li>• Hybrid Configuration</li>
+                        <li>• Mail Flow & Transport Rules</li>
+                        <li>• Anti-Spam & Security Policies</li>
+                        <li>• Compliance & Archiving</li>
+                    </ul>
+                </div>
+                
+                <!-- PowerShell -->
+                <div class="skill-card scroll-animate">
+                    <div class="service-icon">
+                        <i data-feather="terminal" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">PowerShell Automation</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li>• Microsoft 365 PowerShell Modules</li>
+                        <li>• Azure PowerShell Management</li>
+                        <li>• Custom Script Development</li>
+                        <li>• Automated Reporting Solutions</li>
+                        <li>• Bulk Administration Tasks</li>
+                    </ul>
+                </div>
+                
+                <!-- Intune & MDM -->
+                <div class="skill-card scroll-animate">
+                    <div class="service-icon">
+                        <i data-feather="smartphone" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">Intune & MDM</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li>• Device Enrollment & Management</li>
+                        <li>• App Deployment & Policies</li>
+                        <li>• Compliance & Security Policies</li>
+                        <li>• Conditional Access Integration</li>
+                        <li>• Mobile Application Management</li>
+                    </ul>
+                </div>
+                
+                <!-- Security & Compliance -->
+                <div class="skill-card scroll-animate">
+                    <div class="service-icon">
+                        <i data-feather="shield" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">Security & Compliance</h3>
+                    <ul class="text-gray-600 space-y-2 text-sm">
+                        <li>• Multi-Factor Authentication</li>
+                        <li>• Data Loss Prevention (DLP)</li>
+                        <li>• Information Protection Labels</li>
+                        <li>• Threat Protection Policies</li>
+                        <li>• Compliance Manager Solutions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Professional Services</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Comprehensive Microsoft cloud solutions tailored to your business needs
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow scroll-animate">
+                    <div class="service-icon">
+                        <i data-feather="upload-cloud" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Cloud Migration</h3>
+                    <p class="text-gray-600 mb-4">
+                        Seamless migration from on-premises to Microsoft 365 and Azure cloud platforms with minimal downtime.
+                    </p>
+                    <ul class="text-gray-600 text-sm space-y-2">
+                        <li>• Email & Data Migration</li>
+                        <li>• Application Modernization</li>
+                        <li>• Infrastructure Assessment</li>
+                        <li>• Migration Planning & Execution</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow scroll-animate">
+                    <div class="service-icon">
+                        <i data-feather="settings" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">System Administration</h3>
+                    <p class="text-gray-600 mb-4">
+                        Complete Microsoft 365 and Azure administration services to keep your environment optimized.
+                    </p>
+                    <ul class="text-gray-600 text-sm space-y-2">
+                        <li>• User & License Management</li>
+                        <li>• Security Configuration</li>
+                        <li>• Performance Optimization</li>
+                        <li>• Ongoing Maintenance</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow scroll-animate">
+                    <div class="service-icon">
+                        <i data-feather="code" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">PowerShell Automation</h3>
+                    <p class="text-gray-600 mb-4">
+                        Custom PowerShell scripts and automation solutions to streamline your IT operations.
+                    </p>
+                    <ul class="text-gray-600 text-sm space-y-2">
+                        <li>• Custom Script Development</li>
+                        <li>• Automated Reporting</li>
+                        <li>• Bulk Operations</li>
+                        <li>• Process Optimization</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow scroll-animate">
+                    <div class="service-icon">
+                        <i data-feather="users" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Training & Support</h3>
+                    <p class="text-gray-600 mb-4">
+                        Comprehensive training programs and ongoing support to maximize your Microsoft investment.
+                    </p>
+                    <ul class="text-gray-600 text-sm space-y-2">
+                        <li>• End User Training</li>
+                        <li>• Administrator Training</li>
+                        <li>• Best Practices Documentation</li>
+                        <li>• 24/7 Support Options</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow scroll-animate">
+                    <div class="service-icon">
+                        <i data-feather="lock" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Security Implementation</h3>
+                    <p class="text-gray-600 mb-4">
+                        Advanced security configurations and compliance implementations for your Microsoft environment.
+                    </p>
+                    <ul class="text-gray-600 text-sm space-y-2">
+                        <li>• Multi-Factor Authentication</li>
+                        <li>• Conditional Access Policies</li>
+                        <li>• Data Loss Prevention</li>
+                        <li>• Threat Protection Setup</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow scroll-animate">
+                    <div class="service-icon">
+                        <i data-feather="trending-up" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Optimization & Consulting</h3>
+                    <p class="text-gray-600 mb-4">
+                        Strategic consulting to optimize your Microsoft cloud investments and improve efficiency.
+                    </p>
+                    <ul class="text-gray-600 text-sm space-y-2">
+                        <li>• Performance Analysis</li>
+                        <li>• Cost Optimization</li>
+                        <li>• Architecture Review</li>
+                        <li>• Strategic Planning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 contact-form">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+                <p class="text-xl text-gray-600">
+                    Ready to transform your Microsoft cloud environment? Let's discuss your project.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Let's Connect</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="service-icon w-12 h-12">
+                                <i data-feather="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Email</h4>
+                                <p class="text-gray-600">Professional consultation and project discussions</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="service-icon w-12 h-12">
+                                <i data-feather="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Location</h4>
+                                <p class="text-gray-600">Australia-wide services available</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="service-icon w-12 h-12">
+                                <i data-feather="clock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Response Time</h4>
+                                <p class="text-gray-600">Within 24 hours for project inquiries</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="service-icon w-12 h-12">
+                                <i data-feather="download" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Resume</h4>
+                                <p class="text-gray-600 mb-2">Download my detailed resume and certifications</p>
+                                <button onclick="downloadResume()" class="btn-primary">
+                                    <i data-feather="download" class="w-4 h-4 inline mr-2"></i>
+                                    Download Resume
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Send a Message</h3>
+                    
+                    <form action="https://formsubmit.co/shamadi379@gmail.com" method="POST" onsubmit="trackFormSubmission()">
+                        <!-- Honeypot for spam protection -->
+                        <input type="text" name="_honey" style="display:none">
+                        
+                        <!-- Disable captcha -->
+                        <input type="hidden" name="_captcha" value="false">
+                        
+                        <!-- Success page -->
+                        <input type="hidden" name="_next" value="https://shamadi379.github.io/sam-portfolio/thank-you.html">
+                        
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name *</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company" class="form-label">Company/Organization</label>
+                            <input type="text" id="company" name="company" class="form-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service" class="form-label">Service Interest</label>
+                            <select id="service" name="service" class="form-input">
+                                <option value="">Select a service...</option>
+                                <option value="Microsoft 365 Migration">Microsoft 365 Migration</option>
+                                <option value="Azure Cloud Setup">Azure Cloud Setup</option>
+                                <option value="PowerShell Automation">PowerShell Automation</option>
+                                <option value="Exchange Online">Exchange Online Management</option>
+                                <option value="Security Implementation">Security Implementation</option>
+                                <option value="Training & Support">Training & Support</option>
+                                <option value="General Consultation">General Consultation</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Project Details *</label>
+                            <textarea id="message" name="message" class="form-input form-textarea" 
+                                    placeholder="Please describe your project requirements, current setup, and timeline..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary w-full text-lg">
+                            <i data-feather="send" class="w-5 h-5 inline mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Sam Adhikari</h3>
+                    <p class="text-gray-400 mb-4">
+                        Microsoft Cloud Specialist helping businesses leverage the full potential of Microsoft 365 and Azure platforms.
+                    </p>
+                    <div class="flex space-x-4">
+                        <button onclick="downloadResume()" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-feather="download" class="w-5 h-5"></i>
+                        </button>
+                        <a href="#contact" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-feather="mail" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#services" class="hover:text-white transition-colors">Cloud Migration</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">System Administration</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">PowerShell Automation</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Training & Support</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Security Implementation</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Technologies</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Microsoft Azure</li>
+                        <li>Microsoft 365</li>
+                        <li>Exchange Online</li>
+                        <li>PowerShell</li>
+                        <li>Intune & MDM</li>
+                        <li>Security & Compliance</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Sam Adhikari. All rights reserved. | Microsoft Cloud Specialist | Australia</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Clean, Secure JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            feather.replace();
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling and About panel logic
+        const aboutPanel = document.getElementById('about-panel');
+        const closeAboutBtn = document.getElementById('close-about-panel');
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = this.getAttribute('href');
+
+                // If About link clicked, show the top about panel and scroll to it
+                if (target === '#about') {
+                    if (aboutPanel.classList.contains('hidden')) {
+                        aboutPanel.classList.remove('hidden');
+                    }
+                    aboutPanel.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    const el = document.querySelector(target);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }
+
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        if (closeAboutBtn) {
+            closeAboutBtn.addEventListener('click', () => {
+                aboutPanel.classList.add('hidden');
+            });
+        }
+
+        // Resume download function
+        function downloadResume() {
+            const resumeUrl = './Sam_Adhikari_Resume.docx';
+            const link = document.createElement('a');
+            link.href = resumeUrl;
+            link.download = 'Sam_Adhikari_Resume.docx';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Track form submission for debugging
+        function trackFormSubmission() {
+            console.log('Contact form submitted at:', new Date().toISOString());
+        }
+
+        // Cloud service information popup
+        function showCloudInfo(service) {
+            const services = {
+                azure: {
+                    title: "Microsoft Azure",
+                    description: "Azure is Microsoft's comprehensive cloud computing platform that provides:\n\n• Virtual Machines and App Services\n• AI and Machine Learning tools\n• Storage and Database solutions\n• Networking and Security services\n• Developer tools and DevOps\n\nPerfect for enterprises already using Microsoft products."
+                },
+                m365: {
+                    title: "Microsoft 365",
+                    description: "Microsoft 365 is a complete productivity suite that includes:\n\n• Office applications (Word, Excel, PowerPoint)\n• Teams for collaboration and communication\n• SharePoint for document management\n• Exchange Online for email\n• OneDrive for cloud storage\n• Advanced security and compliance tools\n\nIdeal for organizations seeking integrated productivity solutions."
+                }
+            };
+            
+            const info = services[service];
+            if (info) {
+                alert(`${info.title}\n\n${info.description}`);
+            }
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, observerOptions);
+
+        // Observe scroll-animate elements
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize feather icons
+        feather.replace();
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Page loaded and ready
+            console.log('Sam Adhikari Portfolio - Loaded Successfully');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Posts Debug</title>
+</head>
+<body>
+    <h1>Blog Posts Debug</h1>
+    <div id="debug-info"></div>
+    <div id="posts-container"></div>
+
+    <script>
+        async function debugBlogPosts() {
+            const debugInfo = document.getElementById('debug-info');
+            const postsContainer = document.getElementById('posts-container');
+            
+            try {
+                debugInfo.innerHTML += '<p>Attempting to fetch blog/posts.json...</p>';
+                
+                const response = await fetch('blog/posts.json');
+                debugInfo.innerHTML += `<p>Response status: ${response.status}</p>`;
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const posts = await response.json();
+                debugInfo.innerHTML += `<p>Posts loaded successfully. Total posts: ${posts.length}</p>`;
+                
+                // Filter technical posts
+                const technicalPosts = posts.filter(post => post.category !== 'blog');
+                debugInfo.innerHTML += `<p>Technical posts (excluding 'blog' category): ${technicalPosts.length}</p>`;
+                
+                // Display all posts
+                debugInfo.innerHTML += '<h3>All Posts:</h3>';
+                posts.forEach((post, index) => {
+                    debugInfo.innerHTML += `<p>${index + 1}. ${post.title} - Category: ${post.category}</p>`;
+                });
+                
+                // Display filtered posts
+                debugInfo.innerHTML += '<h3>Technical Posts (for showcase):</h3>';
+                technicalPosts.forEach((post, index) => {
+                    debugInfo.innerHTML += `<p>${index + 1}. ${post.title} - Category: ${post.category}</p>`;
+                });
+                
+            } catch (error) {
+                debugInfo.innerHTML += `<p style="color: red;">Error: ${error.message}</p>`;
+                console.error('Error loading blog posts:', error);
+            }
+        }
+        
+        // Run debug when page loads
+        document.addEventListener('DOMContentLoaded', debugBlogPosts);
+    </script>
+</body>
+</html>

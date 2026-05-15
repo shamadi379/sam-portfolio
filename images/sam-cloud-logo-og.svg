@@ -1,0 +1,44 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0fdf4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="100" r="60" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="1100" cy="530" r="80" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="200" cy="500" r="40" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="1000" cy="150" r="50" fill="rgba(255,255,255,0.1)"/>
+  
+  <!-- Main logo (scaled up) -->
+  <g transform="translate(300, 215) scale(5)">
+    <path d="M32 24c1.5 0 3-1 3-3 0-3-2.5-5.5-5.5-5.5-.5-3-3-5.5-6.5-5.5-2.5 0-4.5 1.5-5.5 3.5-1-.5-2-.5-3 0C13 15 12 17 12 19c-2 0-4 2-4 4s2 4 4 4h20z" 
+          fill="url(#cloudGradient)" 
+          stroke="#ffffff" 
+          stroke-width="1"/>
+    <path d="M18 18c0-1 1-2 2-2h2c1 0 2 1 2 2s-1 2-2 2h-2c-1 0-2 1-2 2s1 2 2 2h2c1 0 2-1 2-2" 
+          fill="none" 
+          stroke="#10b981" 
+          stroke-width="2.5" 
+          stroke-linecap="round"/>
+  </g>
+  
+  <!-- Main text -->
+  <text x="600" y="380" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">Sam in Cloud</text>
+  <text x="600" y="440" font-family="Arial, sans-serif" font-size="36" fill="rgba(255,255,255,0.9)" text-anchor="middle">Cloud Solutions Specialist</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="490" font-family="Arial, sans-serif" font-size="24" fill="rgba(255,255,255,0.8)" text-anchor="middle">Microsoft 365 • Azure • Intune • Exchange</text>
+  
+  <!-- Website URL -->
+  <text x="600" y="570" font-family="Arial, sans-serif" font-size="20" fill="rgba(255,255,255,0.7)" text-anchor="middle">samincloud.com</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cloudGradient16" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Simplified cloud for 16px -->
+  <path d="M12.8 9.6c.6 0 1.2-.4 1.2-1.2 0-1.2-1-2.2-2.2-2.2-.2-1.2-1.2-2.2-2.6-2.2-1 0-1.8.6-2.2 1.4-.4-.2-.8-.2-1.2 0C5.2 6 4.8 6.8 4.8 7.6c-.8 0-1.6.8-1.6 1.6s.8 1.6 1.6 1.6h8z" 
+        fill="url(#cloudGradient16)" 
+        stroke="#047857" 
+        stroke-width="0.4"/>
+  
+  <!-- Letter S simplified -->
+  <path d="M7.2 7.2c0-.4.4-.8.8-.8h.8c.4 0 .8.4.8.8s-.4.8-.8.8h-.8c-.4 0-.8.4-.8.8s.4.8.8.8h.8c.4 0 .8-.4.8-.8" 
+        fill="none" 
+        stroke="white" 
+        stroke-width="1" 
+        stroke-linecap="round"/>
+</svg>
